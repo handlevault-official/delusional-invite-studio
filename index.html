@@ -48,6 +48,28 @@
       line-height: 1.7;
     }
 
+    /* Customized Seal Shapes */
+    .seal-wax {
+      border-radius: 9999px;
+      box-shadow: inset 0 2px 5px rgba(255,255,255,0.45), inset 0 -3px 6px rgba(0,0,0,0.25), 0 6px 14px rgba(0,0,0,0.18);
+      border: 2px dashed rgba(255,255,255,0.55);
+    }
+    .seal-sticker {
+      border-radius: 22px;
+      box-shadow: 0 6px 0 rgba(0,0,0,0.14);
+      border: 2px solid #ffffff;
+    }
+    .seal-pixel {
+      border-radius: 2px;
+      box-shadow: 4px 4px 0px #18181b;
+      border: 2px solid #18181b;
+    }
+    .seal-gloss {
+      border-radius: 9999px;
+      box-shadow: inset 0 4px 8px rgba(255,255,255,0.75), 0 10px 20px rgba(79, 70, 229, 0.25);
+      border: 2px solid rgba(255,255,255,0.9);
+    }
+
     /* Pinterest Masonry */
     .masonry {
       column-count: 2;
@@ -86,13 +108,13 @@
   <section class="max-w-6xl mx-auto px-4 pt-8 pb-6">
     <div class="text-center max-w-2xl mx-auto mb-8">
       <span class="inline-block text-xs font-semibold uppercase tracking-widest px-3 py-1 rounded-full bg-rose-100 text-rose-700 mb-3">
-        17+ Occasions • Inclusive • $2–$8 Ko-fi Customizer
+        17+ Occasions • Custom Seals • Inclusive • $2–$8 Ko-fi Customizer
       </span>
       <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-stone-900 mb-3">
         One studio for every moment worth sending.
       </h2>
       <p class="text-sm sm:text-base text-stone-600">
-        From weddings, baby showers, and proposals to game raids, career launches, business pitches, and heartfelt condolences—customize your style, photos, and interactive receiver envelope.
+        Customize your letter type, aesthetic style, receiver vibe, photos, and personalized envelope seal—then share via link or Ko-fi email delivery ($2–$8).
       </p>
     </div>
 
@@ -195,7 +217,7 @@
         </div>
       </div>
 
-      <!-- Inclusive Receiver & Envelope Seal -->
+      <!-- Inclusive Receiver & Envelope Color -->
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
         <div>
           <label class="block text-xs font-bold uppercase tracking-wider text-stone-500 mb-1.5">
@@ -211,14 +233,62 @@
         </div>
         <div>
           <label class="block text-xs font-bold uppercase tracking-wider text-stone-500 mb-1.5">
-            Envelope Seal Color
+            Envelope Header Tone
           </label>
           <select id="envelopeColor" class="w-full rounded-xl border border-stone-300 px-3 py-2 text-xs font-medium bg-white">
-            <option value="rose">🌸 Blush Rose Seal</option>
-            <option value="cream">📜 Vintage Gold Seal</option>
-            <option value="sky">💎 3D Sky Blue Seal</option>
-            <option value="midnight">🖤 Midnight Velvet Seal</option>
+            <option value="rose">🌸 Blush Rose</option>
+            <option value="cream">📜 Vintage Gold</option>
+            <option value="sky">💎 3D Sky Blue</option>
+            <option value="midnight">🖤 Midnight Velvet</option>
           </select>
+        </div>
+      </div>
+
+      <!-- Customized Seal Builder -->
+      <div class="p-3.5 rounded-2xl bg-rose-50/60 border border-rose-200 space-y-3">
+        <div class="flex items-center justify-between">
+          <label class="text-xs font-extrabold uppercase tracking-wider text-rose-900">
+            🔏 Customized Envelope Seal
+          </label>
+          <span class="text-[11px] text-rose-700 font-semibold">Stamp + Initials</span>
+        </div>
+
+        <div class="grid grid-cols-3 gap-2">
+          <div>
+            <label class="block text-[11px] font-bold text-stone-600 mb-1">Seal Shape</label>
+            <select id="sealShape" class="w-full rounded-xl border border-stone-300 bg-white px-2.5 py-1.5 text-xs">
+              <option value="wax">Wax Stamp</option>
+              <option value="sticker">Cute Sticker</option>
+              <option value="gloss">3D Gloss</option>
+              <option value="pixel">Pixel Block</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-[11px] font-bold text-stone-600 mb-1">Seal Icon</label>
+            <select id="sealIcon" class="w-full rounded-xl border border-stone-300 bg-white px-2.5 py-1.5 text-xs">
+              <option value="💘">💘 Heart</option>
+              <option value="💍">💍 Ring</option>
+              <option value="🕊️">🕊️ Dove</option>
+              <option value="🥂">🥂 Toast</option>
+              <option value="🎂">🎂 Cake</option>
+              <option value="🍼">🍼 Baby</option>
+              <option value="🚀">🚀 Rocket</option>
+              <option value="🏆">🏆 Trophy</option>
+              <option value="💼">💼 Briefcase</option>
+              <option value="🤝">🤝 Handshake</option>
+              <option value="🎯">🎯 Target</option>
+              <option value="🎟️">🎟️ Pass</option>
+              <option value="👾">👾 Pixel</option>
+              <option value="☀️">☀️ Sun</option>
+              <option value="🌿">🌿 Leaf</option>
+              <option value="🕯️">🕯️ Candle</option>
+              <option value="💌">💌 Letter</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-[11px] font-bold text-stone-600 mb-1">Seal Tag (1–4)</label>
+            <input id="sealTag" type="text" maxlength="4" value="DATE" placeholder="D&O" class="w-full rounded-xl border border-stone-300 bg-white px-2.5 py-1.5 text-xs font-bold uppercase text-center" />
+          </div>
         </div>
       </div>
 
@@ -266,7 +336,7 @@
       <!-- Price Breakdown Box -->
       <div class="p-4 rounded-2xl bg-stone-900 text-white space-y-1.5">
         <div class="flex justify-between text-xs text-stone-300">
-          <span>Base Custom Letter + Envelope</span>
+          <span>Base Custom Letter + Envelope Seal</span>
           <span>$2.00</span>
         </div>
         <div class="flex justify-between text-xs text-stone-300">
@@ -304,20 +374,21 @@
       <!-- Interactive Envelope Shell -->
       <div id="envelopeBox" class="rounded-3xl p-4 sm:p-6 bg-gradient-to-br from-rose-100 via-amber-50 to-indigo-100 border border-stone-200 shadow-inner">
         
-        <!-- Envelope Header Flap -->
-        <div id="envelopeHeader" class="mb-4 p-4 rounded-2xl bg-rose-200/80 border border-rose-300 flex items-center justify-between">
+        <!-- Envelope Header Flap with Custom Seal -->
+        <div id="envelopeHeader" class="mb-4 p-4 rounded-2xl bg-rose-200/80 border border-rose-300 flex items-center justify-between gap-3">
           <div>
             <span id="previewTypeBadge" class="text-[11px] font-bold uppercase tracking-wider block">💘 Date Invite</span>
             <span id="previewPersonaBadge" class="text-xs font-semibold opacity-80">👩 Female / Femme</span>
           </div>
-          <div class="text-right">
-            <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-white/90 text-stone-900 text-xs font-bold shadow-sm">
-              💌 Custom Envelope
-            </span>
+
+          <!-- Customized Seal Badge -->
+          <div id="customSealBadge" class="seal-wax px-3.5 py-2 bg-rose-600 text-white flex items-center gap-1.5 transition-all duration-200">
+            <span id="previewSealIcon" class="text-base leading-none">💘</span>
+            <span id="previewSealTag" class="text-[11px] font-extrabold tracking-wider uppercase leading-none">DATE</span>
           </div>
         </div>
 
-        <!-- Actual Customized Letter Card -->
+         <!-- Actual Customized Letter Card -->
         <div id="letterPreviewCard" class="theme-clean rounded-2xl p-6 sm:p-8 transition-all duration-300">
           <div class="flex items-center justify-between gap-2 mb-4 pb-3 border-b border-current/10">
             <div>
@@ -345,7 +416,10 @@
               <p class="text-xs opacity-70">Sincerely,</p>
               <p id="previewFrom" class="font-bold text-sm">Your Secret Admirer</p>
             </div>
-            <span id="previewCornerIcon" class="text-xl">💌</span>
+            <div class="flex items-center gap-2">
+              <span id="previewMiniSealTag" class="text-[10px] font-bold uppercase px-2 py-0.5 rounded bg-black/5">DATE</span>
+              <span id="previewCornerIcon" class="text-xl">💘</span>
+            </div>
           </div>
         </div>
       </div>
@@ -394,13 +468,15 @@
   </div>
 
   <script>
-    // Occasion Presets (17 Types)
+    // Occasion Presets (17 Types + Suggested Seal)
     const occasionTemplates = {
       date: {
         label: "💘 Date Invite",
         title: "Official Date Invite 💘",
         body: "I planned a little get-together just for the two of us. Pick your favorite outfit, bring your appetite, and let me know what time works best for you!",
         icon: "💘",
+        tag: "DATE",
+        sealShape: "sticker",
         recommendedStyle: "cute",
         seal: "rose"
       },
@@ -409,6 +485,8 @@
         title: "A Forever Question For You 💍",
         body: "Every day with you feels like my favorite chapter. Meet me at our special spot—there is a question I have been waiting my whole life to ask you.",
         icon: "💍",
+        tag: "YES?",
+        sealShape: "wax",
         recommendedStyle: "aesthetic",
         seal: "cream"
       },
@@ -417,6 +495,8 @@
         title: "Save The Date — We're Getting Married! 🕊️",
         body: "Together with our families, we joyfully invite you to celebrate our wedding day. Your presence would mean the world to us as we begin this new chapter.",
         icon: "🕊️",
+        tag: "WED",
+        sealShape: "wax",
         recommendedStyle: "aesthetic",
         seal: "cream"
       },
@@ -425,6 +505,8 @@
         title: "Happy Anniversary, My Love 🥂",
         body: "Another year of laughs, late-night talks, and growing together. Thank you for being my constant and my favorite adventure.",
         icon: "🥂",
+        tag: "US",
+        sealShape: "wax",
         recommendedStyle: "aesthetic",
         seal: "rose"
       },
@@ -433,6 +515,8 @@
         title: "Happy Birthday! Level Up Unlocked 🎂",
         body: "Wishing you the brightest year ahead filled with big wins, good health, and everything you've been manifesting. Let's celebrate soon!",
         icon: "🎂",
+        tag: "B-DAY",
+        sealShape: "sticker",
         recommendedStyle: "cute",
         seal: "rose"
       },
@@ -441,6 +525,8 @@
         title: "Oh Baby! You're Invited to Our Baby Shower 🍼",
         body: "A tiny bundle of joy is on the way! Come join us for games, treats, and warm wishes as we celebrate our growing family.",
         icon: "🍼",
+        tag: "BABY",
+        sealShape: "sticker",
         recommendedStyle: "cute",
         seal: "sky"
       },
@@ -449,6 +535,8 @@
         title: "You're on the VIP Launch List 🚀",
         body: "After months of building behind the scenes, we are officially launching! Join us for the first look, exclusive perks, and celebration.",
         icon: "🚀",
+        tag: "LIVE",
+        sealShape: "gloss",
         recommendedStyle: "3d",
         seal: "sky"
       },
@@ -457,6 +545,8 @@
         title: "Cheers to This Huge Milestone! 🏆",
         body: "You worked hard for this moment and earned every bit of it. So proud of how far you've come—here's to even bigger chapters ahead!",
         icon: "🏆",
+        tag: "WIN",
+        sealShape: "gloss",
         recommendedStyle: "3d",
         seal: "cream"
       },
@@ -465,6 +555,8 @@
         title: "Congratulations on Your New Chapter 💼",
         body: "Wishing you confidence, clarity, and success as you step into this exciting new career opportunity. They are lucky to have you on board!",
         icon: "💼",
+        tag: "PRO",
+        sealShape: "wax",
         recommendedStyle: "clean",
         seal: "midnight"
       },
@@ -473,6 +565,8 @@
         title: "Partnership & Collaboration Proposal 🤝",
         body: "I admire your work and would love to explore a potential collaboration between our teams. Let's schedule a brief call this week to share ideas.",
         icon: "🤝",
+        tag: "DEAL",
+        sealShape: "wax",
         recommendedStyle: "clean",
         seal: "midnight"
       },
@@ -481,6 +575,8 @@
         title: "Mission Briefing: Operation Starts Now 🎯",
         body: "You have been selected for our upcoming mission. Review the details, gear up, and confirm your readiness before launch.",
         icon: "🎯",
+        tag: "GO",
+        sealShape: "gloss",
         recommendedStyle: "3d",
         seal: "midnight"
       },
@@ -489,6 +585,8 @@
         title: "VIP Pass: You're Invited! 🎟️",
         body: "Good music, great company, and unforgettable memories await. Save your spot and let us know if you can make it!",
         icon: "🎟️",
+        tag: "VIP",
+        sealShape: "sticker",
         recommendedStyle: "3d",
         seal: "sky"
       },
@@ -497,6 +595,8 @@
         title: "QUEST ALERT: Squad Raid Tonight 🎮",
         body: "Ready your loadout! Our party is assembling for tonight's special event. Log in on time—loot and glory await.",
         icon: "👾",
+        tag: "GG",
+        sealShape: "pixel",
         recommendedStyle: "pixel",
         seal: "midnight"
       },
@@ -505,6 +605,8 @@
         title: "Sending Warm Greetings Your Way ☀️",
         body: "Just wanted to drop a quick note to brighten your day and remind you that you're appreciated. Hope everything is going smoothly!",
         icon: "☀️",
+        tag: "HI",
+        sealShape: "sticker",
         recommendedStyle: "clean",
         seal: "cream"
       },
@@ -513,6 +615,8 @@
         title: "With Warmest Regards 🌿",
         body: "Thank you for your kindness, time, and continued support. Wishing you peace and good fortune in all your endeavors.",
         icon: "🌿",
+        tag: "NOTE",
+        sealShape: "wax",
         recommendedStyle: "aesthetic",
         seal: "cream"
       },
@@ -521,6 +625,8 @@
         title: "In Loving Memory & Heartfelt Condolences 🕯️",
         body: "Please accept my deepest sympathies during this difficult time. Holding you and your family in my thoughts and prayers, and honoring a life that touched so many.",
         icon: "🕯️",
+        tag: "RIP",
+        sealShape: "wax",
         recommendedStyle: "clean",
         seal: "midnight"
       },
@@ -529,6 +635,8 @@
         title: "A Special Letter For You ✉️",
         body: "Write your own personal message, invitation, or announcement right here.",
         icon: "💌",
+        tag: "D&O",
+        sealShape: "wax",
         recommendedStyle: "clean",
         seal: "rose"
       }
@@ -544,6 +652,9 @@
     const styleBtns = document.querySelectorAll('.style-btn');
     const receiverPersona = document.getElementById('receiverPersona');
     const envelopeColor = document.getElementById('envelopeColor');
+    const sealShape = document.getElementById('sealShape');
+    const sealIcon = document.getElementById('sealIcon');
+    const sealTag = document.getElementById('sealTag');
     const toName = document.getElementById('toName');
     const fromName = document.getElementById('fromName');
     const letterTitle = document.getElementById('letterTitle');
@@ -557,6 +668,10 @@
     // Preview Elements
     const letterPreviewCard = document.getElementById('letterPreviewCard');
     const envelopeHeader = document.getElementById('envelopeHeader');
+    const customSealBadge = document.getElementById('customSealBadge');
+    const previewSealIcon = document.getElementById('previewSealIcon');
+    const previewSealTag = document.getElementById('previewSealTag');
+    const previewMiniSealTag = document.getElementById('previewMiniSealTag');
     const previewTypeBadge = document.getElementById('previewTypeBadge');
     const previewPersonaBadge = document.getElementById('previewPersonaBadge');
     const previewPersonaPill = document.getElementById('previewPersonaPill');
@@ -611,7 +726,7 @@
     function updatePreview() {
       const currentOccasion = occasionTemplates[letterType.value] || occasionTemplates.custom;
       previewTypeBadge.textContent = currentOccasion.label;
-      previewCornerIcon.textContent = currentOccasion.icon;
+      previewCornerIcon.textContent = sealIcon.value || currentOccasion.icon;
 
       previewTo.textContent = toName.value || 'Someone Special';
       previewFrom.textContent = fromName.value || 'Anonymous';
@@ -619,6 +734,20 @@
       previewBody.textContent = letterBody.value || '';
       previewPersonaBadge.textContent = receiverPersona.value;
       previewPersonaPill.textContent = receiverPersona.value;
+
+      // Custom Seal Update
+      const cleanTag = (sealTag.value || 'D&O').toUpperCase().slice(0, 4);
+      previewSealIcon.textContent = sealIcon.value;
+      previewSealTag.textContent = cleanTag;
+      previewMiniSealTag.textContent = cleanTag;
+
+      const sealBgMap = {
+        rose: 'bg-rose-600 text-white',
+        cream: 'bg-amber-700 text-amber-50',
+        sky: 'bg-sky-600 text-white',
+        midnight: 'bg-stone-900 text-white'
+      };
+      customSealBadge.className = `seal-${sealShape.value} px-3.5 py-2 flex items-center gap-1.5 transition-all duration-200 ${sealBgMap[envelopeColor.value] || 'bg-rose-600 text-white'}`;
 
       letterPreviewCard.className = `theme-${selectedStyle} rounded-2xl p-6 sm:p-8 transition-all duration-300`;
 
@@ -628,7 +757,7 @@
         sky: 'bg-sky-200/80 border-sky-300 text-sky-950',
         midnight: 'bg-stone-800 border-stone-700 text-white'
       };
-      envelopeHeader.className = `mb-4 p-4 rounded-2xl border flex items-center justify-between ${colorMap[envelopeColor.value]}`;
+      envelopeHeader.className = `mb-4 p-4 rounded-2xl border flex items-center justify-between gap-3 ${colorMap[envelopeColor.value]}`;
     }
 
     // Occasion Change Handler
@@ -639,14 +768,16 @@
       letterTitle.value = preset.title;
       letterBody.value = preset.body;
       envelopeColor.value = preset.seal;
+      sealIcon.value = preset.icon;
+      sealTag.value = preset.tag;
+      sealShape.value = preset.sealShape;
 
-      // Respectful tone guardrail for RIP / Condolence
       if (letterType.value === 'rip') {
         setActiveStyleButton('clean');
         toneHintText.textContent = "Respectful tone applied (Clean / Minimal recommended for condolences).";
       } else {
         setActiveStyleButton(preset.recommendedStyle);
-        toneHintText.textContent = "Starter message & matching vibe applied—edit freely below.";
+        toneHintText.textContent = "Starter message, seal & matching vibe applied—edit freely below.";
       }
 
       updatePreview();
@@ -663,7 +794,7 @@
     });
 
     // Live Inputs
-    [toName, fromName, letterTitle, letterBody, receiverPersona, envelopeColor].forEach(el => {
+    [toName, fromName, letterTitle, letterBody, receiverPersona, envelopeColor, sealShape, sealIcon, sealTag].forEach(el => {
       el.addEventListener('input', updatePreview);
       el.addEventListener('change', updatePreview);
     });
@@ -748,7 +879,10 @@
         body: letterBody.value,
         style: selectedStyle,
         persona: receiverPersona.value,
-        color: envelopeColor.value
+        color: envelopeColor.value,
+        sealShape: sealShape.value,
+        sealIcon: sealIcon.value,
+        sealTag: sealTag.value
       };
 
       const encoded = btoa(encodeURIComponent(JSON.stringify(payload)));
@@ -782,6 +916,9 @@
           setActiveStyleButton(decoded.style || 'clean');
           receiverPersona.value = decoded.persona || '✨ Any Gender / Neutral';
           envelopeColor.value = decoded.color || 'rose';
+          if (decoded.sealShape) sealShape.value = decoded.sealShape;
+          if (decoded.sealIcon) sealIcon.value = decoded.sealIcon;
+          if (decoded.sealTag) sealTag.value = decoded.sealTag;
           updatePreview();
         } catch (err) {
           console.error('Invalid letter link');
