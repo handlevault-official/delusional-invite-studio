@@ -70,6 +70,23 @@
       border: 2px solid rgba(255,255,255,0.9);
     }
 
+    /* Envelope Seal Break & Letter Reveal Animations */
+    @keyframes popUnseal {
+      0% { transform: scale(1) rotate(0deg); opacity: 1; }
+      45% { transform: scale(1.18) rotate(-8deg); opacity: 1; }
+      100% { transform: scale(0.3) rotate(18deg); opacity: 0; }
+    }
+    @keyframes letterSlideUp {
+      0% { transform: translateY(28px) scale(0.97); opacity: 0; }
+      100% { transform: translateY(0) scale(1); opacity: 1; }
+    }
+    .unsealing {
+      animation: popUnseal 0.55s ease forwards;
+    }
+    .letter-reveal {
+      animation: letterSlideUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
     /* Pinterest Masonry */
     .masonry {
       column-count: 2;
@@ -108,28 +125,28 @@
   <section class="max-w-6xl mx-auto px-4 pt-8 pb-6">
     <div class="text-center max-w-2xl mx-auto mb-8">
       <span class="inline-block text-xs font-semibold uppercase tracking-widest px-3 py-1 rounded-full bg-rose-100 text-rose-700 mb-3">
-        17+ Occasions • Custom Seals • Inclusive • $2–$8 Ko-fi Customizer
+        17+ Occasions • Seal-Break Animation • Date & Wedding Budget + Q&A
       </span>
       <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-stone-900 mb-3">
         One studio for every moment worth sending.
       </h2>
       <p class="text-sm sm:text-base text-stone-600">
-        Customize your letter type, aesthetic style, receiver vibe, photos, and personalized envelope seal—then share via link or Ko-fi email delivery ($2–$8).
+        Customize your letter type, aesthetic style, receiver vibe, photos, and personalized envelope seal—with special budget sharing & Q&A for dates and weddings ($2–$8).
       </p>
     </div>
 
     <!-- Pinterest-Style Masonry Preview Grid -->
     <div class="masonry mb-6">
       <div class="masonry-item rounded-2xl p-4 bg-white border border-stone-200 shadow-sm">
-        <div class="text-xs font-semibold text-stone-400 mb-1">WEDDING / PROPOSAL • $3</div>
-        <p class="font-semibold text-sm mb-2">"Will You Marry Me? / Save Our Date"</p>
+        <div class="text-xs font-semibold text-stone-400 mb-1">WEDDING • BUDGET + Q&A</div>
+        <p class="font-semibold text-sm mb-2">"Save Our Date + Attire & Gift Guide"</p>
         <div class="h-20 rounded-xl bg-stone-100 flex items-center justify-center text-2xl">💍🕊️🤍</div>
       </div>
 
       <div class="masonry-item rounded-2xl p-4 bg-pink-50 border-2 border-dashed border-pink-300 shadow-sm">
-        <div class="text-xs font-bold text-pink-600 mb-1">BABY SHOWER / DATE • $4</div>
-        <p class="font-bold text-sm text-pink-900 mb-2">"Oh Baby! Brunch & Polaroid Memories"</p>
-        <div class="h-28 rounded-xl bg-pink-100 flex items-center justify-center text-3xl">🍼🧸🎀</div>
+        <div class="text-xs font-bold text-pink-600 mb-1">DATE INVITE • 50/50 OR TREAT</div>
+        <p class="font-bold text-sm text-pink-900 mb-2">"Coffee & Dinner Date + Vibe Q&A"</p>
+        <div class="h-28 rounded-xl bg-pink-100 flex items-center justify-center text-3xl">💘🧸🎀</div>
       </div>
 
       <div class="masonry-item rounded-2xl p-4 bg-amber-50 border-2 border-stone-900 shadow-[4px_4px_0_#18181b]">
@@ -165,9 +182,9 @@
         </label>
         <select id="letterType" class="w-full rounded-xl border-2 border-stone-900 px-3 py-2.5 text-xs sm:text-sm font-semibold bg-stone-50">
           <optgroup label="💖 Romance & Celebrations">
-            <option value="date">💘 Date Invite</option>
+            <option value="date">💘 Date Invite (Special Budget & Q&A)</option>
+            <option value="wedding">🕊️ Wedding Invite (Special Budget & Q&A)</option>
             <option value="proposal">💍 Proposal</option>
-            <option value="wedding">🕊️ Wedding Invite</option>
             <option value="anniversary">🥂 Anniversary</option>
             <option value="birthday">🎂 Birthday</option>
             <option value="baby_shower">🍼 Baby Shower</option>
@@ -189,8 +206,59 @@
           </optgroup>
         </select>
         <p id="toneHintText" class="text-[11px] text-stone-500 mt-1">
-          Auto-fills a starter template you can freely edit below.
+          Date & Wedding automatically unlock Budget Sharing & Q&A below.
         </p>
+      </div>
+
+      <!-- Special Date & Wedding Controls (Budget Sharing + Q&A) -->
+      <div id="specialDateWeddingBox" class="p-4 rounded-2xl bg-pink-50/70 border border-pink-200 space-y-3">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-extrabold uppercase tracking-wider text-pink-950">
+            ✨ Date & Wedding Extras
+          </span>
+          <span id="specialModeTag" class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-pink-200 text-pink-900">
+            DATE MODE
+          </span>
+        </div>
+
+        <!-- Budget Sharing -->
+        <div class="space-y-2 bg-white/80 p-3 rounded-xl border border-pink-100">
+          <label class="block text-[11px] font-bold uppercase text-stone-700">💸 Budget Sharing Setup</label>
+          <div class="grid grid-cols-2 gap-2">
+            <div>
+              <label class="block text-[10px] font-semibold text-stone-500 mb-0.5">Split / Plan Type</label>
+              <select id="budgetSplitType" class="w-full rounded-lg border border-stone-300 px-2 py-1.5 text-xs bg-white">
+                <option value="50/50 Split">50/50 Split</option>
+                <option value="Host Treats">Host Treats</option>
+                <option value="Shared Pot / Ambahan">Shared Pot / Ambahan</option>
+                <option value="Custom Ratio">Custom Ratio</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-[10px] font-semibold text-stone-500 mb-0.5">Estimated Budget</label>
+              <input id="budgetAmount" type="text" value="₱1,500" placeholder="e.g. ₱1,500 or $120" class="w-full rounded-lg border border-stone-300 px-2 py-1.5 text-xs bg-white" />
+            </div>
+          </div>
+          <div>
+            <label class="block text-[10px] font-semibold text-stone-500 mb-0.5">Budget Note</label>
+            <input id="budgetNote" type="text" value="Covers food, coffee, and commute—no pressure!" class="w-full rounded-lg border border-stone-300 px-2 py-1.5 text-xs bg-white" />
+          </div>
+        </div>
+
+        <!-- Q&A Builder -->
+        <div class="space-y-2 bg-white/80 p-3 rounded-xl border border-pink-100">
+          <label class="block text-[11px] font-bold uppercase text-stone-700">❓ Quick Q&A for Receiver</label>
+          <div>
+            <label class="block text-[10px] font-semibold text-stone-500 mb-0.5">Question 1</label>
+            <input id="qaQ1" type="text" value="What's the vibe / dress code?" class="w-full rounded-lg border border-stone-300 px-2 py-1 text-xs bg-white mb-1" />
+            <input id="qaA1" type="text" value="Smart casual & comfy shoes." class="w-full rounded-lg border border-stone-300 px-2 py-1 text-xs bg-white" />
+          </div>
+          <div>
+            <label class="block text-[10px] font-semibold text-stone-500 mb-0.5">Question 2</label>
+            <input id="qaQ2" type="text" value="Any food cravings or allergies?" class="w-full rounded-lg border border-stone-300 px-2 py-1 text-xs bg-white mb-1" />
+            <input id="qaA2" type="text" value="Tell me your top 2 picks so I can reserve!" class="w-full rounded-lg border border-stone-300 px-2 py-1 text-xs bg-white" />
+          </div>
+        </div>
       </div>
 
       <!-- Style Selector -->
@@ -267,8 +335,8 @@
             <label class="block text-[11px] font-bold text-stone-600 mb-1">Seal Icon</label>
             <select id="sealIcon" class="w-full rounded-xl border border-stone-300 bg-white px-2.5 py-1.5 text-xs">
               <option value="💘">💘 Heart</option>
-              <option value="💍">💍 Ring</option>
               <option value="🕊️">🕊️ Dove</option>
+              <option value="💍">💍 Ring</option>
               <option value="🥂">🥂 Toast</option>
               <option value="🎂">🎂 Cake</option>
               <option value="🍼">🍼 Baby</option>
@@ -324,7 +392,7 @@
         <p class="text-[11px] text-stone-500 mt-1">Photos appear as polaroid memories inside the receiver's letter.</p>
       </div>
 
-      <!-- Email Delivery Add-on (+$1) -->
+       <!-- Email Delivery Add-on (+$1) -->
       <div class="p-3.5 rounded-2xl bg-amber-50/70 border border-amber-200 space-y-2">
         <label class="flex items-center gap-2 cursor-pointer">
           <input id="emailDeliveryToggle" type="checkbox" checked class="rounded text-stone-900 w-4 h-4" />
@@ -366,59 +434,109 @@
     <div class="lg:col-span-7 space-y-4">
       <div class="flex items-center justify-between">
         <h3 class="font-bold text-lg">2. Receiver Envelope & Live Preview</h3>
-        <button type="button" id="toggleEnvelopeBtn" class="text-xs font-bold px-3.5 py-1.5 rounded-full bg-white border border-stone-300 hover:bg-stone-100 transition">
-          ✉️ Close / Replay Envelope
+        <button type="button" id="replayEnvelopeBtn" class="text-xs font-bold px-3.5 py-1.5 rounded-full bg-white border border-stone-300 hover:bg-stone-100 transition">
+          🔁 Seal & Replay Animation
         </button>
       </div>
 
       <!-- Interactive Envelope Shell -->
-      <div id="envelopeBox" class="rounded-3xl p-4 sm:p-6 bg-gradient-to-br from-rose-100 via-amber-50 to-indigo-100 border border-stone-200 shadow-inner">
-        
-        <!-- Envelope Header Flap with Custom Seal -->
-        <div id="envelopeHeader" class="mb-4 p-4 rounded-2xl bg-rose-200/80 border border-rose-300 flex items-center justify-between gap-3">
-          <div>
-            <span id="previewTypeBadge" class="text-[11px] font-bold uppercase tracking-wider block">💘 Date Invite</span>
-            <span id="previewPersonaBadge" class="text-xs font-semibold opacity-80">👩 Female / Femme</span>
-          </div>
+      <div id="envelopeBox" class="relative rounded-3xl p-4 sm:p-6 bg-gradient-to-br from-rose-100 via-amber-50 to-indigo-100 border border-stone-200 shadow-inner min-h-[420px]">
 
-          <!-- Customized Seal Badge -->
-          <div id="customSealBadge" class="seal-wax px-3.5 py-2 bg-rose-600 text-white flex items-center gap-1.5 transition-all duration-200">
-            <span id="previewSealIcon" class="text-base leading-none">💘</span>
-            <span id="previewSealTag" class="text-[11px] font-extrabold tracking-wider uppercase leading-none">DATE</span>
-          </div>
-        </div>
-
-         <!-- Actual Customized Letter Card -->
-        <div id="letterPreviewCard" class="theme-clean rounded-2xl p-6 sm:p-8 transition-all duration-300">
-          <div class="flex items-center justify-between gap-2 mb-4 pb-3 border-b border-current/10">
-            <div>
-              <p class="text-xs opacity-70">To:</p>
-              <p id="previewTo" class="font-bold text-base">My Favorite Person</p>
-            </div>
-            <span id="previewPersonaPill" class="px-3 py-1 rounded-full text-xs font-semibold bg-black/5">
-              👩 Female / Femme
-            </span>
-          </div>
-
-          <h4 id="previewTitle" class="text-xl sm:text-2xl font-bold mb-4">
-            Official Date Invite 💘
-          </h4>
-
-          <p id="previewBody" class="text-sm sm:text-base whitespace-pre-line leading-relaxed mb-6">
-            I planned a little get-together just for the two of us. Pick your favorite outfit, bring your appetite, and let me know what time works best for you!
+        <!-- Sealed Envelope Overlay (Clickable to Break Seal & Animate Open) -->
+        <div id="sealedOverlay" class="hidden flex-col items-center justify-center text-center py-14 px-4 rounded-2xl bg-white/85 backdrop-blur-sm border border-stone-200">
+          <p class="text-xs font-bold uppercase tracking-widest text-stone-500 mb-2">
+            You Received a Sealed Envelope
+          </p>
+          <p id="sealedRecipientText" class="text-lg font-extrabold text-stone-900 mb-5">
+            For: My Favorite Person
           </p>
 
-          <!-- Uploaded Polaroid Photos Grid -->
-          <div id="previewPhotosGrid" class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-6 hidden"></div>
+          <button type="button" id="breakSealBtn" class="seal-wax px-6 py-4 bg-rose-600 hover:bg-rose-500 text-white flex flex-col items-center gap-1 transition cursor-pointer">
+            <span id="overlaySealIcon" class="text-3xl leading-none">💘</span>
+            <span id="overlaySealTag" class="text-xs font-extrabold tracking-widest uppercase">DATE</span>
+          </button>
 
-          <div class="pt-4 border-t border-current/10 flex items-center justify-between">
+          <p class="text-xs text-stone-500 mt-4 animate-pulse">
+            Tap the seal to break & open your letter ✨
+          </p>
+        </div>
+
+        <!-- Opened Envelope + Letter Content -->
+        <div id="openedEnvelopeContent">
+          <!-- Envelope Header Flap with Custom Seal -->
+          <div id="envelopeHeader" class="mb-4 p-4 rounded-2xl bg-rose-200/80 border border-rose-300 flex items-center justify-between gap-3">
             <div>
-              <p class="text-xs opacity-70">Sincerely,</p>
-              <p id="previewFrom" class="font-bold text-sm">Your Secret Admirer</p>
+              <span id="previewTypeBadge" class="text-[11px] font-bold uppercase tracking-wider block">💘 Date Invite</span>
+              <span id="previewPersonaBadge" class="text-xs font-semibold opacity-80">👩 Female / Femme</span>
             </div>
-            <div class="flex items-center gap-2">
-              <span id="previewMiniSealTag" class="text-[10px] font-bold uppercase px-2 py-0.5 rounded bg-black/5">DATE</span>
-              <span id="previewCornerIcon" class="text-xl">💘</span>
+
+            <!-- Customized Seal Badge -->
+            <div id="customSealBadge" class="seal-wax px-3.5 py-2 bg-rose-600 text-white flex items-center gap-1.5 transition-all duration-200">
+              <span id="previewSealIcon" class="text-base leading-none">💘</span>
+              <span id="previewSealTag" class="text-[11px] font-extrabold tracking-wider uppercase leading-none">DATE</span>
+            </div>
+          </div>
+
+          <!-- Actual Customized Letter Card -->
+          <div id="letterPreviewCard" class="theme-clean rounded-2xl p-6 sm:p-8 transition-all duration-300">
+            <div class="flex items-center justify-between gap-2 mb-4 pb-3 border-b border-current/10">
+              <div>
+                <p class="text-xs opacity-70">To:</p>
+                <p id="previewTo" class="font-bold text-base">My Favorite Person</p>
+              </div>
+              <span id="previewPersonaPill" class="px-3 py-1 rounded-full text-xs font-semibold bg-black/5">
+                👩 Female / Femme
+              </span>
+            </div>
+
+            <h4 id="previewTitle" class="text-xl sm:text-2xl font-bold mb-4">
+              Official Date Invite 💘
+            </h4>
+
+            <p id="previewBody" class="text-sm sm:text-base whitespace-pre-line leading-relaxed mb-6">
+              I planned a little get-together just for the two of us. Pick your favorite outfit, bring your appetite, and let me know what time works best for you!
+            </p>
+
+            <!-- Special Date & Wedding Section: Budget Sharing + Q&A -->
+            <div id="previewDateWeddingSection" class="mb-6 p-4 rounded-2xl bg-black/5 space-y-4">
+              <div class="flex flex-wrap items-center justify-between gap-2 border-b border-current/10 pb-2">
+                <span id="previewSpecialHeading" class="text-xs font-extrabold uppercase tracking-wider">
+                  💘 Date Budget Sharing & Q&A
+                </span>
+                <span id="previewBudgetPill" class="text-xs font-bold px-2.5 py-1 rounded-full bg-white/80 text-stone-900">
+                  50/50 Split • ₱1,500
+                </span>
+              </div>
+
+              <p id="previewBudgetNote" class="text-xs sm:text-sm opacity-90">
+                Covers food, coffee, and commute—no pressure!
+              </p>
+
+              <!-- Q&A List -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+                <div class="p-3 rounded-xl bg-white/75 text-stone-900">
+                  <p id="previewQ1" class="text-xs font-bold mb-1">Q: What's the vibe / dress code?</p>
+                  <p id="previewA1" class="text-xs text-stone-600">A: Smart casual & comfy shoes.</p>
+                </div>
+                <div class="p-3 rounded-xl bg-white/75 text-stone-900">
+                  <p id="previewQ2" class="text-xs font-bold mb-1">Q: Any food cravings or allergies?</p>
+                  <p id="previewA2" class="text-xs text-stone-600">A: Tell me your top 2 picks so I can reserve!</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Uploaded Polaroid Photos Grid -->
+            <div id="previewPhotosGrid" class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-6 hidden"></div>
+
+            <div class="pt-4 border-t border-current/10 flex items-center justify-between">
+              <div>
+                <p class="text-xs opacity-70">Sincerely,</p>
+                <p id="previewFrom" class="font-bold text-sm">Your Secret Admirer</p>
+              </div>
+              <div class="flex items-center gap-2">
+                <span id="previewMiniSealTag" class="text-[10px] font-bold uppercase px-2 py-0.5 rounded bg-black/5">DATE</span>
+                <span id="previewCornerIcon" class="text-xl">💘</span>
+              </div>
             </div>
           </div>
         </div>
@@ -468,7 +586,6 @@
   </div>
 
   <script>
-    // Occasion Presets (17 Types + Suggested Seal)
     const occasionTemplates = {
       date: {
         label: "💘 Date Invite",
@@ -478,17 +595,14 @@
         tag: "DATE",
         sealShape: "sticker",
         recommendedStyle: "cute",
-        seal: "rose"
-      },
-      proposal: {
-        label: "💍 Proposal",
-        title: "A Forever Question For You 💍",
-        body: "Every day with you feels like my favorite chapter. Meet me at our special spot—there is a question I have been waiting my whole life to ask you.",
-        icon: "💍",
-        tag: "YES?",
-        sealShape: "wax",
-        recommendedStyle: "aesthetic",
-        seal: "cream"
+        seal: "rose",
+        budgetSplit: "50/50 Split",
+        budgetAmount: "₱1,500",
+        budgetNote: "Covers food, coffee, and commute—no pressure!",
+        q1: "What's the vibe / dress code?",
+        a1: "Smart casual & comfy shoes.",
+        q2: "Any food cravings or allergies?",
+        a2: "Tell me your top 2 picks so I can reserve!"
       },
       wedding: {
         label: "🕊️ Wedding Invite",
@@ -496,6 +610,23 @@
         body: "Together with our families, we joyfully invite you to celebrate our wedding day. Your presence would mean the world to us as we begin this new chapter.",
         icon: "🕊️",
         tag: "WED",
+        sealShape: "wax",
+        recommendedStyle: "aesthetic",
+        seal: "cream",
+        budgetSplit: "Shared Pot / Ambahan",
+        budgetAmount: "₱150,000",
+        budgetNote: "Your presence is our main gift; optional gift/contribution guide below.",
+        q1: "What is the wedding motif & attire?",
+        a1: "Warm ivory, sage & earth tones — formal/semi-formal.",
+        q2: "Can I bring a plus-one or confirm headcount?",
+        a2: "Please RSVP with your exact headcount before the deadline."
+      },
+      proposal: {
+        label: "💍 Proposal",
+        title: "A Forever Question For You 💍",
+        body: "Every day with you feels like my favorite chapter. Meet me at our special spot—there is a question I have been waiting my whole life to ask you.",
+        icon: "💍",
+        tag: "YES?",
         sealShape: "wax",
         recommendedStyle: "aesthetic",
         seal: "cream"
@@ -642,13 +773,22 @@
       }
     };
 
-    // State
     let selectedStyle = 'clean';
     let styleCost = 0;
     let uploadedPhotos = [];
 
-    // Elements
+    // Controls
     const letterType = document.getElementById('letterType');
+    const specialDateWeddingBox = document.getElementById('specialDateWeddingBox');
+    const specialModeTag = document.getElementById('specialModeTag');
+    const budgetSplitType = document.getElementById('budgetSplitType');
+    const budgetAmount = document.getElementById('budgetAmount');
+    const budgetNote = document.getElementById('budgetNote');
+    const qaQ1 = document.getElementById('qaQ1');
+    const qaA1 = document.getElementById('qaA1');
+    const qaQ2 = document.getElementById('qaQ2');
+    const qaA2 = document.getElementById('qaA2');
+
     const styleBtns = document.querySelectorAll('.style-btn');
     const receiverPersona = document.getElementById('receiverPersona');
     const envelopeColor = document.getElementById('envelopeColor');
@@ -665,7 +805,14 @@
     const receiverEmail = document.getElementById('receiverEmail');
     const toneHintText = document.getElementById('toneHintText');
 
-    // Preview Elements
+    // Envelope & Preview Elements
+    const sealedOverlay = document.getElementById('sealedOverlay');
+    const openedEnvelopeContent = document.getElementById('openedEnvelopeContent');
+    const sealedRecipientText = document.getElementById('sealedRecipientText');
+    const breakSealBtn = document.getElementById('breakSealBtn');
+    const overlaySealIcon = document.getElementById('overlaySealIcon');
+    const overlaySealTag = document.getElementById('overlaySealTag');
+
     const letterPreviewCard = document.getElementById('letterPreviewCard');
     const envelopeHeader = document.getElementById('envelopeHeader');
     const customSealBadge = document.getElementById('customSealBadge');
@@ -682,6 +829,16 @@
     const previewCornerIcon = document.getElementById('previewCornerIcon');
     const previewPhotosGrid = document.getElementById('previewPhotosGrid');
 
+    // Special Date & Wedding Preview Elements
+    const previewDateWeddingSection = document.getElementById('previewDateWeddingSection');
+    const previewSpecialHeading = document.getElementById('previewSpecialHeading');
+    const previewBudgetPill = document.getElementById('previewBudgetPill');
+    const previewBudgetNote = document.getElementById('previewBudgetNote');
+    const previewQ1 = document.getElementById('previewQ1');
+    const previewA1 = document.getElementById('previewA1');
+    const previewQ2 = document.getElementById('previewQ2');
+    const previewA2 = document.getElementById('previewA2');
+
     // Price Elements
     const priceBadge = document.getElementById('priceBadge');
     const styleAddonText = document.getElementById('styleAddonText');
@@ -689,6 +846,10 @@
     const photoAddonText = document.getElementById('photoAddonText');
     const emailAddonText = document.getElementById('emailAddonText');
     const totalPriceText = document.getElementById('totalPriceText');
+
+    function isDateOrWedding() {
+      return letterType.value === 'date' || letterType.value === 'wedding';
+    }
 
     function setActiveStyleButton(styleName) {
       styleBtns.forEach(btn => {
@@ -735,11 +896,15 @@
       previewPersonaBadge.textContent = receiverPersona.value;
       previewPersonaPill.textContent = receiverPersona.value;
 
-      // Custom Seal Update
       const cleanTag = (sealTag.value || 'D&O').toUpperCase().slice(0, 4);
       previewSealIcon.textContent = sealIcon.value;
       previewSealTag.textContent = cleanTag;
       previewMiniSealTag.textContent = cleanTag;
+
+      // Sync Sealed Overlay Seal
+      sealedRecipientText.textContent = `For: ${toName.value || 'Someone Special'}`;
+      overlaySealIcon.textContent = sealIcon.value;
+      overlaySealTag.textContent = cleanTag;
 
       const sealBgMap = {
         rose: 'bg-rose-600 text-white',
@@ -747,7 +912,9 @@
         sky: 'bg-sky-600 text-white',
         midnight: 'bg-stone-900 text-white'
       };
-      customSealBadge.className = `seal-${sealShape.value} px-3.5 py-2 flex items-center gap-1.5 transition-all duration-200 ${sealBgMap[envelopeColor.value] || 'bg-rose-600 text-white'}`;
+      const sealToneClass = sealBgMap[envelopeColor.value] || 'bg-rose-600 text-white';
+      customSealBadge.className = `seal-${sealShape.value} px-3.5 py-2 flex items-center gap-1.5 transition-all duration-200 ${sealToneClass}`;
+      breakSealBtn.className = `seal-${sealShape.value} px-6 py-4 hover:opacity-95 flex flex-col items-center gap-1 transition cursor-pointer ${sealToneClass}`;
 
       letterPreviewCard.className = `theme-${selectedStyle} rounded-2xl p-6 sm:p-8 transition-all duration-300`;
 
@@ -758,7 +925,53 @@
         midnight: 'bg-stone-800 border-stone-700 text-white'
       };
       envelopeHeader.className = `mb-4 p-4 rounded-2xl border flex items-center justify-between gap-3 ${colorMap[envelopeColor.value]}`;
+
+      // Special Date & Wedding Budget Sharing + Q&A Visibility & Content
+      if (isDateOrWedding()) {
+        specialDateWeddingBox.classList.remove('hidden');
+        previewDateWeddingSection.classList.remove('hidden');
+        const modeLabel = letterType.value === 'wedding' ? 'WEDDING MODE' : 'DATE MODE';
+        specialModeTag.textContent = modeLabel;
+        previewSpecialHeading.textContent = letterType.value === 'wedding'
+          ? '🕊️ Wedding Budget Sharing & Q&A'
+          : '💘 Date Budget Sharing & Q&A';
+
+        previewBudgetPill.textContent = `${budgetSplitType.value} • ${budgetAmount.value || 'TBD'}`;
+        previewBudgetNote.textContent = budgetNote.value || '';
+        previewQ1.textContent = `Q: ${qaQ1.value || ''}`;
+        previewA1.textContent = `A: ${qaA1.value || ''}`;
+        previewQ2.textContent = `Q: ${qaQ2.value || ''}`;
+        previewA2.textContent = `A: ${qaA2.value || ''}`;
+      } else {
+        specialDateWeddingBox.classList.add('hidden');
+        previewDateWeddingSection.classList.add('hidden');
+      }
     }
+
+    // Envelope Animation Trigger
+    function showSealedEnvelope() {
+      breakSealBtn.classList.remove('unsealing');
+      openedEnvelopeContent.classList.add('hidden');
+      openedEnvelopeContent.classList.remove('letter-reveal');
+      sealedOverlay.classList.remove('hidden');
+      sealedOverlay.classList.add('flex');
+    }
+
+    breakSealBtn.addEventListener('click', () => {
+      breakSealBtn.classList.add('unsealing');
+      setTimeout(() => {
+        sealedOverlay.classList.add('hidden');
+        sealedOverlay.classList.remove('flex');
+        openedEnvelopeContent.classList.remove('hidden');
+        void openedEnvelopeContent.offsetWidth;
+        openedEnvelopeContent.classList.add('letter-reveal');
+      }, 480);
+    });
+
+    document.getElementById('replayEnvelopeBtn').addEventListener('click', () => {
+      showSealedEnvelope();
+      document.getElementById('envelopeBox').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
 
     // Occasion Change Handler
     letterType.addEventListener('change', () => {
@@ -772,12 +985,20 @@
       sealTag.value = preset.tag;
       sealShape.value = preset.sealShape;
 
+      if (preset.budgetSplit) budgetSplitType.value = preset.budgetSplit;
+      if (preset.budgetAmount) budgetAmount.value = preset.budgetAmount;
+      if (preset.budgetNote) budgetNote.value = preset.budgetNote;
+      if (preset.q1) qaQ1.value = preset.q1;
+      if (preset.a1) qaA1.value = preset.a1;
+      if (preset.q2) qaQ2.value = preset.q2;
+      if (preset.a2) qaA2.value = preset.a2;
+
       if (letterType.value === 'rip') {
         setActiveStyleButton('clean');
         toneHintText.textContent = "Respectful tone applied (Clean / Minimal recommended for condolences).";
       } else {
         setActiveStyleButton(preset.recommendedStyle);
-        toneHintText.textContent = "Starter message, seal & matching vibe applied—edit freely below.";
+        toneHintText.textContent = "Date & Wedding automatically unlock Budget Sharing & Q&A below.";
       }
 
       updatePreview();
@@ -794,7 +1015,11 @@
     });
 
     // Live Inputs
-    [toName, fromName, letterTitle, letterBody, receiverPersona, envelopeColor, sealShape, sealIcon, sealTag].forEach(el => {
+    [
+      toName, fromName, letterTitle, letterBody, receiverPersona, envelopeColor,
+      sealShape, sealIcon, sealTag, budgetSplitType, budgetAmount, budgetNote,
+      qaQ1, qaA1, qaQ2, qaA2
+    ].forEach(el => {
       el.addEventListener('input', updatePreview);
       el.addEventListener('change', updatePreview);
     });
@@ -846,11 +1071,6 @@
       calculatePrice();
     });
 
-    // Envelope Open/Close Toggle
-    document.getElementById('toggleEnvelopeBtn').addEventListener('click', () => {
-      letterPreviewCard.classList.toggle('hidden');
-    });
-
     // Modal Logic
     const checkoutModal = document.getElementById('checkoutModal');
     document.getElementById('openCheckoutBtn').addEventListener('click', () => {
@@ -882,7 +1102,14 @@
         color: envelopeColor.value,
         sealShape: sealShape.value,
         sealIcon: sealIcon.value,
-        sealTag: sealTag.value
+        sealTag: sealTag.value,
+        budgetSplit: budgetSplitType.value,
+        budgetAmount: budgetAmount.value,
+        budgetNote: budgetNote.value,
+        q1: qaQ1.value,
+        a1: qaA1.value,
+        q2: qaQ2.value,
+        a2: qaA2.value
       };
 
       const encoded = btoa(encodeURIComponent(JSON.stringify(payload)));
@@ -919,10 +1146,22 @@
           if (decoded.sealShape) sealShape.value = decoded.sealShape;
           if (decoded.sealIcon) sealIcon.value = decoded.sealIcon;
           if (decoded.sealTag) sealTag.value = decoded.sealTag;
+          if (decoded.budgetSplit) budgetSplitType.value = decoded.budgetSplit;
+          if (decoded.budgetAmount) budgetAmount.value = decoded.budgetAmount;
+          if (decoded.budgetNote) budgetNote.value = decoded.budgetNote;
+          if (decoded.q1) qaQ1.value = decoded.q1;
+          if (decoded.a1) qaA1.value = decoded.a1;
+          if (decoded.q2) qaQ2.value = decoded.q2;
+          if (decoded.a2) qaA2.value = decoded.a2;
+
           updatePreview();
+          showSealedEnvelope();
         } catch (err) {
           console.error('Invalid letter link');
+          updatePreview();
         }
+      } else {
+        updatePreview();
       }
       calculatePrice();
     });
