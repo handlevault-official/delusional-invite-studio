@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DELUSIONAL & ORGANIZED — Seasonal Letter Studio</title>
+  <title>DELUSIONAL & ORGANIZED — Seasonal & Weather Letter Studio</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,7 +15,7 @@
       color: #1f1b24;
     }
 
-    /* Seasonal Card Themes */
+    /* Seasonal & Weather Card Themes */
     .season-christmas {
       font-family: 'Playfair Display', serif;
       background: linear-gradient(145deg, #fffaf5 0%, #fef2f2 55%, #f0fdf4 100%);
@@ -29,6 +29,34 @@
       border: 2px solid #f97316;
       box-shadow: 0 16px 35px rgba(249, 115, 22, 0.2);
     }
+    .season-winter {
+      font-family: 'Playfair Display', serif;
+      background: linear-gradient(145deg, #f8fafc 0%, #eff6ff 60%, #e0f2fe 100%);
+      color: #0f172a;
+      border: 2px solid #38bdf8;
+      box-shadow: 0 16px 35px rgba(56, 189, 248, 0.18);
+    }
+    .season-rainy {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: linear-gradient(145deg, #eef2ff 0%, #e2e8f0 65%, #cbd5e1 100%);
+      color: #1e293b;
+      border: 2px solid #64748b;
+      box-shadow: 0 16px 35px rgba(71, 85, 105, 0.16);
+    }
+    .season-autumn {
+      font-family: 'Playfair Display', serif;
+      background: linear-gradient(145deg, #fffbeb 0%, #ffedd5 60%, #fed7aa 100%);
+      color: #431407;
+      border: 2px solid #d97706;
+      box-shadow: 0 16px 35px rgba(217, 119, 6, 0.16);
+    }
+    .season-summer {
+      font-family: 'Fredoka', sans-serif;
+      background: linear-gradient(145deg, #fefce8 0%, #fef9c3 50%, #e0f2fe 100%);
+      color: #0c4a6e;
+      border: 2px solid #eab308;
+      box-shadow: 0 16px 35px rgba(234, 179, 8, 0.2);
+    }
 
     /* Customized Seal Shapes */
     .seal-wax {
@@ -40,11 +68,6 @@
       border-radius: 22px;
       box-shadow: 0 6px 0 rgba(0,0,0,0.14);
       border: 2px solid #ffffff;
-    }
-    .seal-pixel {
-      border-radius: 2px;
-      box-shadow: 4px 4px 0px #18181b;
-      border: 2px solid #18181b;
     }
 
     /* Envelope Seal Break & Letter Reveal Animations */
@@ -71,14 +94,14 @@
   <header class="sticky top-0 z-40 bg-white/85 backdrop-blur-md border-b border-stone-200">
     <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-2">
       <div class="flex items-center gap-2">
-        <span class="text-xl">🎄</span>
+        <span class="text-xl">🌦️</span>
         <div>
           <h1 class="font-bold tracking-tight text-sm sm:text-base uppercase">DELUSIONAL & ORGANIZED</h1>
-          <p class="text-[11px] text-stone-500">Seasonal Letters (Christmas & Halloween)</p>
+          <p class="text-[11px] text-stone-500">Seasonal & Weather Letters + Pen Pal Replies</p>
         </div>
       </div>
       <div class="flex items-center gap-2">
-        <a href="index.html" class="text-xs font-semibold px-3 py-2 rounded-full border border-stone-300 hover:bg-stone-100 transition">
+        <a href="index.html" class="text-xs font-semibold px-3.5 py-2 rounded-full border border-stone-300 hover:bg-stone-100 transition">
           ← All-Year Studio
         </a>
       </div>
@@ -93,10 +116,10 @@
           CHECKING SEASON...
         </span>
         <h2 id="seasonBannerTitle" class="text-xl sm:text-2xl font-extrabold text-stone-900">
-          Seasonal Letter Drop
+          Seasonal & Weather Letter Studio
         </h2>
         <p id="seasonBannerDesc" class="text-xs sm:text-sm text-stone-600 mt-0.5">
-          Seasonal editions activate automatically during their calendar window.
+          Seasonal editions activate automatically by calendar window, or use Preview Off-Season anytime to test.
         </p>
       </div>
 
@@ -108,29 +131,77 @@
   </section>
 
   <!-- Main Seasonal Studio -->
-  <main class="max-w-6xl mx-auto px-4 pb-16 grid grid-cols-1 lg:grid-cols-12 gap-8 flex-1">
+  <main id="studio" class="max-w-6xl mx-auto px-4 pb-16 grid grid-cols-1 lg:grid-cols-12 gap-8 flex-1">
 
     <!-- Left Controls -->
-    <div class="lg:col-span-5 space-y-5 bg-white p-5 sm:p-6 rounded-3xl border border-stone-200 shadow-sm h-fit">
+    <div id="controlsColumn" class="lg:col-span-5 space-y-5 bg-white p-5 sm:p-6 rounded-3xl border border-stone-200 shadow-sm h-fit">
       <div class="flex items-center justify-between border-b border-stone-100 pb-3">
-        <h3 class="font-bold text-lg">1. Seasonal Customizer</h3>
+        <div>
+          <h3 class="font-bold text-lg">1. Seasonal Customizer</h3>
+          <span id="penPalModeBadge" class="hidden text-[11px] font-bold text-indigo-700 bg-indigo-50 px-2 py-0.5 rounded-full">
+            ✒️ Pen Pal Reply Mode Active
+          </span>
+        </div>
         <span id="priceBadge" class="px-3 py-1 rounded-full text-sm font-extrabold bg-emerald-100 text-emerald-800">
           Est: $3.00
         </span>
       </div>
 
-      <!-- Seasonal Occasion Picker -->
+      <!-- Pen Pal Quoted Box (Visible when replying) -->
+      <div id="replyQuoteEditorBox" class="hidden p-3.5 rounded-2xl bg-indigo-50 border border-indigo-200 space-y-1">
+        <div class="flex items-center justify-between">
+          <span class="text-[11px] font-extrabold uppercase tracking-wider text-indigo-900">
+            ↩️ Replying to Previous Letter
+          </span>
+          <button type="button" id="cancelReplyModeBtn" class="text-[11px] font-bold text-rose-600 hover:underline">
+            Clear Reply
+          </button>
+        </div>
+        <p id="replyQuoteEditorText" class="text-xs text-indigo-950 italic line-clamp-3"></p>
+      </div>
+
+      <!-- Season & Weather Selector -->
       <div>
         <label class="block text-xs font-bold uppercase tracking-wider text-stone-500 mb-1.5">
-          Choose Season
+          Choose Season / Weather Edition
         </label>
         <select id="seasonSelect" class="w-full rounded-xl border-2 border-stone-900 px-3 py-2.5 text-sm font-semibold bg-stone-50">
-          <option value="christmas">🎄 Christmas Edition (Nov 15 – Jan 6)</option>
-          <option value="halloween">🎃 Halloween Edition (Oct 1 – Nov 2)</option>
+          <option value="christmas">🎄 Christmas (Nov 15 – Jan 6)</option>
+          <option value="halloween">🎃 Halloween (Oct 1 – Nov 2)</option>
+          <option value="winter">❄️ Winter (Dec 21 – Feb 28)</option>
+          <option value="rainy">🌧️ Rainy Season (Jun 1 – Sep 30)</option>
+          <option value="autumn">🍂 Autumn (Sep 3 – Nov 30)</option>
+          <option value="summer">☀️ Summer Travel & Getaway (Mar 1 – May 31)</option>
         </select>
         <p id="seasonLockNotice" class="hidden text-xs font-semibold text-rose-700 bg-rose-50 border border-rose-200 rounded-xl p-2.5 mt-2">
-          ⏳ This season is currently out of window. Toggle "Preview Off-Season" above to test and customize it now.
+          ⏳ This season is outside its active date window. Toggle "Preview Off-Season" above to test and customize it now.
         </p>
+      </div>
+
+      <!-- Summer Travel Extra Fields (Shown when Summer is selected) -->
+      <div id="summerTravelBox" class="hidden p-3.5 rounded-2xl bg-yellow-50/80 border border-yellow-300 space-y-2.5">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-extrabold uppercase tracking-wider text-amber-950">
+            ✈️ Summer Travel / Event Details
+          </span>
+          <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-yellow-200 text-amber-900">
+            TRAVEL MODE
+          </span>
+        </div>
+        <div class="grid grid-cols-2 gap-2">
+          <div>
+            <label class="block text-[10px] font-bold text-stone-600 mb-0.5">Destination / Spot</label>
+            <input id="travelDestination" type="text" value="Siargao / Baguio / Beach Trip" class="w-full rounded-lg border border-amber-300 bg-white px-2.5 py-1.5 text-xs" />
+          </div>
+          <div>
+            <label class="block text-[10px] font-bold text-stone-600 mb-0.5">Travel Dates / Window</label>
+            <input id="travelDates" type="text" value="Next Summer Getaway" class="w-full rounded-lg border border-amber-300 bg-white px-2.5 py-1.5 text-xs" />
+          </div>
+        </div>
+        <div>
+          <label class="block text-[10px] font-bold text-stone-600 mb-0.5">Packing / Itinerary Tip</label>
+          <input id="travelTip" type="text" value="Pack sunscreen, shades, comfy fits & your travel playlist!" class="w-full rounded-lg border border-amber-300 bg-white px-2.5 py-1.5 text-xs" />
+        </div>
       </div>
 
       <!-- Receiver Vibe & Seal -->
@@ -219,6 +290,10 @@
       <button type="button" id="openCheckoutBtn" class="w-full py-3.5 rounded-2xl bg-rose-600 hover:bg-rose-500 text-white font-bold text-sm shadow-lg transition">
         Proceed to Ko-fi & Generate Link →
       </button>
+
+      <button type="button" id="generatePenPalReplyBtn" class="hidden w-full py-3.5 rounded-2xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-sm shadow-lg transition">
+        ✒️ Generate Sealed Pen Pal Reply Link (Free) →
+      </button>
     </div>
 
     <!-- Right Interactive Envelope & Preview -->
@@ -232,7 +307,7 @@
 
       <div id="envelopeBox" class="rounded-3xl p-4 sm:p-6 bg-gradient-to-br from-rose-100 via-amber-50 to-emerald-100 border border-stone-200 shadow-inner min-h-[400px]">
         <!-- Sealed Overlay -->
-        <div id="sealedOverlay" class="hidden flex-col items-center justify-center text-center py-14 px-4 rounded-2xl bg-white/90 border border-stone-200">
+        <div id="sealedOverlay" class="hidden flex-col items-center justify-center text-center py-14 px-4 rounded-2xl bg-white/90 border border-stone-200 text-stone-900">
           <p class="text-xs font-bold uppercase tracking-widest text-stone-500 mb-2">Seasonal Envelope Sealed</p>
           <p id="sealedRecipientText" class="text-lg font-extrabold text-stone-900 mb-5">For: My Favorite Person</p>
           <button type="button" id="breakSealBtn" class="seal-wax px-6 py-4 bg-red-600 text-white flex flex-col items-center gap-1 cursor-pointer">
@@ -266,6 +341,12 @@
               </span>
             </div>
 
+            <!-- Quoted Previous Pen Pal Message -->
+            <div id="previewReplyQuoteBox" class="hidden mb-5 p-3.5 rounded-xl bg-black/10 border-l-4 border-current/50 text-xs space-y-1">
+              <p id="previewReplyQuoteHeader" class="font-bold opacity-80"></p>
+              <p id="previewReplyQuoteBody" class="italic opacity-90 whitespace-pre-line"></p>
+            </div>
+
             <h4 id="previewTitle" class="text-xl sm:text-2xl font-bold mb-4">
               Warmest Christmas Wishes For You 🎄✨
             </h4>
@@ -273,6 +354,16 @@
             <p id="previewBody" class="text-sm sm:text-base whitespace-pre-line leading-relaxed mb-6">
               Sending cozy holiday cheer, warm lights, and best wishes for the new year ahead. Hope we get to catch up soon!
             </p>
+
+            <!-- Summer Travel Card inside Preview -->
+            <div id="previewSummerTravelCard" class="hidden mb-6 p-4 rounded-2xl bg-white/80 text-stone-900 border border-amber-300 space-y-1.5">
+              <div class="flex flex-wrap items-center justify-between gap-2">
+                <span class="text-xs font-extrabold uppercase tracking-wider text-amber-900">✈️ Summer Travel Plan</span>
+                <span id="previewTravelDates" class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-yellow-200 text-amber-950">Next Summer Getaway</span>
+              </div>
+              <p id="previewTravelDest" class="text-sm font-bold text-stone-900">Spot: Siargao / Baguio / Beach Trip</p>
+              <p id="previewTravelTip" class="text-xs text-stone-700">Pack sunscreen, shades, comfy fits & your travel playlist!</p>
+            </div>
 
             <div id="previewPhotosGrid" class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-6 hidden"></div>
 
@@ -283,27 +374,35 @@
               </div>
               <span id="previewCornerIcon" class="text-xl">🎄</span>
             </div>
+
+            <!-- Receiver Pen Pal Reply Action -->
+            <div class="mt-6 pt-4 border-t border-dashed border-current/20 flex flex-col sm:flex-row items-center justify-between gap-3">
+              <span class="text-xs opacity-80">Received this letter? Send a sealed Pen Pal reply back.</span>
+              <button type="button" id="replyAsPenPalBtn" class="w-full sm:w-auto px-4 py-2.5 rounded-full bg-stone-900 text-white hover:bg-stone-700 text-xs font-bold shadow-sm transition">
+                ✍️ Write Pen Pal Reply Back
+              </button>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </main>
 
-  <!-- Ko-fi Checkout Modal -->
+  <!-- Ko-fi Checkout / Reply Link Modal -->
   <div id="checkoutModal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden items-center justify-center p-4">
     <div class="bg-white rounded-3xl max-w-md w-full p-6 space-y-4 shadow-2xl">
       <div class="flex items-center justify-between">
-        <h3 class="font-extrabold text-lg">Seasonal Ko-fi Send</h3>
+        <h3 id="modalHeading" class="font-extrabold text-lg">Seasonal Ko-fi Send</h3>
         <button type="button" id="closeModalBtn" class="text-stone-400 hover:text-stone-700 font-bold text-lg">✕</button>
       </div>
-      <p class="text-xs text-stone-600">
+      <p id="modalPaidDesc" class="text-xs text-stone-600">
         Pay <strong id="modalPrice">$4.00</strong> on Ko-fi, enter your supporter name/ref below, and copy your shareable seasonal envelope link.
       </p>
       <a href="https://ko-fi.com/" target="_blank" rel="noopener noreferrer"
          class="block w-full text-center py-3 rounded-xl bg-[#29abe0] hover:bg-[#1e96c8] text-white font-bold text-sm transition">
-        ☕ Pay <span id="modalKofiBtnPrice">$4.00</span> on Ko-fi
+        ☕ <span id="modalKofiCtaText">Pay <span id="modalKofiBtnPrice">$4.00</span> on Ko-fi</span>
       </a>
-      <div class="space-y-2 pt-2 border-t border-stone-100">
+      <div id="modalRefBox" class="space-y-2 pt-2 border-t border-stone-100">
         <input id="kofiRefInput" type="text" placeholder="Ko-fi Supporter Name / Ref #" class="w-full rounded-xl border border-stone-300 px-3 py-2 text-xs" />
         <button type="button" id="confirmOrderBtn" class="w-full py-3 rounded-xl bg-stone-900 text-white font-bold text-xs">
           Generate Shareable Seasonal Link
@@ -353,11 +452,79 @@
           const d = date.getDate();
           return m === 10 || (m === 11 && d <= 2);
         }
+      },
+      winter: {
+        label: "❄️ WINTER EDITION",
+        icon: "❄️",
+        tag: "SNOW",
+        sealShape: "wax",
+        cardClass: "season-winter",
+        headerClass: "mb-4 p-4 rounded-2xl bg-sky-100 border border-sky-200 text-sky-950 flex items-center justify-between gap-3",
+        sealClass: "seal-wax px-3.5 py-2 bg-sky-600 text-white flex items-center gap-1.5",
+        title: "Cold Breeze, Warm Thoughts For You ❄️☕",
+        body: "Even on chilly days, you're on my mind. Sending a warm note and hoping you're staying cozy wherever you are.",
+        from: "Frost & Co.",
+        isActiveNow(date) {
+          const m = date.getMonth() + 1;
+          const d = date.getDate();
+          return (m === 12 && d >= 21) || m === 1 || m === 2;
+        }
+      },
+      rainy: {
+        label: "🌧️ RAINY SEASON EDITION",
+        icon: "🌧️",
+        tag: "RAIN",
+        sealShape: "sticker",
+        cardClass: "season-rainy",
+        headerClass: "mb-4 p-4 rounded-2xl bg-slate-200 border border-slate-300 text-slate-900 flex items-center justify-between gap-3",
+        sealClass: "seal-sticker px-3.5 py-2 bg-slate-700 text-white flex items-center gap-1.5",
+        title: "Rainy Day Check-In & Hot Drink Invite 🌧️🍵",
+        body: "Rain outside, slow mood inside. Just checking in to see how you're holding up—and inviting you for a cozy rainy-day catch-up!",
+        from: "Umbrella Crew",
+        isActiveNow(date) {
+          const m = date.getMonth() + 1;
+          return m >= 6 && m <= 9;
+        }
+      },
+      autumn: {
+        label: "🍂 AUTUMN EDITION",
+        icon: "🍂",
+        tag: "FALL",
+        sealShape: "wax",
+        cardClass: "season-autumn",
+        headerClass: "mb-4 p-4 rounded-2xl bg-amber-100 border border-amber-300 text-amber-950 flex items-center justify-between gap-3",
+        sealClass: "seal-wax px-3.5 py-2 bg-amber-700 text-white flex items-center gap-1.5",
+        title: "Golden Leaves & Grateful Notes 🍂🕯️",
+        body: "As the season shifts, I wanted to send a thoughtful note appreciating the moments we've shared and what's ahead.",
+        from: "Amber Note",
+        isActiveNow(date) {
+          const m = date.getMonth() + 1;
+          const d = date.getDate();
+          return (m === 9 && d >= 3) || m === 10 || m === 11;
+        }
+      },
+      summer: {
+        label: "☀️ SUMMER TRAVEL EDITION",
+        icon: "☀️",
+        tag: "TRIP",
+        sealShape: "sticker",
+        cardClass: "season-summer",
+        headerClass: "mb-4 p-4 rounded-2xl bg-yellow-200 border border-yellow-400 text-amber-950 flex items-center justify-between gap-3",
+        sealClass: "seal-sticker px-3.5 py-2 bg-amber-500 text-white flex items-center gap-1.5",
+        title: "Summer Escape: Pack Your Bags! ☀️✈️",
+        body: "Sunshine, roadtrips, and new places are calling! Here's a travel invite/note for our upcoming summer adventure—tell me you're in!",
+        from: "Roadtrip Buddy",
+        isActiveNow(date) {
+          const m = date.getMonth() + 1;
+          return m >= 3 && m <= 5;
+        }
       }
     };
 
     const now = new Date();
     let uploadedPhotos = [];
+    let isPenPalReplyMode = false;
+    let quotedPreviousLetter = null;
 
     const seasonSelect = document.getElementById('seasonSelect');
     const testPreviewToggle = document.getElementById('testPreviewToggle');
@@ -366,6 +533,21 @@
     const seasonBannerTitle = document.getElementById('seasonBannerTitle');
     const seasonBannerDesc = document.getElementById('seasonBannerDesc');
     const openCheckoutBtn = document.getElementById('openCheckoutBtn');
+    const generatePenPalReplyBtn = document.getElementById('generatePenPalReplyBtn');
+    const penPalModeBadge = document.getElementById('penPalModeBadge');
+    const replyQuoteEditorBox = document.getElementById('replyQuoteEditorBox');
+    const replyQuoteEditorText = document.getElementById('replyQuoteEditorText');
+    const cancelReplyModeBtn = document.getElementById('cancelReplyModeBtn');
+
+    // Summer Travel Controls
+    const summerTravelBox = document.getElementById('summerTravelBox');
+    const travelDestination = document.getElementById('travelDestination');
+    const travelDates = document.getElementById('travelDates');
+    const travelTip = document.getElementById('travelTip');
+    const previewSummerTravelCard = document.getElementById('previewSummerTravelCard');
+    const previewTravelDest = document.getElementById('previewTravelDest');
+    const previewTravelDates = document.getElementById('previewTravelDates');
+    const previewTravelTip = document.getElementById('previewTravelTip');
 
     const receiverPersona = document.getElementById('receiverPersona');
     const sealTag = document.getElementById('sealTag');
@@ -389,7 +571,7 @@
     function updateSeasonStatusBanner() {
       const active = isCurrentSeasonActive();
       const previewAllowed = testPreviewToggle.checked;
-      const canUse = active || previewAllowed;
+      const canUse = active || previewAllowed || isPenPalReplyMode;
 
       const activeSeasons = Object.entries(seasonalPresets)
         .filter(([, cfg]) => cfg.isActiveNow(now))
@@ -397,12 +579,12 @@
 
       if (activeSeasons.length > 0) {
         seasonStatusBadge.textContent = "LIVE SEASON ACTIVE";
-        seasonBannerTitle.textContent = `Active Now: ${activeSeasons.join(" & ")}`;
-        seasonBannerDesc.textContent = "Seasonal templates and seals are unlocked for current holiday senders.";
+        seasonBannerTitle.textContent = `Active Now: ${activeSeasons.join(" • ")}`;
+        seasonBannerDesc.textContent = "Current seasonal & weather editions are unlocked.";
       } else {
         seasonStatusBadge.textContent = "OFF-SEASON STANDBY";
-        seasonBannerTitle.textContent = "No Holiday Drop Active Today";
-        seasonBannerDesc.textContent = "Seasonal editions unlock automatically on their dates, or enable Preview Off-Season to test.";
+        seasonBannerTitle.textContent = "Seasonal Window Standby";
+        seasonBannerDesc.textContent = "Enable Preview Off-Season anytime to test any season or weather edition.";
       }
 
       seasonLockNotice.classList.toggle('hidden', canUse);
@@ -412,6 +594,10 @@
     }
 
     function calculatePrice() {
+      if (isPenPalReplyMode) {
+        document.getElementById('priceBadge').textContent = 'Pen Pal Reply: FREE';
+        return 0;
+      }
       const baseAndSeason = 3; // $2 base + $1 seasonal edition
       const photoCost = uploadedPhotos.length * 1;
       const emailCost = emailDeliveryToggle.checked ? 1 : 0;
@@ -425,6 +611,27 @@
       document.getElementById('modalPrice').textContent = `$${total.toFixed(2)}`;
       document.getElementById('modalKofiBtnPrice').textContent = `$${total.toFixed(2)}`;
       return total;
+    }
+
+    function buildPayload() {
+      return {
+        season: seasonSelect.value,
+        to: toName.value,
+        from: fromName.value,
+        title: letterTitle.value,
+        body: letterBody.value,
+        persona: receiverPersona.value,
+        sealTag: sealTag.value,
+        travelDestination: travelDestination.value,
+        travelDates: travelDates.value,
+        travelTip: travelTip.value,
+        quote: quotedPreviousLetter
+      };
+    }
+
+    function generateShareUrl() {
+      const encoded = btoa(encodeURIComponent(JSON.stringify(buildPayload())));
+      return `${window.location.origin}${window.location.pathname}?seasonLetter=${encoded}`;
     }
 
     function updatePreview() {
@@ -449,7 +656,86 @@
       document.getElementById('envelopeHeader').className = preset.headerClass;
       document.getElementById('customSealBadge').className = preset.sealClass;
       document.getElementById('letterPreviewCard').className = `${preset.cardClass} rounded-2xl p-6 sm:p-8 transition-all duration-300`;
+
+      // Summer Travel Card
+      const isSummer = seasonSelect.value === 'summer';
+      summerTravelBox.classList.toggle('hidden', !isSummer);
+      previewSummerTravelCard.classList.toggle('hidden', !isSummer);
+      previewTravelDest.textContent = `Spot: ${travelDestination.value || 'Summer Getaway'}`;
+      previewTravelDates.textContent = travelDates.value || 'Summer Dates';
+      previewTravelTip.textContent = travelTip.value || '';
+
+      // Pen Pal Thread Quote
+      const quoteBox = document.getElementById('previewReplyQuoteBox');
+      if (quotedPreviousLetter && quotedPreviousLetter.snippet) {
+        quoteBox.classList.remove('hidden');
+        document.getElementById('previewReplyQuoteHeader').textContent =
+          `↩️ Letter #${quotedPreviousLetter.turn || 1} from ${quotedPreviousLetter.from || 'Pen Pal'}: "${quotedPreviousLetter.title || ''}"`;
+        document.getElementById('previewReplyQuoteBody').textContent = `"${quotedPreviousLetter.snippet}"`;
+      } else {
+        quoteBox.classList.add('hidden');
+      }
     }
+
+    function enterPenPalReplyMode() {
+      const prevFrom = fromName.value || 'Pen Pal';
+      const prevTo = toName.value || 'Me';
+      const prevTitle = letterTitle.value || 'Previous Letter';
+      const prevSnippet = (letterBody.value || '').slice(0, 180) + ((letterBody.value || '').length > 180 ? '...' : '');
+      const nextTurn = (quotedPreviousLetter && quotedPreviousLetter.turn ? quotedPreviousLetter.turn : 1) + 1;
+
+      quotedPreviousLetter = {
+        from: prevFrom,
+        title: prevTitle,
+        snippet: prevSnippet,
+        turn: nextTurn
+      };
+
+      isPenPalReplyMode = true;
+      toName.value = prevFrom;
+      fromName.value = prevTo;
+      letterTitle.value = `Re: ${prevTitle.replace(/^Re:\s*/i, '')}`;
+      letterBody.value = '';
+      letterBody.placeholder = 'Write your seasonal pen pal reply...';
+      sealTag.value = `#${nextTurn}`;
+
+      penPalModeBadge.classList.remove('hidden');
+      replyQuoteEditorBox.classList.remove('hidden');
+      replyQuoteEditorText.textContent = `From ${prevFrom}: "${prevSnippet}"`;
+      generatePenPalReplyBtn.classList.remove('hidden');
+      openCheckoutBtn.textContent = 'Or Send with Ko-fi Tip ($2–$8) →';
+
+      updateSeasonStatusBanner();
+      updatePreview();
+      calculatePrice();
+      document.getElementById('controlsColumn').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      letterBody.focus();
+    }
+
+    document.getElementById('replyAsPenPalBtn').addEventListener('click', enterPenPalReplyMode);
+
+    cancelReplyModeBtn.addEventListener('click', () => {
+      isPenPalReplyMode = false;
+      quotedPreviousLetter = null;
+      penPalModeBadge.classList.add('hidden');
+      replyQuoteEditorBox.classList.add('hidden');
+      generatePenPalReplyBtn.classList.add('hidden');
+      openCheckoutBtn.textContent = 'Proceed to Ko-fi & Generate Link →';
+      updateSeasonStatusBanner();
+      updatePreview();
+      calculatePrice();
+    });
+
+    generatePenPalReplyBtn.addEventListener('click', () => {
+      document.getElementById('modalHeading').textContent = 'Your Pen Pal Reply Envelope is Ready!';
+      document.getElementById('modalPaidDesc').classList.add('hidden');
+      document.getElementById('modalRefBox').classList.add('hidden');
+      document.getElementById('modalKofiCtaText').textContent = 'Optional: Support Studio on Ko-fi';
+      document.getElementById('generatedShareUrl').value = generateShareUrl();
+      document.getElementById('shareResultBox').classList.remove('hidden');
+      checkoutModal.classList.remove('hidden');
+      checkoutModal.classList.add('flex');
+    });
 
     seasonSelect.addEventListener('change', () => {
       const preset = seasonalPresets[seasonSelect.value];
@@ -464,7 +750,10 @@
 
     testPreviewToggle.addEventListener('change', updateSeasonStatusBanner);
 
-    [receiverPersona, sealTag, toName, fromName, letterTitle, letterBody].forEach(el => {
+    [
+      receiverPersona, sealTag, toName, fromName, letterTitle, letterBody,
+      travelDestination, travelDates, travelTip
+    ].forEach(el => {
       el.addEventListener('input', updatePreview);
       el.addEventListener('change', updatePreview);
     });
@@ -498,28 +787,9 @@
           calculatePrice();
         };
         reader.readAsDataURL(file);
-      });
-    });
+      }
 
-    clearPhotosBtn.addEventListener('click', () => {
-      photoUpload.value = '';
-      uploadedPhotos = [];
-      const grid = document.getElementById('previewPhotosGrid');
-      grid.innerHTML = '';
-      grid.classList.add('hidden');
-      clearPhotosBtn.classList.add('hidden');
-      calculatePrice();
-    });
-
-    function showSealedEnvelope() {
-      breakSealBtn.classList.remove('unsealing');
-      openedEnvelopeContent.classList.add('hidden');
-      openedEnvelopeContent.classList.remove('letter-reveal');
-      sealedOverlay.classList.remove('hidden');
-      sealedOverlay.classList.add('flex');
-    }
-
-    breakSealBtn.addEventListener('click', () => {
+      breakSealBtn.addEventListener('click', () => {
       breakSealBtn.classList.add('unsealing');
       setTimeout(() => {
         sealedOverlay.classList.add('hidden');
@@ -534,7 +804,12 @@
 
     const checkoutModal = document.getElementById('checkoutModal');
     openCheckoutBtn.addEventListener('click', () => {
-      calculatePrice();
+      const total = calculatePrice();
+      document.getElementById('modalHeading').textContent = 'Seasonal Ko-fi Send';
+      document.getElementById('modalPaidDesc').classList.remove('hidden');
+      document.getElementById('modalRefBox').classList.remove('hidden');
+      document.getElementById('shareResultBox').classList.add('hidden');
+      document.getElementById('modalKofiCtaText').innerHTML = `Pay <span id="modalKofiBtnPrice">$${Math.max(2, total).toFixed(2)}</span> on Ko-fi`;
       checkoutModal.classList.remove('hidden');
       checkoutModal.classList.add('flex');
     });
@@ -550,18 +825,7 @@
         alert('Please enter your Ko-fi supporter name or reference.');
         return;
       }
-      const payload = {
-        season: seasonSelect.value,
-        to: toName.value,
-        from: fromName.value,
-        title: letterTitle.value,
-        body: letterBody.value,
-        persona: receiverPersona.value,
-        sealTag: sealTag.value
-      };
-      const encoded = btoa(encodeURIComponent(JSON.stringify(payload)));
-      const url = `${window.location.origin}${window.location.pathname}?seasonLetter=${encoded}`;
-      document.getElementById('generatedShareUrl').value = url;
+      document.getElementById('generatedShareUrl').value = generateShareUrl();
       document.getElementById('shareResultBox').classList.remove('hidden');
     });
 
@@ -578,7 +842,6 @@
         testPreviewToggle.checked = true;
       }
 
-      // Auto-select active season on load if available
       if (seasonalPresets.christmas.isActiveNow(now)) {
         seasonSelect.value = 'christmas';
       } else if (seasonalPresets.halloween.isActiveNow(now)) {
@@ -596,6 +859,11 @@
           if (decoded.body) letterBody.value = decoded.body;
           if (decoded.persona) receiverPersona.value = decoded.persona;
           if (decoded.sealTag) sealTag.value = decoded.sealTag;
+          if (decoded.travelDestination) travelDestination.value = decoded.travelDestination;
+          if (decoded.travelDates) travelDates.value = decoded.travelDates;
+          if (decoded.travelTip) travelTip.value = decoded.travelTip;
+          if (decoded.quote) quotedPreviousLetter = decoded.quote;
+
           testPreviewToggle.checked = true;
           updateSeasonStatusBanner();
           updatePreview();
@@ -620,3 +888,4 @@
   </script>
 </body>
 </html>
+      
