@@ -127,21 +127,6 @@
       gap: 12px;
     }
 
-    .unlock-banner {
-      margin-top: 20px;
-      padding: 14px 18px;
-      border-radius: 10px;
-      background: var(--accent-soft);
-      border: 1px solid #c9dfd9;
-      color: var(--accent);
-      font-size: 0.94rem;
-      display: none;
-    }
-
-    .unlock-banner.is-active {
-      display: block;
-    }
-
     section {
       padding: 40px 0;
     }
@@ -280,37 +265,33 @@
     <section class="hero">
       <div class="container">
         <span class="badge">DELUSIONAL &amp; ORGANIZED • Personal &amp; Monthly Partnership</span>
-        <h1>Personal auto-unlock for your own invites, or monthly plans for recurring work.</h1>
+        <h1>Personal use for your own invites, or higher-volume monthly plans for business.</h1>
         <p class="lead">
-          All-Occasion Custom Letters &amp; Pen Pal Studio for individuals sending personal or
-          multi-guest invites, plus event planners, newsletters, and schools running recurring
-          batches every month.
+          All-Occasion Custom Letters &amp; Pen Pal Studio priced fairly between personal use and
+          commercial or organizational workflows—so event businesses, newsletters, and schools pay
+          for higher capacity while personal users stay light.
         </p>
         <div class="hero-actions">
-          <button type="button" class="btn" id="auto-unlock-btn">Enable Personal Auto-Unlock</button>
-          <a class="btn btn-outline" href="#plans">Compare Plans</a>
+          <a class="btn" href="#plans">Compare Plans</a>
           <a class="btn btn-outline" href="./index.html">Back to DELUSIONAL &amp; ORGANIZED</a>
-        </div>
-        <div class="unlock-banner" id="unlock-banner">
-          <strong>Personal Auto-Unlock Active:</strong> Saved in this browser (<code>localStorage</code>) for personal invitations and letters.
         </div>
       </div>
     </section>
 
     <section id="use-cases">
       <div class="container">
-        <h2 class="section-title">Personal vs. Recurring Business Workflows</h2>
+        <h2 class="section-title">Personal vs. Commercial Workflows</h2>
         <p class="section-sub">
-          Use Personal Auto-Unlock for your own invites and letters, or pick a monthly plan if you
-          manage recurring events, issues, or school batches.
+          Personal covers individual events and letters; Monthly Business tiers cover recurring
+          clients, multiple projects, and school or organization batches.
         </p>
         <div class="grid-3">
           <article class="card">
             <div>
               <h3>Personal Invites &amp; Pen Pal</h3>
               <p>
-                For personal use when you have many people to invite or personal letters to send for
-                your own gatherings, celebrations, or pen pals.
+                For individuals who have many personal invites or pen pal letters to send for
+                their own celebrations, without commercial resale or client volume.
               </p>
             </div>
           </article>
@@ -318,8 +299,8 @@
             <div>
               <h3>Event Businesses &amp; Newsletters</h3>
               <p>
-                Weddings, debuts, launches, or recurring community updates that need fresh layouts
-                and client customization every month.
+                Weddings, debuts, launches, or recurring community updates that generate ongoing
+                events, client deliverables, or monthly issues.
               </p>
             </div>
           </article>
@@ -338,67 +319,66 @@
 
     <section id="plans">
       <div class="container">
-        <h2 class="section-title">Personal Auto-Unlock &amp; Monthly Tiers</h2>
+        <h2 class="section-title">Personal &amp; Monthly Business Tiers</h2>
         <p class="section-sub">
-          Adjust prices and limits below to match your exact personal and monthly rules.
+          Personal stays lower for individual use, while Monthly Business tiers scale up with volume
+          and commercial features.
         </p>
         <div class="grid-4">
           <article class="card">
             <div>
-              <h3>Personal (Auto-Unlocked)</h3>
-              <p>For personal use, multi-invite occasions, and pen pal notes.</p>
-              <div class="price">Auto-Unlocked <span>/ personal</span></div>
+              <h3>Personal</h3>
+              <p>For personal invites, multi-guest gatherings, and pen pal notes.</p>
+              <div class="price">$9 <span>/ month</span></div>
               <ul class="features">
-                <li>Instant personal access saved in browser</li>
-                <li>Great when you have many personal invites</li>
+                <li>Personal invites &amp; letters (many guests)</li>
+                <li>Standard personal customization</li>
                 <li>Personal use only (no client resale)</li>
               </ul>
             </div>
-            <button type="button" class="btn" data-auto-unlock="true" data-plan="Personal (Auto-Unlocked)">
-              Auto-Unlock Personal
-            </button>
+            <a class="btn btn-outline" href="#apply" data-plan="Personal ($9/mo)">Select Personal</a>
           </article>
 
           <article class="card">
             <div>
-              <h3>Starter Monthly</h3>
-              <p>For solo organizers, creators, or small school clubs.</p>
-              <div class="price">$19 <span>/ month</span></div>
+              <h3>Business Starter</h3>
+              <p>For solo event planners, creators, or small school clubs.</p>
+              <div class="price">$29 <span>/ month</span></div>
               <ul class="features">
-                <li>Up to 5 active monthly projects or invites</li>
-                <li>Custom text, dates, and color accents</li>
-                <li>Month-to-month billing (cancel anytime)</li>
+                <li>Up to 10 monthly events, issues, or batches</li>
+                <li>Commercial / client-ready usage</li>
+                <li>Month-to-month billing</li>
               </ul>
             </div>
-            <a class="btn btn-outline" href="#apply" data-plan="Starter Monthly">Select Starter</a>
+            <a class="btn btn-outline" href="#apply" data-plan="Business Starter ($29/mo)">Select Starter</a>
           </article>
 
           <article class="card">
             <div>
-              <h3>Growth Monthly</h3>
-              <p>For active event coordinators, newsletters, and departments.</p>
-              <div class="price">$49 <span>/ month</span></div>
+              <h3>Business Growth</h3>
+              <p>For active event studios, newsletters, and school departments.</p>
+              <div class="price">$59 <span>/ month</span></div>
               <ul class="features">
-                <li>Up to 25 active monthly projects or batches</li>
-                <li>Custom logo &amp; brand styling setup</li>
+                <li>Up to 35 monthly events, issues, or batches</li>
+                <li>Custom brand styling &amp; logo placement</li>
                 <li>Priority template updates &amp; support</li>
               </ul>
             </div>
-            <a class="btn" href="#apply" data-plan="Growth Monthly">Select Growth</a>
+            <a class="btn" href="#apply" data-plan="Business Growth ($59/mo)">Select Growth</a>
           </article>
 
           <article class="card">
             <div>
               <h3>Organization / Agency</h3>
-              <p>For multi-event studios, schools, and larger teams.</p>
+              <p>For high-volume agencies, multi-batch schools, and teams.</p>
               <div class="price">Custom <span>/ month</span></div>
               <ul class="features">
-                <li>High-volume or multi-team usage</li>
-                <li>Tailored layout &amp; workflow adjustments</li>
+                <li>High-volume or multi-team workflows</li>
+                <li>Tailored layouts &amp; batch adjustments</li>
                 <li>Dedicated monthly check-ins</li>
               </ul>
             </div>
-            <a class="btn btn-outline" href="#apply" data-plan="Organization / Agency">Request Quote</a>
+            <a class="btn btn-outline" href="#apply" data-plan="Organization / Agency (Custom)">Request Quote</a>
           </article>
         </div>
       </div>
@@ -407,9 +387,9 @@
     <section id="apply">
       <div class="container">
         <div class="inquiry-box">
-          <h2 class="section-title">Personal Partnership or Monthly Inquiry</h2>
+          <h2 class="section-title">Personal or Monthly Partnership Inquiry</h2>
           <p class="section-sub">
-            Select Personal (Auto-Unlocked) or a monthly plan below to prepare your details.
+            Choose Personal or a Monthly Business plan below to prepare your request.
           </p>
           <form class="form-grid" id="partnership-form">
             <label>
@@ -430,17 +410,17 @@
               </select>
             </label>
             <label>
-              Selected Option
+              Selected Plan
               <select name="plan" id="plan-select">
-                <option value="Personal (Auto-Unlocked)">Personal (Auto-Unlocked)</option>
-                <option value="Starter Monthly">Starter Monthly</option>
-                <option value="Growth Monthly">Growth Monthly</option>
-                <option value="Organization / Agency">Organization / Agency</option>
+                <option value="Personal ($9/mo)">Personal ($9/mo)</option>
+                <option value="Business Starter ($29/mo)">Business Starter ($29/mo)</option>
+                <option value="Business Growth ($59/mo)">Business Growth ($59/mo)</option>
+                <option value="Organization / Agency (Custom)">Organization / Agency (Custom)</option>
               </select>
             </label>
             <label>
-              Notes (e.g., how many invites or monthly batches you need)
-              <textarea name="notes" rows="3" placeholder="Share how you plan to use it for personal invites or monthly work..."></textarea>
+              Monthly Volume &amp; Notes
+              <textarea name="notes" rows="3" placeholder="Tell us how many invites, events, issues, or school batches you run per month..."></textarea>
             </label>
             <button type="submit" class="btn">Prepare Inquiry Summary</button>
             <div class="status-note" id="form-status"></div>
@@ -452,52 +432,16 @@
 
   <footer>
     <div class="container">
-      <p>DELUSIONAL &amp; ORGANIZED • Personal Auto-Unlock &amp; Monthly Partnership</p>
+      <p>DELUSIONAL &amp; ORGANIZED • Personal &amp; Monthly Partnership</p>
     </div>
   </footer>
 
   <script>
-    const UNLOCK_KEY = "delusional_personal_auto_unlocked";
     const planButtons = document.querySelectorAll("[data-plan]");
-    const autoUnlockTriggers = document.querySelectorAll("[data-auto-unlock], #auto-unlock-btn");
     const planSelect = document.getElementById("plan-select");
     const useCaseSelect = document.getElementById("use-case-select");
-    const unlockBanner = document.getElementById("unlock-banner");
     const form = document.getElementById("partnership-form");
     const statusEl = document.getElementById("form-status");
-
-    function renderPersonalUnlockState() {
-      const isUnlocked = localStorage.getItem(UNLOCK_KEY) === "true";
-      if (unlockBanner) {
-        unlockBanner.classList.toggle("is-active", isUnlocked);
-      }
-      const topBtn = document.getElementById("auto-unlock-btn");
-      if (topBtn) {
-        topBtn.textContent = isUnlocked
-          ? "Personal Auto-Unlock Active ✓"
-          : "Enable Personal Auto-Unlock";
-      }
-    }
-
-    function activatePersonalUnlock() {
-      localStorage.setItem(UNLOCK_KEY, "true");
-      renderPersonalUnlockState();
-      if (planSelect) {
-        planSelect.value = "Personal (Auto-Unlocked)";
-      }
-      if (useCaseSelect) {
-        useCaseSelect.value = "Personal Invites / Many Guests";
-      }
-    }
-
-    autoUnlockTriggers.forEach((el) => {
-      el.addEventListener("click", () => {
-        activatePersonalUnlock();
-        if (el.id === "auto-unlock-btn") {
-          statusEl.textContent = "Personal Auto-Unlock is now enabled in this browser.";
-        }
-      });
-    });
 
     planButtons.forEach((btn) => {
       btn.addEventListener("click", () => {
@@ -505,8 +449,10 @@
         if (planSelect && chosen) {
           planSelect.value = chosen;
         }
-        if (chosen === "Personal (Auto-Unlocked)" && useCaseSelect) {
-          useCaseSelect.value = "Personal Invites / Many Guests";
+        if (useCaseSelect && chosen) {
+          useCaseSelect.value = chosen.startsWith("Personal")
+            ? "Personal Invites / Many Guests"
+            : "Event Business";
         }
       });
     });
@@ -517,8 +463,6 @@
       const summary = `${data.get("orgName")} (${data.get("useCase")}) selected ${data.get("plan")}.`;
       statusEl.textContent = `Ready to send: ${summary} Connect this form to your email/form handler or copy these details to send directly.`;
     });
-
-    renderPersonalUnlockState();
   </script>
 </body>
-                                       </html>
+</html>
