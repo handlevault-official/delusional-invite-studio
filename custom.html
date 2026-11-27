@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DELUSIONAL & ORGANIZED — Custom Wedding & Letter Studio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: #faf7f5;
+      color: #1f1b24;
+    }
+
+    /* Wedding Design Themes */
+    .wed-ivory {
+      font-family: 'Playfair Display', serif;
+      background: linear-gradient(145deg, #fffdf9 0%, #fef9ec 100%);
+      color: #422006;
+      border: 2px solid #eab308;
+      box-shadow: 0 16px 35px rgba(161, 98, 7, 0.14);
+    }
+    .wed-garden {
+      font-family: 'Playfair Display', serif;
+      background: linear-gradient(145deg, #f7fee7 0%, #ecfdf5 100%);
+      color: #14532d;
+      border: 2px solid #4ade80;
+      box-shadow: 0 16px 35px rgba(22, 101, 52, 0.14);
+    }
+    .wed-minimal {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: #ffffff;
+      color: #18181b;
+      border: 1px solid #d4d4d8;
+      box-shadow: 0 14px 30px rgba(24, 24, 27, 0.08);
+    }
+    .wed-blush {
+      font-family: 'Playfair Display', serif;
+      background: linear-gradient(145deg, #fff1f2 0%, #ffe4e6 100%);
+      color: #881337;
+      border: 2px solid #fb7185;
+      box-shadow: 0 16px 35px rgba(190, 18, 60, 0.14);
+    }
+    .wed-midnight {
+      font-family: 'Playfair Display', serif;
+      background: linear-gradient(145deg, #0f172a 0%, #1e293b 100%);
+      color: #fef3c7;
+      border: 2px solid #f59e0b;
+      box-shadow: 0 18px 38px rgba(15, 23, 42, 0.35);
+    }
+
+    /* Seal Styles */
+    .seal-wax {
+      border-radius: 9999px;
+      box-shadow: inset 0 2px 5px rgba(255,255,255,0.45), inset 0 -3px 6px rgba(0,0,0,0.25), 0 6px 14px rgba(0,0,0,0.18);
+      border: 2px dashed rgba(255,255,255,0.55);
+    }
+    .seal-medallion {
+      border-radius: 18px;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.16);
+      border: 2px solid rgba(255,255,255,0.85);
+    }
+
+    /* Envelope Seal Break & Letter Reveal Animations */
+    @keyframes popUnseal {
+      0% { transform: scale(1) rotate(0deg); opacity: 1; }
+      45% { transform: scale(1.18) rotate(-8deg); opacity: 1; }
+      100% { transform: scale(0.3) rotate(18deg); opacity: 0; }
+    }
+    @keyframes letterSlideUp {
+      0% { transform: translateY(28px) scale(0.97); opacity: 0; }
+      100% { transform: translateY(0) scale(1); opacity: 1; }
+    }
+    .unsealing {
+      animation: popUnseal 0.55s ease forwards;
+    }
+    .letter-reveal {
+      animation: letterSlideUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+  <!-- Top Navigation -->
+  <header class="sticky top-0 z-40 bg-white/85 backdrop-blur-md border-b border-stone-200">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-2">
+      <div class="flex items-center gap-2">
+        <span class="text-xl">💍</span>
+        <div>
+          <h1 class="font-bold tracking-tight text-sm sm:text-base uppercase">DELUSIONAL & ORGANIZED</h1>
+          <p class="text-[11px] text-stone-500">Custom Wedding Design Studio</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-2">
+        <a href="index.html" class="text-xs font-semibold px-3 py-2 rounded-full border border-stone-300 hover:bg-stone-100 transition">
+          Main Studio
+        </a>
+        <a href="seasonal.html" class="text-xs font-semibold px-3 py-2 rounded-full border border-rose-300 bg-rose-50 text-rose-800 hover:bg-rose-100 transition">
+          Seasonal
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Wedding Customizer -->
+  <main class="max-w-6xl mx-auto px-4 py-8 grid grid-cols-1 lg:grid-cols-12 gap-8 flex-1">
+
+    <!-- Left Controls -->
+    <div id="controlsColumn" class="lg:col-span-5 space-y-5 bg-white p-5 sm:p-6 rounded-3xl border border-stone-200 shadow-sm h-fit">
+      <div class="flex items-center justify-between border-b border-stone-100 pb-3">
+        <div>
+          <h2 class="font-bold text-lg">1. Wedding Design & Details</h2>
+          <span id="penPalModeBadge" class="hidden text-[11px] font-bold text-indigo-700 bg-indigo-50 px-2 py-0.5 rounded-full">
+            ✒️ Pen Pal Reply Mode Active
+          </span>
+        </div>
+        <span id="priceBadge" class="px-3 py-1 rounded-full text-sm font-extrabold bg-emerald-100 text-emerald-800">
+          Est: $4.00
+        </span>
+      </div>
+
+      <!-- Pen Pal Quoted Context -->
+      <div id="replyQuoteEditorBox" class="hidden p-3.5 rounded-2xl bg-indigo-50 border border-indigo-200 space-y-1">
+        <div class="flex items-center justify-between">
+          <span class="text-[11px] font-extrabold uppercase tracking-wider text-indigo-900">
+            ↩️ Replying to Previous Note
+          </span>
+          <button type="button" id="cancelReplyModeBtn" class="text-[11px] font-bold text-rose-600 hover:underline">
+            Clear Reply
+          </button>
+        </div>
+        <p id="replyQuoteEditorText" class="text-xs text-indigo-950 italic line-clamp-3"></p>
+      </div>
+
+      <!-- Wedding Design Picker -->
+      <div>
+        <label class="block text-xs font-bold uppercase tracking-wider text-stone-500 mb-2">
+          Choose Wedding Design
+        </label>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2" id="weddingDesignButtons">
+          <button type="button" data-design="ivory" data-cost="1" class="design-btn px-3 py-2.5 rounded-xl border-2 border-stone-900 bg-stone-900 text-white text-xs font-bold text-left">
+            ✨ Classic Ivory & Gold
+          </button>
+          <button type="button" data-design="garden" data-cost="1" class="design-btn px-3 py-2.5 rounded-xl border border-stone-200 hover:border-stone-400 text-xs font-bold text-left">
+            🌿 Garden Sage & Botanical
+          </button>
+          <button type="button" data-design="minimal" data-cost="0" class="design-btn px-3 py-2.5 rounded-xl border border-stone-200 hover:border-stone-400 text-xs font-bold text-left">
+            🤍 Modern Minimalist
+          </button>
+          <button type="button" data-design="blush" data-cost="1" class="design-btn px-3 py-2.5 rounded-xl border border-stone-200 hover:border-stone-400 text-xs font-bold text-left">
+            🌸 Blush Romantic
+          </button>
+          <button type="button" data-design="midnight" data-cost="2" class="design-btn sm:col-span-2 px-3 py-2.5 rounded-xl border border-stone-200 hover:border-stone-400 text-xs font-bold text-left">
+            🌙 Midnight Gala (+$1)
+          </button>
+        </div>
+      </div>
+
+      <!-- Seal & Couple / Guest Names -->
+      <div class="grid grid-cols-2 gap-3">
+        <div>
+          <label class="block text-xs font-bold text-stone-600 mb-1">To (Guest / Partner)</label>
+          <input id="toName" type="text" value="Dear Guest / Loved One" class="w-full rounded-xl border border-stone-300 px-3 py-2 text-sm" />
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-stone-600 mb-1">From (Couple / Hosts)</label>
+          <input id="fromName" type="text" value="Alex & Sam" class="w-full rounded-xl border border-stone-300 px-3 py-2 text-sm" />
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 gap-3">
+        <div>
+          <label class="block text-xs font-bold text-stone-600 mb-1">Seal Icon</label>
+          <select id="sealIcon" class="w-full rounded-xl border border-stone-300 bg-white px-3 py-2 text-xs">
+            <option value="💍">💍 Rings</option>
+            <option value="🕊️">🕊️ Dove</option>
+            <option value="🥂">🥂 Toast</option>
+            <option value="🌿">🌿 Botanical</option>
+            <option value="🤍">🤍 White Heart</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-stone-600 mb-1">Seal Initials (1–4)</label>
+          <input id="sealTag" type="text" maxlength="4" value="A&S" class="w-full rounded-xl border border-stone-300 px-3 py-2 text-xs font-extrabold uppercase text-center" />
+        </div>
+      </div>
+
+      <!-- Headline & Message -->
+      <div>
+        <label class="block text-xs font-bold text-stone-600 mb-1">Wedding Headline</label>
+        <input id="letterTitle" type="text" value="Together With Our Families — Save Our Wedding Date" class="w-full rounded-xl border border-stone-300 px-3 py-2 text-sm" />
+      </div>
+
+      <div>
+        <label class="block text-xs font-bold text-stone-600 mb-1">Invitation Message</label>
+        <textarea id="letterBody" rows="3" class="w-full rounded-xl border border-stone-300 px-3 py-2 text-sm">We joyfully invite you to celebrate our wedding day with love, laughter, and shared memories. Full ceremony & reception notes are below.</textarea>
+      </div>
+
+      <!-- Budget Sharing -->
+      <div class="p-3.5 rounded-2xl bg-amber-50/70 border border-amber-200 space-y-2">
+        <label class="block text-xs font-extrabold uppercase tracking-wider text-amber-950">
+          💸 Wedding Budget Sharing & Gift Guide
+        </label>
+        <div class="grid grid-cols-2 gap-2">
+          <div>
+            <label class="block text-[10px] font-bold text-stone-600 mb-0.5">Budget / Contribution Mode</label>
+            <select id="budgetSplitType" class="w-full rounded-lg border border-amber-300 bg-white px-2.5 py-1.5 text-xs">
+              <option value="Host Funded + Optional Gift">Host Funded + Optional Gift</option>
+              <option value="Shared Pot / Ambahan">Shared Pot / Ambahan</option>
+              <option value="Co-Host Split">Co-Host Split</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-[10px] font-bold text-stone-600 mb-0.5">Est. Wedding Budget</label>
+            <input id="budgetAmount" type="text" value="₱180,000" class="w-full rounded-lg border border-amber-300 bg-white px-2.5 py-1.5 text-xs" />
+          </div>
+        </div>
+        <div>
+          <label class="block text-[10px] font-bold text-stone-600 mb-0.5">Budget / Gift Note</label>
+          <input id="budgetNote" type="text" value="Your presence is our greatest blessing; no obligation for gifts." class="w-full rounded-lg border border-amber-300 bg-white px-2.5 py-1.5 text-xs" />
+        </div>
+      </div>
+
+      <!-- Wedding Q&A -->
+      <div class="p-3.5 rounded-2xl bg-stone-50 border border-stone-200 space-y-2">
+        <label class="block text-xs font-extrabold uppercase tracking-wider text-stone-800">
+          ❓ Wedding Guest Q&A
+        </label>
+        <div>
+          <input id="qaQ1" type="text" value="What is the dress code / motif?" class="w-full rounded-lg border border-stone-300 bg-white px-2.5 py-1 text-xs font-semibold mb-1" />
+          <input id="qaA1" type="text" value="Formal / Semi-formal following our chosen wedding palette." class="w-full rounded-lg border border-stone-300 bg-white px-2.5 py-1 text-xs" />
+        </div>
+        <div>
+          <input id="qaQ2" type="text" value="How do I confirm RSVP or plus-one?" class="w-full rounded-lg border border-stone-300 bg-white px-2.5 py-1 text-xs font-semibold mb-1" />
+          <input id="qaA2" type="text" value="Reply via the Pen Pal button or message us with your headcount." class="w-full rounded-lg border border-stone-300 bg-white px-2.5 py-1 text-xs" />
+        </div>
+      </div>
+
+      <!-- Email Dispatch (+$1) -->
+      <div class="p-3.5 rounded-2xl bg-stone-50 border border-stone-200 space-y-2">
+        <label class="flex items-center gap-2 cursor-pointer">
+          <input id="emailDeliveryToggle" type="checkbox" checked class="rounded text-stone-900 w-4 h-4" />
+          <span class="text-xs font-bold text-stone-900">📨 Official Email Dispatch (+$1.00)</span>
+        </label>
+        <input id="receiverEmail" type="email" placeholder="guest@email.com" class="w-full rounded-xl border border-stone-300 bg-white px-3 py-2 text-xs" />
+      </div>
+
+      <!-- Price Summary ($2–$8) -->
+      <div class="p-4 rounded-2xl bg-stone-900 text-white space-y-1.5">
+        <div class="flex justify-between text-xs text-stone-300">
+          <span>Base Wedding Invite ($2) + Design Tier</span>
+          <span id="designAddonText">+$1.00</span>
+        </div>
+        <div class="flex justify-between text-xs text-stone-300">
+          <span>Email Dispatch</span>
+          <span id="emailAddonText">+$1.00</span>
+        </div>
+        <div class="border-t border-stone-700 pt-2 flex justify-between items-center font-bold text-base">
+          <span>Total Ko-fi Estimate ($2–$8)</span>
+          <span id="totalPriceText" class="text-emerald-400 text-lg">$4.00</span>
+        </div>
+      </div>
+
+      <button type="button" id="openCheckoutBtn" class="w-full py-3.5 rounded-2xl bg-rose-600 hover:bg-rose-500 text-white font-bold text-sm shadow-lg transition">
+        Proceed to Ko-fi & Generate Link →
+      </button>
+
+      <button type="button" id="generatePenPalReplyBtn" class="hidden w-full py-3.5 rounded-2xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-sm shadow-lg transition">
+        ✒️ Generate Sealed Pen Pal Reply Link (Free) →
+      </button>
+    </div>
+
+    <!-- Right Interactive Envelope & Preview -->
+    <div class="lg:col-span-7 space-y-4">
+      <div class="flex items-center justify-between">
+        <h2 class="font-bold text-lg">2. Wedding Envelope & Live Preview</h2>
+        <button type="button" id="replayEnvelopeBtn" class="text-xs font-bold px-3.5 py-1.5 rounded-full bg-white border border-stone-300 hover:bg-stone-100 transition">
+          🔁 Seal & Replay Animation
+        </button>
+      </div>
+
+      <div id="envelopeBox" class="rounded-3xl p-4 sm:p-6 bg-gradient-to-br from-amber-100 via-stone-50 to-rose-100 border border-stone-200 shadow-inner min-h-[420px]">
+        <!-- Sealed Overlay -->
+        <div id="sealedOverlay" class="hidden flex-col items-center justify-center text-center py-14 px-4 rounded-2xl bg-white/90 border border-stone-200 text-stone-900">
+          <p class="text-xs font-bold uppercase tracking-widest text-stone-500 mb-2">Wedding Envelope Sealed</p>
+          <p id="sealedRecipientText" class="text-lg font-extrabold text-stone-900 mb-5">For: Dear Guest / Loved One</p>
+          <button type="button" id="breakSealBtn" class="seal-wax px-6 py-4 bg-amber-700 text-white flex flex-col items-center gap-1 cursor-pointer">
+            <span id="overlaySealIcon" class="text-3xl leading-none">💍</span>
+            <span id="overlaySealTag" class="text-xs font-extrabold tracking-widest uppercase">A&S</span>
+          </button>
+          <p class="text-xs text-stone-500 mt-4 animate-pulse">Tap the seal to break & open your invitation ✨</p>
+        </div>
+
+        <!-- Opened Content -->
+        <div id="openedEnvelopeContent">
+          <div id="envelopeHeader" class="mb-4 p-4 rounded-2xl bg-amber-100/90 border border-amber-300 text-amber-950 flex items-center justify-between gap-3">
+            <div>
+              <span id="previewDesignLabel" class="text-[11px] font-extrabold uppercase tracking-wider block">✨ CLASSIC IVORY & GOLD</span>
+              <span class="text-xs font-semibold opacity-80">Official Wedding Edition</span>
+            </div>
+            <div id="customSealBadge" class="seal-wax px-3.5 py-2 bg-amber-700 text-white flex items-center gap-1.5">
+              <span id="previewSealIcon" class="text-base leading-none">💍</span>
+              <span id="previewSealTag" class="text-[11px] font-extrabold tracking-wider uppercase leading-none">A&S</span>
+            </div>
+          </div>
+
+          <div id="letterPreviewCard" class="wed-ivory rounded-2xl p-6 sm:p-8 transition-all duration-300">
+            <div class="flex items-center justify-between gap-2 mb-4 pb-3 border-b border-current/15">
+              <div>
+                <p class="text-xs opacity-70">To:</p>
+                <p id="previewTo" class="font-bold text-base">Dear Guest / Loved One</p>
+              </div>
+              <span id="previewDesignPill" class="px-3 py-1 rounded-full text-xs font-semibold bg-black/10">
+                Classic Ivory & Gold
+              </span>
+            </div>
+
+            <!-- Quoted Previous Pen Pal Message -->
+            <div id="previewReplyQuoteBox" class="hidden mb-5 p-3.5 rounded-xl bg-black/10 border-l-4 border-current/50 text-xs space-y-1">
+              <p id="previewReplyQuoteHeader" class="font-bold opacity-80"></p>
+              <p id="previewReplyQuoteBody" class="italic opacity-90 whitespace-pre-line"></p>
+            </div>
+
+            <h3 id="previewTitle" class="text-xl sm:text-2xl font-bold mb-4">
+              Together With Our Families — Save Our Wedding Date
+            </h3>
+
+            <p id="previewBody" class="text-sm sm:text-base whitespace-pre-line leading-relaxed mb-6">
+              We joyfully invite you to celebrate our wedding day with love, laughter, and shared memories. Full ceremony & reception notes are below.
+            </p>
+
+            <!-- Budget Sharing & Q&A -->
+            <div class="mb-6 p-4 rounded-2xl bg-black/5 space-y-4">
+              <div class="flex flex-wrap items-center justify-between gap-2 border-b border-current/10 pb-2">
+                <span class="text-xs font-extrabold uppercase tracking-wider">💸 Wedding Budget & Guest Q&A</span>
+                <span id="previewBudgetPill" class="text-xs font-bold px-2.5 py-1 rounded-full bg-white/85 text-stone-900">
+                  Host Funded + Optional Gift • ₱180,000
+                </span>
+              </div>
+              <p id="previewBudgetNote" class="text-xs sm:text-sm opacity-90">
+                Your presence is our greatest blessing; no obligation for gifts.
+              </p>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+                <div class="p-3 rounded-xl bg-white/80 text-stone-900">
+                  <p id="previewQ1" class="text-xs font-bold mb-1">Q: What is the dress code / motif?</p>
+                  <p id="previewA1" class="text-xs text-stone-600">A: Formal / Semi-formal following our chosen wedding palette.</p>
+                </div>
+                <div class="p-3 rounded-xl bg-white/80 text-stone-900">
+                  <p id="previewQ2" class="text-xs font-bold mb-1">Q: How do I confirm RSVP or plus-one?</p>
+                  <p id="previewA2" class="text-xs text-stone-600">A: Reply via the Pen Pal button or message us with your headcount.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="pt-4 border-t border-current/15 flex items-center justify-between">
+              <div>
+                <p class="text-xs opacity-70">With love,</p>
+                <p id="previewFrom" class="font-bold text-sm">Alex & Sam</p>
+              </div>
+              <span id="previewCornerIcon" class="text-xl">💍</span>
+            </div>
+
+            <!-- Pen Pal Reply Button -->
+            <div class="mt-6 pt-4 border-t border-dashed border-current/20 flex flex-col sm:flex-row items-center justify-between gap-3">
+              <span class="text-xs opacity-80">Have an RSVP note or question? Send a sealed Pen Pal reply.</span>
+              <button type="button" id="replyAsPenPalBtn" class="w-full sm:w-auto px-4 py-2.5 rounded-full bg-stone-900 text-white hover:bg-stone-700 text-xs font-bold shadow-sm transition">
+                ✍️ Write Pen Pal Reply Back
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Checkout / Share Modal -->
+  <div id="checkoutModal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-md w-full p-6 space-y-4 shadow-2xl">
+      <div class="flex items-center justify-between">
+        <h3 id="modalHeading" class="font-extrabold text-lg">Complete Your Ko-fi Send</h3>
+        <button type="button" id="closeModalBtn" class="text-stone-400 hover:text-stone-700 font-bold text-lg">✕</button>
+      </div>
+      <p id="modalPaidDesc" class="text-xs text-stone-600">
+        Pay <strong id="modalPrice">$4.00</strong> on Ko-fi, enter your supporter name/ref below, and copy your shareable wedding envelope link.
+      </p>
+      <a href="https://ko-fi.com/" target="_blank" rel="noopener noreferrer"
+         class="block w-full text-center py-3 rounded-xl bg-[#29abe0] hover:bg-[#1e96c8] text-white font-bold text-sm transition">
+        ☕ <span id="modalKofiCtaText">Pay <span id="modalKofiBtnPrice">$4.00</span> on Ko-fi</span>
+      </a>
+      <div id="modalRefBox" class="space-y-2 pt-2 border-t border-stone-100">
+        <input id="kofiRefInput" type="text" placeholder="Ko-fi Supporter Name / Ref #" class="w-full rounded-xl border border-stone-300 px-3 py-2 text-xs" />
+        <button type="button" id="confirmOrderBtn" class="w-full py-3 rounded-xl bg-stone-900 text-white font-bold text-xs">
+          Generate Shareable Wedding Link
+        </button>
+      </div>
+      <div id="shareResultBox" class="hidden p-3 rounded-xl bg-emerald-50 border border-emerald-200 space-y-2">
+        <input id="generatedShareUrl" type="text" readonly class="w-full text-[11px] bg-white border border-emerald-300 rounded-lg px-2 py-1.5" />
+        <button type="button" id="copyLinkBtn" class="w-full py-2 rounded-lg bg-emerald-600 text-white text-xs font-bold">
+          Copy Link
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const weddingDesigns = {
+      ivory: {
+        name: "Classic Ivory & Gold",
+        badge: "✨ CLASSIC IVORY & GOLD",
+        cardClass: "wed-ivory",
+        headerClass: "mb-4 p-4 rounded-2xl bg-amber-100/90 border border-amber-300 text-amber-950 flex items-center justify-between gap-3",
+        sealClass: "seal-wax px-3.5 py-2 bg-amber-700 text-white flex items-center gap-1.5",
+        cost: 1
+      },
+      garden: {
+        name: "Garden Sage & Botanical",
+        badge: "🌿 GARDEN SAGE & BOTANICAL",
+        cardClass: "wed-garden",
+        headerClass: "mb-4 p-4 rounded-2xl bg-emerald-100 border border-emerald-300 text-emerald-950 flex items-center justify-between gap-3",
+        sealClass: "seal-wax px-3.5 py-2 bg-emerald-700 text-white flex items-center gap-1.5",
+        cost: 1
+      },
+      minimal: {
+        name: "Modern Minimalist",
+        badge: "🤍 MODERN MINIMALIST",
+        cardClass: "wed-minimal",
+        headerClass: "mb-4 p-4 rounded-2xl bg-stone-200 border border-stone-300 text-stone-900 flex items-center justify-between gap-3",
+        sealClass: "seal-medallion px-3.5 py-2 bg-stone-900 text-white flex items-center gap-1.5",
+        cost: 0
+      },
+      blush: {
+        name: "Blush Romantic",
+        badge: "🌸 BLUSH ROMANTIC",
+        cardClass: "wed-blush",
+        headerClass: "mb-4 p-4 rounded-2xl bg-rose-200/80 border border-rose-300 text-rose-950 flex items-center justify-between gap-3",
+        sealClass: "seal-wax px-3.5 py-2 bg-rose-600 text-white flex items-center gap-1.5",
+        cost: 1
+      },
+      midnight: {
+        name: "Midnight Gala",
+        badge: "🌙 MIDNIGHT GALA",
+        cardClass: "wed-midnight",
+        headerClass: "mb-4 p-4 rounded-2xl bg-slate-900 border border-amber-500 text-amber-100 flex items-center justify-between gap-3",
+        sealClass: "seal-medallion px-3.5 py-2 bg-amber-500 text-slate-950 flex items-center gap-1.5",
+        cost: 2
+      }
+    };
+
+    let selectedDesign = 'ivory';
+    let designCost = 1;
+    let isPenPalReplyMode = false;
+    let quotedPreviousLetter = null;
+
+    const designBtns = document.querySelectorAll('.design-btn');
+    const toName = document.getElementById('toName');
+    const fromName = document.getElementById('fromName');
+    const sealIcon = document.getElementById('sealIcon');
+    const sealTag = document.getElementById('sealTag');
+    const letterTitle = document.getElementById('letterTitle');
+    const letterBody = document.getElementById('letterBody');
+    const budgetSplitType = document.getElementById('budgetSplitType');
+    const budgetAmount = document.getElementById('budgetAmount');
+    const budgetNote = document.getElementById('budgetNote');
+    const qaQ1 = document.getElementById('qaQ1');
+    const qaA1 = document.getElementById('qaA1');
+    const qaQ2 = document.getElementById('qaQ2');
+    const qaA2 = document.getElementById('qaA2');
+    const emailDeliveryToggle = document.getElementById('emailDeliveryToggle');
+
+    const openCheckoutBtn = document.getElementById('openCheckoutBtn');
+    const generatePenPalReplyBtn = document.getElementById('generatePenPalReplyBtn');
+    const penPalModeBadge = document.getElementById('penPalModeBadge');
+    const replyQuoteEditorBox = document.getElementById('replyQuoteEditorBox');
+    const replyQuoteEditorText = document.getElementById('replyQuoteEditorText');
+    const cancelReplyModeBtn = document.getElementById('cancelReplyModeBtn');
+
+    const sealedOverlay = document.getElementById('sealedOverlay');
+    const openedEnvelopeContent = document.getElementById('openedEnvelopeContent');
+    const breakSealBtn = document.getElementById('breakSealBtn');
+
+    function setActiveDesign(key) {
+      const cfg = weddingDesigns[key] || weddingDesigns.ivory;
+      selectedDesign = key;
+      designCost = cfg.cost;
+      designBtns.forEach(btn => {
+        if (btn.dataset.design === key) {
+          btn.classList.remove('border', 'border-stone-200');
+          btn.classList.add('border-2', 'border-stone-900', 'bg-stone-900', 'text-white');
+        } else {
+          btn.classList.remove('border-2', 'border-stone-900', 'bg-stone-900', 'text-white');
+          btn.classList.add('border', 'border-stone-200');
+        }
+      });
+    }
+
+    function calculatePrice() {
+      if (isPenPalReplyMode) {
+        document.getElementById('priceBadge').textContent = 'Pen Pal Reply: FREE';
+        return 0;
+      }
+      const base = 2;
+      const emailCost = emailDeliveryToggle.checked ? 1 : 0;
+      const total = Math.min(8, Math.max(2, base + designCost + emailCost));
+
+      document.getElementById('designAddonText').textContent = `+$${designCost.toFixed(2)}`;
+      document.getElementById('emailAddonText').textContent = `+$${emailCost.toFixed(2)}`;
+      document.getElementById('totalPriceText').textContent = `$${total.toFixed(2)}`;
+      document.getElementById('priceBadge').textContent = `Est: $${total.toFixed(2)}`;
+      document.getElementById('modalPrice').textContent = `$${total.toFixed(2)}`;
+      document.getElementById('modalKofiBtnPrice').textContent = `$${total.toFixed(2)}`;
+      return total;
+    }
+
+    function buildPayload() {
+      return {
+        design: selectedDesign,
+        to: toName.value,
+        from: fromName.value,
+        sealIcon: sealIcon.value,
+        sealTag: sealTag.value,
+        title: letterTitle.value,
+        body: letterBody.value,
+        budgetSplit: budgetSplitType.value,
+        budgetAmount: budgetAmount.value,
+        budgetNote: budgetNote.value,
+        q1: qaQ1.value,
+        a1: qaA1.value,
+        q2: qaQ2.value,
+        a2: qaA2.value,
+        quote: quotedPreviousLetter
+      };
+    }
+
+    function generateShareUrl() {
+      const encoded = btoa(encodeURIComponent(JSON.stringify(buildPayload())));
+      return `${window.location.origin}${window.location.pathname}?weddingLetter=${encoded}`;
+    }
+
+    function updatePreview() {
+      const cfg = weddingDesigns[selectedDesign] || weddingDesigns.ivory;
+      const cleanTag = (sealTag.value || 'WED').toUpperCase().slice(0, 4);
+
+      document.getElementById('previewDesignLabel').textContent = cfg.badge;
+      document.getElementById('previewDesignPill').textContent = cfg.name;
+      document.getElementById('previewTo').textContent = toName.value || 'Dear Guest';
+      document.getElementById('previewFrom').textContent = fromName.value || 'Couple';
+      document.getElementById('previewTitle').textContent = letterTitle.value || '';
+      document.getElementById('previewBody').textContent = letterBody.value || '';
+      document.getElementById('previewCornerIcon').textContent = sealIcon.value;
+
+      document.getElementById('previewSealIcon').textContent = sealIcon.value;
+      document.getElementById('previewSealTag').textContent = cleanTag;
+      document.getElementById('overlaySealIcon').textContent = sealIcon.value;
+      document.getElementById('overlaySealTag').textContent = cleanTag;
+      document.getElementById('sealedRecipientText').textContent = `For: ${toName.value || 'Dear Guest'}`;
+
+      document.getElementById('envelopeHeader').className = cfg.headerClass;
+      document.getElementById('customSealBadge').className = cfg.sealClass;
+      breakSealBtn.className = `${cfg.sealClass} px-6 py-4 flex flex-col items-center gap-1 cursor-pointer`;
+      document.getElementById('letterPreviewCard').className = `${cfg.cardClass} rounded-2xl p-6 sm:p-8 transition-all duration-300`;
+
+      document.getElementById('previewBudgetPill').textContent = `${budgetSplitType.value} • ${budgetAmount.value || 'TBD'}`;
+      document.getElementById('previewBudgetNote').textContent = budgetNote.value || '';
+      document.getElementById('previewQ1').textContent = `Q: ${qaQ1.value || ''}`;
+      document.getElementById('previewA1').textContent = `A: ${qaA1.value || ''}`;
+      document.getElementById('previewQ2').textContent = `Q: ${qaQ2.value || ''}`;
+      document.getElementById('previewA2').textContent = `A: ${qaA2.value || ''}`;
+
+      const quoteBox = document.getElementById('previewReplyQuoteBox');
+      if (quotedPreviousLetter && quotedPreviousLetter.snippet) {
+        quoteBox.classList.remove('hidden');
+        document.getElementById('previewReplyQuoteHeader').textContent =
+          `↩️ Note #${quotedPreviousLetter.turn || 1} from ${quotedPreviousLetter.from || 'Pen Pal'}: "${quotedPreviousLetter.title || ''}"`;
+        document.getElementById('previewReplyQuoteBody').textContent = `"${quotedPreviousLetter.snippet}"`;
+      } else {
+        quoteBox.classList.add('hidden');
+      }
+    }
+
+    designBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        setActiveDesign(btn.dataset.design);
+        updatePreview();
+        calculatePrice();
+      });
+    });
+
+    [
+      toName, fromName, sealIcon, sealTag, letterTitle, letterBody,
+      budgetSplitType, budgetAmount, budgetNote, qaQ1, qaA1, qaQ2, qaA2
+    ].forEach(el => {
+      el.addEventListener('input', updatePreview);
+      el.addEventListener('change', updatePreview);
+    });
+
+    emailDeliveryToggle.addEventListener('change', calculatePrice);
+
+    function enterPenPalReplyMode() {
+      const prevFrom = fromName.value || 'Hosts';
+      const prevTo = toName.value || 'Guest';
+      const prevTitle = letterTitle.value || 'Wedding Invite';
+      const prevSnippet = (letterBody.value || '').slice(0, 180) + ((letterBody.value || '').length > 180 ? '...' : '');
+      const nextTurn = (quotedPreviousLetter && quotedPreviousLetter.turn ? quotedPreviousLetter.turn : 1) + 1;
+
+      quotedPreviousLetter = {
+        from: prevFrom,
+        title: prevTitle,
+        snippet: prevSnippet,
+        turn: nextTurn
+      };
+
+      isPenPalReplyMode = true;
+      toName.value = prevFrom;
+      fromName.value = prevTo;
+      letterTitle.value = `Re: ${prevTitle.replace(/^Re:\s*/i, '')}`;
+      letterBody.value = '';
+      letterBody.placeholder = 'Write your RSVP or pen pal reply...';
+      sealTag.value = `#${nextTurn}`;
+
+      penPalModeBadge.classList.remove('hidden');
+      replyQuoteEditorBox.classList.remove('hidden');
+      replyQuoteEditorText.textContent = `From ${prevFrom}: "${prevSnippet}"`;
+      generatePenPalReplyBtn.classList.remove('hidden');
+      openCheckoutBtn.textContent = 'Or Send with Ko-fi Tip ($2–$8) →';
+
+      updatePreview();
+      calculatePrice();
+      document.getElementById('controlsColumn').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      letterBody.focus();
+    }
+
+    document.getElementById('replyAsPenPalBtn').addEventListener('click', enterPenPalReplyMode);
+
+    cancelReplyModeBtn.addEventListener('click', () => {
+      isPenPalReplyMode = false;
+      quotedPreviousLetter = null;
+      penPalModeBadge.classList.add('hidden');
+      replyQuoteEditorBox.classList.add('hidden');
+      generatePenPalReplyBtn.classList.add('hidden');
+      openCheckoutBtn.textContent = 'Proceed to Ko-fi & Generate Link →';
+      updatePreview();
+      calculatePrice();
+    });
+
+    generatePenPalReplyBtn.addEventListener('click', () => {
+      document.getElementById('modalHeading').textContent = 'Your Pen Pal Reply Envelope is Ready!';
+      document.getElementById('modalPaidDesc').classList.add('hidden');
+      document.getElementById('modalRefBox').classList.add('hidden');
+      document.getElementById('modalKofiCtaText').textContent = 'Optional: Support Studio on Ko-fi';
+      document.getElementById('generatedShareUrl').value = generateShareUrl();
+      document.getElementById('shareResultBox').classList.remove('hidden');
+      checkoutModal.classList.remove('hidden');
+      checkoutModal.classList.add('flex');
+    });
+
+    function showSealedEnvelope() {
+      breakSealBtn.classList.remove('unsealing');
+      openedEnvelopeContent.classList.add('hidden');
+      openedEnvelopeContent.classList.remove('letter-reveal');
+      sealedOverlay.classList.remove('hidden');
+      sealedOverlay.classList.add('flex');
+    }
+
+    breakSealBtn.addEventListener('click', () => {
+      breakSealBtn.classList.add('unsealing');
+      setTimeout(() => {
+        sealedOverlay.classList.add('hidden');
+        sealedOverlay.classList.remove('flex');
+        openedEnvelopeContent.classList.remove('hidden');
+        void openedEnvelopeContent.offsetWidth;
+        openedEnvelopeContent.classList.add('letter-reveal');
+      }, 480);
+    });
+
+    document.getElementById('replayEnvelopeBtn').addEventListener('click', showSealedEnvelope);
+
+    const checkoutModal = document.getElementById('checkoutModal');
+    openCheckoutBtn.addEventListener('click', () => {
+      const total = calculatePrice();
+      document.getElementById('modalHeading').textContent = 'Complete Your Ko-fi Send';
+      document.getElementById('modalPaidDesc').classList.remove('hidden');
+      document.getElementById('modalRefBox').classList.remove('hidden');
+      document.getElementById('shareResultBox').classList.add('hidden');
+      document.getElementById('modalKofiCtaText').innerHTML = `Pay <span id="modalKofiBtnPrice">$${Math.max(2, total).toFixed(2)}</span> on Ko-fi`;
+      checkoutModal.classList.remove('hidden');
+      checkoutModal.classList.add('flex');
+    });
+
+    document.getElementById('closeModalBtn').addEventListener('click', () => {
+      checkoutModal.classList.add('hidden');
+      checkoutModal.classList.remove('flex');
+    });
+
+    document.getElementById('confirmOrderBtn').addEventListener('click', () => {
+      const ref = document.getElementById('kofiRefInput').value.trim();
+      if (!ref) {
+        alert('Please enter your Ko-fi supporter name or reference.');
+        return;
+      }
+      document.getElementById('generatedShareUrl').value = generateShareUrl();
+      document.getElementById('shareResultBox').classList.remove('hidden');
+    });
+
+    document.getElementById('copyLinkBtn').addEventListener('click', () => {
+      const input = document.getElementById('generatedShareUrl');
+      input.select();
+      navigator.clipboard.writeText(input.value);
+      alert('Copied wedding envelope link!');
+    });
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const params = new URLSearchParams(window.location.search);
+      const shared = params.get('weddingLetter');
+      if (shared) {
+        try {
+          const decoded = JSON.parse(decodeURIComponent(atob(shared)));
+          if (decoded.design && weddingDesigns[decoded.design]) setActiveDesign(decoded.design);
+          if (decoded.to) toName.value = decoded.to;
+          if (decoded.from) fromName.value = decoded.from;
+          if (decoded.sealIcon) sealIcon.value = decoded.sealIcon;
+          if (decoded.sealTag) sealTag.value = decoded.sealTag;
+          if (decoded.title) letterTitle.value = decoded.title;
+          if (decoded.body) letterBody.value = decoded.body;
+          if (decoded.budgetSplit) budgetSplitType.value = decoded.budgetSplit;
+          if (decoded.budgetAmount) budgetAmount.value = decoded.budgetAmount;
+          if (decoded.budgetNote) budgetNote.value = decoded.budgetNote;
+          if (decoded.q1) qaQ1.value = decoded.q1;
+          if (decoded.a1) qaA1.value = decoded.a1;
+          if (decoded.q2) qaQ2.value = decoded.q2;
+          if (decoded.a2) qaA2.value = decoded.a2;
+          if (decoded.quote) quotedPreviousLetter = decoded.quote;
+
+          updatePreview();
+          showSealedEnvelope();
+          calculatePrice();
+          return;
+        } catch (err) {
+          console.error('Invalid wedding link');
+        }
+      }
+      setActiveDesign('ivory');
+      updatePreview();
+      calculatePrice();
+    });
+  </script>
+</body>
+</html>
