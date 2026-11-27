@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DELUSIONAL & ORGANIZED — Custom Invite & Letter Studio</title>
+  <title>DELUSIONAL & ORGANIZED — Custom Invite & Pen Pal Studio</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -112,40 +112,42 @@
         <span class="text-xl">💌</span>
         <div>
           <h1 class="font-bold tracking-tight text-sm sm:text-base uppercase">DELUSIONAL & ORGANIZED</h1>
-          <p class="text-[11px] text-stone-500">All-Occasion Custom Letters & Envelope Studio</p>
+          <p class="text-[11px] text-stone-500">All-Occasion Custom Letters & Pen Pal Studio</p>
         </div>
       </div>
-      <a href="#studio" class="text-xs sm:text-sm font-semibold px-3.5 py-2 rounded-full bg-stone-900 text-white hover:bg-stone-700 transition">
-        Create Letter
-      </a>
+      <div class="flex items-center gap-2">
+        <a href="#studio" class="text-xs sm:text-sm font-semibold px-3.5 py-2 rounded-full bg-stone-900 text-white hover:bg-stone-700 transition">
+          Create Letter
+        </a>
+      </div>
     </div>
   </header>
 
   <!-- Hero & Pinterest Inspiration Board -->
-  <section class="max-w-6xl mx-auto px-4 pt-8 pb-6">
+  <section id="heroBoard" class="max-w-6xl mx-auto px-4 pt-8 pb-6">
     <div class="text-center max-w-2xl mx-auto mb-8">
       <span class="inline-block text-xs font-semibold uppercase tracking-widest px-3 py-1 rounded-full bg-rose-100 text-rose-700 mb-3">
-        17+ Occasions • Seal-Break Animation • Date & Wedding Budget + Q&A
+        17+ Occasions • Seal-Break Animation • Pen Pal Reply Loop
       </span>
       <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-stone-900 mb-3">
-        One studio for every moment worth sending.
+        Send a letter—and keep the pen pal thread alive.
       </h2>
       <p class="text-sm sm:text-base text-stone-600">
-        Customize your letter type, aesthetic style, receiver vibe, photos, and personalized envelope seal—with special budget sharing & Q&A for dates and weddings ($2–$8).
+        Customize your letter type, aesthetic style, receiver vibe, photos, and personalized envelope seal—plus Date & Wedding budget sharing, Q&A, and instant receiver replies ($2–$8).
       </p>
     </div>
 
     <!-- Pinterest-Style Masonry Preview Grid -->
     <div class="masonry mb-6">
       <div class="masonry-item rounded-2xl p-4 bg-white border border-stone-200 shadow-sm">
-        <div class="text-xs font-semibold text-stone-400 mb-1">WEDDING • BUDGET + Q&A</div>
-        <p class="font-semibold text-sm mb-2">"Save Our Date + Attire & Gift Guide"</p>
-        <div class="h-20 rounded-xl bg-stone-100 flex items-center justify-center text-2xl">💍🕊️🤍</div>
+        <div class="text-xs font-semibold text-stone-400 mb-1">PEN PAL THREAD • REPLY LOOP</div>
+        <p class="font-semibold text-sm mb-2">"Letter #1 → Sealed Reply Back!"</p>
+        <div class="h-20 rounded-xl bg-stone-100 flex items-center justify-center text-2xl">✒️📜💌</div>
       </div>
 
       <div class="masonry-item rounded-2xl p-4 bg-pink-50 border-2 border-dashed border-pink-300 shadow-sm">
-        <div class="text-xs font-bold text-pink-600 mb-1">DATE INVITE • 50/50 OR TREAT</div>
-        <p class="font-bold text-sm text-pink-900 mb-2">"Coffee & Dinner Date + Vibe Q&A"</p>
+        <div class="text-xs font-bold text-pink-600 mb-1">DATE INVITE • BUDGET + Q&A</div>
+        <p class="font-bold text-sm text-pink-900 mb-2">"50/50 or Treat + Dress Code Q&A"</p>
         <div class="h-28 rounded-xl bg-pink-100 flex items-center justify-center text-3xl">💘🧸🎀</div>
       </div>
 
@@ -156,9 +158,9 @@
       </div>
 
       <div class="masonry-item rounded-2xl p-4 bg-indigo-50 border border-indigo-200 shadow-md">
-        <div class="text-xs font-bold text-indigo-600 mb-1">LAUNCH / BUSINESS • $6</div>
-        <p class="font-semibold text-sm text-indigo-950 mb-2">"VIP Brand Launch & Pitch Deck Invite"</p>
-        <div class="h-24 rounded-xl bg-indigo-100 flex items-center justify-center text-3xl">🚀💼✨</div>
+        <div class="text-xs font-bold text-indigo-600 mb-1">WEDDING / LAUNCH • $6</div>
+        <p class="font-semibold text-sm text-indigo-950 mb-2">"VIP Invite + Custom Seal Stamp"</p>
+        <div class="h-24 rounded-xl bg-indigo-100 flex items-center justify-center text-3xl">🕊️💍✨</div>
       </div>
     </div>
   </section>
@@ -167,12 +169,30 @@
   <main id="studio" class="max-w-6xl mx-auto px-4 pb-16 grid grid-cols-1 lg:grid-cols-12 gap-8 flex-1">
 
     <!-- Left Controls Panel -->
-    <div class="lg:col-span-5 space-y-5 bg-white p-5 sm:p-6 rounded-3xl border border-stone-200 shadow-sm h-fit">
+    <div id="controlsColumn" class="lg:col-span-5 space-y-5 bg-white p-5 sm:p-6 rounded-3xl border border-stone-200 shadow-sm h-fit">
       <div class="flex items-center justify-between border-b border-stone-100 pb-3">
-        <h3 class="font-bold text-lg">1. Customize Your Letter</h3>
+        <div>
+          <h3 id="studioHeading" class="font-bold text-lg">1. Customize Your Letter</h3>
+          <span id="penPalModeBadge" class="hidden text-[11px] font-bold text-indigo-700 bg-indigo-50 px-2 py-0.5 rounded-full">
+            ✒️ Pen Pal Reply Mode Active
+          </span>
+        </div>
         <span id="priceBadge" class="px-3 py-1 rounded-full text-sm font-extrabold bg-emerald-100 text-emerald-800">
           Est: $3.00
         </span>
+      </div>
+
+      <!-- Pen Pal Quoted Context (Visible when replying) -->
+      <div id="replyQuoteEditorBox" class="hidden p-3.5 rounded-2xl bg-indigo-50 border border-indigo-200 space-y-1">
+        <div class="flex items-center justify-between">
+          <span class="text-[11px] font-extrabold uppercase tracking-wider text-indigo-900">
+            ↩️ Replying to Previous Letter
+          </span>
+          <button type="button" id="cancelReplyModeBtn" class="text-[11px] font-bold text-rose-600 hover:underline">
+            Clear Reply
+          </button>
+        </div>
+        <p id="replyQuoteEditorText" class="text-xs text-indigo-950 italic line-clamp-3"></p>
       </div>
 
       <!-- Letter Type / Occasion Selector -->
@@ -189,6 +209,13 @@
             <option value="birthday">🎂 Birthday</option>
             <option value="baby_shower">🍼 Baby Shower</option>
           </optgroup>
+          <optgroup label="✒️ Pen Pal & Everyday">
+            <option value="penpal">✒️ Pen Pal Letter / Reply</option>
+            <option value="greetings">☀️ Greetings</option>
+            <option value="regards">🌿 Warm Regards</option>
+            <option value="rip">🕯️ RIP / Condolence Message</option>
+            <option value="custom">✍️ Custom / Freeform</option>
+          </optgroup>
           <optgroup label="🚀 Career, Launch & Events">
             <option value="launch">🚀 Product / Brand Launch</option>
             <option value="milestone">🏆 Milestone / Achievement</option>
@@ -197,12 +224,6 @@
             <option value="mission">🎯 Mission / Project Kickoff</option>
             <option value="event">🎟️ General Event / Party</option>
             <option value="game_event">🎮 Game Event / Guild Invite</option>
-          </optgroup>
-          <optgroup label="✉️ Everyday & Heartfelt">
-            <option value="greetings">☀️ Greetings</option>
-            <option value="regards">🌿 Warm Regards</option>
-            <option value="rip">🕯️ RIP / Condolence Message</option>
-            <option value="custom">✍️ Custom / Freeform</option>
           </optgroup>
         </select>
         <p id="toneHintText" class="text-[11px] text-stone-500 mt-1">
@@ -335,6 +356,7 @@
             <label class="block text-[11px] font-bold text-stone-600 mb-1">Seal Icon</label>
             <select id="sealIcon" class="w-full rounded-xl border border-stone-300 bg-white px-2.5 py-1.5 text-xs">
               <option value="💘">💘 Heart</option>
+              <option value="✒️">✒️ Pen Pal</option>
               <option value="🕊️">🕊️ Dove</option>
               <option value="💍">💍 Ring</option>
               <option value="🥂">🥂 Toast</option>
@@ -360,7 +382,7 @@
         </div>
       </div>
 
-      <!-- Names & Message -->
+       <!-- Names & Message -->
       <div class="grid grid-cols-2 gap-3">
         <div>
           <label class="block text-xs font-bold text-stone-600 mb-1">To (Receiver)</label>
@@ -392,7 +414,7 @@
         <p class="text-[11px] text-stone-500 mt-1">Photos appear as polaroid memories inside the receiver's letter.</p>
       </div>
 
-       <!-- Email Delivery Add-on (+$1) -->
+      <!-- Email Delivery Add-on (+$1) -->
       <div class="p-3.5 rounded-2xl bg-amber-50/70 border border-amber-200 space-y-2">
         <label class="flex items-center gap-2 cursor-pointer">
           <input id="emailDeliveryToggle" type="checkbox" checked class="rounded text-stone-900 w-4 h-4" />
@@ -402,7 +424,7 @@
       </div>
 
       <!-- Price Breakdown Box -->
-      <div class="p-4 rounded-2xl bg-stone-900 text-white space-y-1.5">
+      <div id="pricingSummaryBox" class="p-4 rounded-2xl bg-stone-900 text-white space-y-1.5">
         <div class="flex justify-between text-xs text-stone-300">
           <span>Base Custom Letter + Envelope Seal</span>
           <span>$2.00</span>
@@ -425,8 +447,14 @@
         </div>
       </div>
 
+      <!-- Standard Ko-fi Checkout CTA -->
       <button type="button" id="openCheckoutBtn" class="w-full py-3.5 rounded-2xl bg-rose-600 hover:bg-rose-500 text-white font-bold text-sm shadow-lg shadow-rose-200 transition">
         Proceed to Ko-fi & Send Letter →
+      </button>
+
+      <!-- Free Instant Pen Pal Reply Link Button (Shown in Pen Pal Reply Mode) -->
+      <button type="button" id="generatePenPalReplyBtn" class="hidden w-full py-3.5 rounded-2xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-sm shadow-lg shadow-indigo-200 transition">
+        ✒️ Generate Sealed Pen Pal Reply Link (Free) →
       </button>
     </div>
 
@@ -489,6 +517,12 @@
               </span>
             </div>
 
+            <!-- Pen Pal Thread Quote Block (Shown when letter is a reply) -->
+            <div id="previewReplyQuoteBox" class="hidden mb-5 p-3.5 rounded-xl bg-black/5 border-l-4 border-current/40 text-xs space-y-1">
+              <p id="previewReplyQuoteHeader" class="font-bold opacity-75">↩️ In Reply To Previous Letter:</p>
+              <p id="previewReplyQuoteBody" class="italic opacity-90 whitespace-pre-line"></p>
+            </div>
+
             <h4 id="previewTitle" class="text-xl sm:text-2xl font-bold mb-4">
               Official Date Invite 💘
             </h4>
@@ -528,7 +562,7 @@
             <!-- Uploaded Polaroid Photos Grid -->
             <div id="previewPhotosGrid" class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-6 hidden"></div>
 
-            <div class="pt-4 border-t border-current/10 flex items-center justify-between">
+            <div class="pt-4 border-t border-current/10 flex flex-wrap items-center justify-between gap-3">
               <div>
                 <p class="text-xs opacity-70">Sincerely,</p>
                 <p id="previewFrom" class="font-bold text-sm">Your Secret Admirer</p>
@@ -538,21 +572,29 @@
                 <span id="previewCornerIcon" class="text-xl">💘</span>
               </div>
             </div>
+
+            <!-- Receiver Pen Pal Reply Action Bar -->
+            <div class="mt-6 pt-4 border-t border-dashed border-current/15 flex flex-col sm:flex-row items-center justify-between gap-3">
+              <span class="text-xs opacity-75">Want to write back and seal your own reply?</span>
+              <button type="button" id="replyAsPenPalBtn" class="w-full sm:w-auto px-4 py-2.5 rounded-full bg-stone-900 text-white hover:bg-stone-700 text-xs font-bold shadow-sm transition">
+                ✍️ Write Pen Pal Reply Back
+              </button>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </main>
 
-  <!-- Ko-fi Checkout & Send Modal -->
+  <!-- Ko-fi Checkout & Send Modal (Also supports Free Pen Pal Reply Link) -->
   <div id="checkoutModal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden items-center justify-center p-4">
     <div class="bg-white rounded-3xl max-w-md w-full p-6 space-y-4 shadow-2xl">
       <div class="flex items-center justify-between">
-        <h3 class="font-extrabold text-lg">Complete Your Ko-fi Send</h3>
+        <h3 id="modalHeading" class="font-extrabold text-lg">Complete Your Ko-fi Send</h3>
         <button type="button" id="closeModalBtn" class="text-stone-400 hover:text-stone-700 font-bold text-lg">✕</button>
       </div>
 
-      <div class="p-4 rounded-2xl bg-rose-50 border border-rose-200 text-sm space-y-1">
+      <div id="modalPaidInstructions" class="p-4 rounded-2xl bg-rose-50 border border-rose-200 text-sm space-y-1">
         <p class="font-bold text-rose-950">Estimated Custom Price: <span id="modalPrice" class="text-lg underline">$3.00</span></p>
         <p class="text-xs text-rose-800">
           1. Click the Ko-fi button below and enter the exact amount (<strong id="modalPriceInline">$3.00</strong>).<br>
@@ -564,10 +606,10 @@
       <!-- PALITAN ANG LINK NA ITO NG SARILI MONG KO-FI URL -->
       <a id="kofiPayLink" href="https://ko-fi.com/" target="_blank" rel="noopener noreferrer"
          class="block w-full text-center py-3 rounded-xl bg-[#29abe0] hover:bg-[#1e96c8] text-white font-bold text-sm transition">
-        ☕ Pay <span id="modalKofiBtnPrice">$3.00</span> on Ko-fi
+        ☕ <span id="modalKofiCtaText">Pay <span id="modalKofiBtnPrice">$3.00</span> on Ko-fi</span>
       </a>
 
-      <div class="space-y-2 pt-2 border-t border-stone-100">
+      <div id="modalRefBox" class="space-y-2 pt-2 border-t border-stone-100">
         <label class="block text-xs font-bold text-stone-700">Ko-fi Transaction / Supporter Name</label>
         <input id="kofiRefInput" type="text" placeholder="e.g. Juan D. / Ko-fi #1024" class="w-full rounded-xl border border-stone-300 px-3 py-2 text-xs" />
         <button type="button" id="confirmOrderBtn" class="w-full py-3 rounded-xl bg-stone-900 hover:bg-stone-800 text-white font-bold text-xs">
@@ -576,10 +618,10 @@
       </div>
 
       <div id="shareResultBox" class="hidden p-3 rounded-xl bg-emerald-50 border border-emerald-200 space-y-2">
-        <p class="text-xs font-bold text-emerald-900">✅ Ready to Send! Copy your custom envelope link:</p>
+        <p class="text-xs font-bold text-emerald-900">✅ Ready to Send! Copy your custom sealed envelope link:</p>
         <input id="generatedShareUrl" type="text" readonly class="w-full text-[11px] bg-white border border-emerald-300 rounded-lg px-2 py-1.5" />
         <button type="button" id="copyLinkBtn" class="w-full py-2 rounded-lg bg-emerald-600 text-white text-xs font-bold">
-          Copy Link
+          Copy Envelope Link
         </button>
       </div>
     </div>
@@ -620,6 +662,16 @@
         a1: "Warm ivory, sage & earth tones — formal/semi-formal.",
         q2: "Can I bring a plus-one or confirm headcount?",
         a2: "Please RSVP with your exact headcount before the deadline."
+      },
+      penpal: {
+        label: "✒️ Pen Pal Letter",
+        title: "Pen Pal Dispatch: Writing Back To You ✒️",
+        body: "Loved reading your note! Here is my update from this side of the screen—can't wait to hear what you think next.",
+        icon: "✒️",
+        tag: "PALS",
+        sealShape: "wax",
+        recommendedStyle: "aesthetic",
+        seal: "cream"
       },
       proposal: {
         label: "💍 Proposal",
@@ -776,6 +828,8 @@
     let selectedStyle = 'clean';
     let styleCost = 0;
     let uploadedPhotos = [];
+    let isPenPalReplyMode = false;
+    let quotedPreviousLetter = null; // { from, title, snippet, turn }
 
     // Controls
     const letterType = document.getElementById('letterType');
@@ -805,6 +859,14 @@
     const receiverEmail = document.getElementById('receiverEmail');
     const toneHintText = document.getElementById('toneHintText');
 
+    // Pen Pal Reply UI Controls
+    const penPalModeBadge = document.getElementById('penPalModeBadge');
+    const replyQuoteEditorBox = document.getElementById('replyQuoteEditorBox');
+    const replyQuoteEditorText = document.getElementById('replyQuoteEditorText');
+    const cancelReplyModeBtn = document.getElementById('cancelReplyModeBtn');
+    const openCheckoutBtn = document.getElementById('openCheckoutBtn');
+    const generatePenPalReplyBtn = document.getElementById('generatePenPalReplyBtn');
+
     // Envelope & Preview Elements
     const sealedOverlay = document.getElementById('sealedOverlay');
     const openedEnvelopeContent = document.getElementById('openedEnvelopeContent');
@@ -828,6 +890,9 @@
     const previewBody = document.getElementById('previewBody');
     const previewCornerIcon = document.getElementById('previewCornerIcon');
     const previewPhotosGrid = document.getElementById('previewPhotosGrid');
+    const previewReplyQuoteBox = document.getElementById('previewReplyQuoteBox');
+    const previewReplyQuoteHeader = document.getElementById('previewReplyQuoteHeader');
+    const previewReplyQuoteBody = document.getElementById('previewReplyQuoteBody');
 
     // Special Date & Wedding Preview Elements
     const previewDateWeddingSection = document.getElementById('previewDateWeddingSection');
@@ -866,6 +931,10 @@
     }
 
     function calculatePrice() {
+      if (isPenPalReplyMode) {
+        priceBadge.textContent = 'Pen Pal Reply: FREE';
+        return 0;
+    }
       const base = 2;
       const photoCost = uploadedPhotos.length * 1;
       const emailCost = emailDeliveryToggle.checked ? 1 : 0;
@@ -882,6 +951,35 @@
       document.getElementById('modalPriceInline').textContent = `$${total.toFixed(2)}`;
       document.getElementById('modalKofiBtnPrice').textContent = `$${total.toFixed(2)}`;
       return total;
+    }
+
+    function buildPayload() {
+      return {
+        type: letterType.value,
+        to: toName.value,
+        from: fromName.value,
+        title: letterTitle.value,
+        body: letterBody.value,
+        style: selectedStyle,
+        persona: receiverPersona.value,
+        color: envelopeColor.value,
+        sealShape: sealShape.value,
+        sealIcon: sealIcon.value,
+        sealTag: sealTag.value,
+        budgetSplit: budgetSplitType.value,
+        budgetAmount: budgetAmount.value,
+        budgetNote: budgetNote.value,
+        q1: qaQ1.value,
+        a1: qaA1.value,
+        q2: qaQ2.value,
+        a2: qaA2.value,
+        quote: quotedPreviousLetter
+      };
+    }
+
+    function generateShareUrl() {
+      const encoded = btoa(encodeURIComponent(JSON.stringify(buildPayload())));
+      return `${window.location.origin}${window.location.pathname}?letter=${encoded}`;
     }
 
     function updatePreview() {
@@ -926,6 +1024,15 @@
       };
       envelopeHeader.className = `mb-4 p-4 rounded-2xl border flex items-center justify-between gap-3 ${colorMap[envelopeColor.value]}`;
 
+      // Quoted Previous Letter Thread Preview
+      if (quotedPreviousLetter && quotedPreviousLetter.snippet) {
+        previewReplyQuoteBox.classList.remove('hidden');
+        previewReplyQuoteHeader.textContent = `↩️ Letter #${quotedPreviousLetter.turn || 1} from ${quotedPreviousLetter.from || 'Pen Pal'}: "${quotedPreviousLetter.title || ''}"`;
+        previewReplyQuoteBody.textContent = `"${quotedPreviousLetter.snippet}"`;
+      } else {
+        previewReplyQuoteBox.classList.add('hidden');
+      }
+
       // Special Date & Wedding Budget Sharing + Q&A Visibility & Content
       if (isDateOrWedding()) {
         specialDateWeddingBox.classList.remove('hidden');
@@ -947,6 +1054,69 @@
         previewDateWeddingSection.classList.add('hidden');
       }
     }
+
+    // Activate Pen Pal Reply Mode (Swaps To/From + Quotes Previous Message)
+    function enterPenPalReplyMode() {
+      const prevFrom = fromName.value || 'Pen Pal';
+      const prevTo = toName.value || 'Me';
+      const prevTitle = letterTitle.value || 'Previous Letter';
+      const prevSnippet = (letterBody.value || '').slice(0, 180) + ((letterBody.value || '').length > 180 ? '...' : '');
+      const nextTurn = (quotedPreviousLetter && quotedPreviousLetter.turn ? quotedPreviousLetter.turn : 1) + 1;
+
+      quotedPreviousLetter = {
+        from: prevFrom,
+        title: prevTitle,
+        snippet: prevSnippet,
+        turn: nextTurn
+      };
+
+      isPenPalReplyMode = true;
+      toName.value = prevFrom;
+      fromName.value = prevTo;
+      letterType.value = 'penpal';
+      letterTitle.value = `Re: ${prevTitle.replace(/^Re:\s*/i, '')}`;
+      letterBody.value = '';
+      letterBody.placeholder = 'Write your pen pal reply here...';
+      sealIcon.value = '✒️';
+      sealTag.value = `#${nextTurn}`;
+
+      penPalModeBadge.classList.remove('hidden');
+      replyQuoteEditorBox.classList.remove('hidden');
+      replyQuoteEditorText.textContent = `From ${prevFrom}: "${prevSnippet}"`;
+      generatePenPalReplyBtn.classList.remove('hidden');
+      openCheckoutBtn.textContent = 'Or Send with Ko-fi Tip ($2–$8) →';
+
+      updatePreview();
+      calculatePrice();
+      document.getElementById('controlsColumn').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      letterBody.focus();
+    }
+
+    document.getElementById('replyAsPenPalBtn').addEventListener('click', enterPenPalReplyMode);
+
+    cancelReplyModeBtn.addEventListener('click', () => {
+      isPenPalReplyMode = false;
+      quotedPreviousLetter = null;
+      penPalModeBadge.classList.add('hidden');
+      replyQuoteEditorBox.classList.add('hidden');
+      generatePenPalReplyBtn.classList.add('hidden');
+      openCheckoutBtn.textContent = 'Proceed to Ko-fi & Send Letter →';
+      updatePreview();
+      calculatePrice();
+    });
+
+    // Generate Free Pen Pal Reply Link directly
+    generatePenPalReplyBtn.addEventListener('click', () => {
+      const shareUrl = generateShareUrl();
+      document.getElementById('modalHeading').textContent = 'Your Pen Pal Reply Envelope is Ready!';
+      document.getElementById('modalPaidInstructions').classList.add('hidden');
+      document.getElementById('modalRefBox').classList.add('hidden');
+      document.getElementById('modalKofiCtaText').textContent = 'Optional: Support Studio on Ko-fi';
+      document.getElementById('generatedShareUrl').value = shareUrl;
+      document.getElementById('shareResultBox').classList.remove('hidden');
+      checkoutModal.classList.remove('hidden');
+      checkoutModal.classList.add('flex');
+    });
 
     // Envelope Animation Trigger
     function showSealedEnvelope() {
@@ -1074,7 +1244,12 @@
     // Modal Logic
     const checkoutModal = document.getElementById('checkoutModal');
     document.getElementById('openCheckoutBtn').addEventListener('click', () => {
-      calculatePrice();
+      const total = calculatePrice();
+      document.getElementById('modalHeading').textContent = 'Complete Your Ko-fi Send';
+      document.getElementById('modalPaidInstructions').classList.remove('hidden');
+      document.getElementById('modalRefBox').classList.remove('hidden');
+      document.getElementById('shareResultBox').classList.add('hidden');
+      document.getElementById('modalKofiCtaText').innerHTML = `Pay <span id="modalKofiBtnPrice">$${Math.max(2, total).toFixed(2)}</span> on Ko-fi`;
       checkoutModal.classList.remove('hidden');
       checkoutModal.classList.add('flex');
     });
@@ -1091,31 +1266,7 @@
         return;
       }
 
-      const payload = {
-        type: letterType.value,
-        to: toName.value,
-        from: fromName.value,
-        title: letterTitle.value,
-        body: letterBody.value,
-        style: selectedStyle,
-        persona: receiverPersona.value,
-        color: envelopeColor.value,
-        sealShape: sealShape.value,
-        sealIcon: sealIcon.value,
-        sealTag: sealTag.value,
-        budgetSplit: budgetSplitType.value,
-        budgetAmount: budgetAmount.value,
-        budgetNote: budgetNote.value,
-        q1: qaQ1.value,
-        a1: qaA1.value,
-        q2: qaQ2.value,
-        a2: qaA2.value
-      };
-
-      const encoded = btoa(encodeURIComponent(JSON.stringify(payload)));
-      const shareUrl = `${window.location.origin}${window.location.pathname}?letter=${encoded}`;
-
-      document.getElementById('generatedShareUrl').value = shareUrl;
+      document.getElementById('generatedShareUrl').value = generateShareUrl();
       document.getElementById('shareResultBox').classList.remove('hidden');
     });
 
@@ -1123,7 +1274,7 @@
       const input = document.getElementById('generatedShareUrl');
       input.select();
       navigator.clipboard.writeText(input.value);
-      alert('Copied! You can now send this envelope link to your receiver.');
+      alert('Copied! You can now send this sealed envelope link.');
     });
 
     // Load Shared Letter from URL (?letter=...)
@@ -1153,6 +1304,7 @@
           if (decoded.a1) qaA1.value = decoded.a1;
           if (decoded.q2) qaQ2.value = decoded.q2;
           if (decoded.a2) qaA2.value = decoded.a2;
+          if (decoded.quote) quotedPreviousLetter = decoded.quote;
 
           updatePreview();
           showSealedEnvelope();
