@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DELUSIONAL & ORGANIZED — Monthly Partnership</title>
+  <title>DELUSIONAL &amp; ORGANIZED — Personal &amp; Monthly Partnership</title>
   <style>
     :root {
       --bg: #f8f7f4;
@@ -29,7 +29,7 @@
     }
 
     .container {
-      max-width: 1040px;
+      max-width: 1080px;
       margin: 0 auto;
       padding: 0 20px;
     }
@@ -92,7 +92,7 @@
     }
 
     .hero {
-      padding: 64px 0 48px;
+      padding: 64px 0 40px;
     }
 
     .badge {
@@ -110,13 +110,13 @@
       font-size: clamp(2rem, 4vw, 3rem);
       line-height: 1.15;
       letter-spacing: -0.02em;
-      max-width: 18ch;
+      max-width: 20ch;
       margin-bottom: 16px;
     }
 
     .lead {
       color: var(--muted);
-      max-width: 60ch;
+      max-width: 62ch;
       font-size: 1.05rem;
       margin-bottom: 24px;
     }
@@ -125,6 +125,21 @@
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
+    }
+
+    .unlock-banner {
+      margin-top: 20px;
+      padding: 14px 18px;
+      border-radius: 10px;
+      background: var(--accent-soft);
+      border: 1px solid #c9dfd9;
+      color: var(--accent);
+      font-size: 0.94rem;
+      display: none;
+    }
+
+    .unlock-banner.is-active {
+      display: block;
     }
 
     section {
@@ -140,12 +155,18 @@
     .section-sub {
       color: var(--muted);
       margin-bottom: 24px;
-      max-width: 62ch;
+      max-width: 64ch;
     }
 
     .grid-3 {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 18px;
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
       gap: 18px;
     }
 
@@ -246,10 +267,10 @@
 <body>
   <header>
     <div class="container nav">
-      <a class="brand" href="./index.html">App Studio</a>
+      <a class="brand" href="./index.html">💌 DELUSIONAL &amp; ORGANIZED</a>
       <nav class="nav-links">
         <a href="#use-cases">Use Cases</a>
-        <a href="#plans">Monthly Plans</a>
+        <a href="#plans">Personal &amp; Monthly</a>
         <a href="#apply">Apply</a>
       </nav>
     </div>
@@ -258,41 +279,47 @@
   <main>
     <section class="hero">
       <div class="container">
-        <span class="badge">Monthly Business Partnership</span>
-        <h1>Use our templates &amp; web tools for recurring clients and events.</h1>
+        <span class="badge">DELUSIONAL &amp; ORGANIZED • Personal &amp; Monthly Partnership</span>
+        <h1>Personal auto-unlock for your own invites, or monthly plans for recurring work.</h1>
         <p class="lead">
-          Designed for event planners, newsletter creators, and schools or organizations that need
-          clean, repeatable pages every month without building from scratch each time.
+          All-Occasion Custom Letters &amp; Pen Pal Studio for individuals sending personal or
+          multi-guest invites, plus event planners, newsletters, and schools running recurring
+          batches every month.
         </p>
         <div class="hero-actions">
-          <a class="btn" href="#plans">View Monthly Plans</a>
-          <a class="btn btn-outline" href="./index.html">Back to Main App</a>
+          <button type="button" class="btn" id="auto-unlock-btn">Enable Personal Auto-Unlock</button>
+          <a class="btn btn-outline" href="#plans">Compare Plans</a>
+          <a class="btn btn-outline" href="./index.html">Back to DELUSIONAL &amp; ORGANIZED</a>
+        </div>
+        <div class="unlock-banner" id="unlock-banner">
+          <strong>Personal Auto-Unlock Active:</strong> Saved in this browser (<code>localStorage</code>) for personal invitations and letters.
         </div>
       </div>
     </section>
 
     <section id="use-cases">
       <div class="container">
-        <h2 class="section-title">Built for Recurring Workflows</h2>
+        <h2 class="section-title">Personal vs. Recurring Business Workflows</h2>
         <p class="section-sub">
-          Swap in your own branding, schedules, and details for each event, issue, or school batch.
+          Use Personal Auto-Unlock for your own invites and letters, or pick a monthly plan if you
+          manage recurring events, issues, or school batches.
         </p>
         <div class="grid-3">
           <article class="card">
             <div>
-              <h3>Event Businesses</h3>
+              <h3>Personal Invites &amp; Pen Pal</h3>
               <p>
-                Weddings, birthdays, debuts, launches, and corporate gatherings that need fresh
-                digital invites or event cards month after month.
+                For personal use when you have many people to invite or personal letters to send for
+                your own gatherings, celebrations, or pen pals.
               </p>
             </div>
           </article>
           <article class="card">
             <div>
-              <h3>Newsletters &amp; Communities</h3>
+              <h3>Event Businesses &amp; Newsletters</h3>
               <p>
-                Recurring announcements, digest highlights, member invites, or campaign landing links
-                with a consistent look.
+                Weddings, debuts, launches, or recurring community updates that need fresh layouts
+                and client customization every month.
               </p>
             </div>
           </article>
@@ -311,11 +338,27 @@
 
     <section id="plans">
       <div class="container">
-        <h2 class="section-title">Monthly Subscription Tiers</h2>
+        <h2 class="section-title">Personal Auto-Unlock &amp; Monthly Tiers</h2>
         <p class="section-sub">
-          Replace the placeholder pricing and limits below with your exact monthly rates and terms.
+          Adjust prices and limits below to match your exact personal and monthly rules.
         </p>
-        <div class="grid-3">
+        <div class="grid-4">
+          <article class="card">
+            <div>
+              <h3>Personal (Auto-Unlocked)</h3>
+              <p>For personal use, multi-invite occasions, and pen pal notes.</p>
+              <div class="price">Auto-Unlocked <span>/ personal</span></div>
+              <ul class="features">
+                <li>Instant personal access saved in browser</li>
+                <li>Great when you have many personal invites</li>
+                <li>Personal use only (no client resale)</li>
+              </ul>
+            </div>
+            <button type="button" class="btn" data-auto-unlock="true" data-plan="Personal (Auto-Unlocked)">
+              Auto-Unlock Personal
+            </button>
+          </article>
+
           <article class="card">
             <div>
               <h3>Starter Monthly</h3>
@@ -364,14 +407,14 @@
     <section id="apply">
       <div class="container">
         <div class="inquiry-box">
-          <h2 class="section-title">Start a Monthly Partnership</h2>
+          <h2 class="section-title">Personal Partnership or Monthly Inquiry</h2>
           <p class="section-sub">
-            Share your business or school details below to prepare your partnership request.
+            Select Personal (Auto-Unlocked) or a monthly plan below to prepare your details.
           </p>
           <form class="form-grid" id="partnership-form">
             <label>
-              Name or Organization
-              <input type="text" name="orgName" placeholder="e.g., North Peak Events or St. Jude Grad Committee" required />
+              Your Name or Organization
+              <input type="text" name="orgName" placeholder="e.g., Alex Cruz or North Peak Events" required />
             </label>
             <label>
               Contact Email or Social Handle
@@ -379,24 +422,25 @@
             </label>
             <label>
               Primary Use Case
-              <select name="useCase">
+              <select name="useCase" id="use-case-select">
+                <option value="Personal Invites / Many Guests">Personal Invites / Many Guests</option>
                 <option value="Event Business">Event Business</option>
                 <option value="Newsletter / Community">Newsletter / Community</option>
                 <option value="School / Graduation / Org">School / Graduation / Org</option>
-                <option value="Other Business">Other Business</option>
               </select>
             </label>
             <label>
-              Monthly Plan
+              Selected Option
               <select name="plan" id="plan-select">
+                <option value="Personal (Auto-Unlocked)">Personal (Auto-Unlocked)</option>
                 <option value="Starter Monthly">Starter Monthly</option>
                 <option value="Growth Monthly">Growth Monthly</option>
                 <option value="Organization / Agency">Organization / Agency</option>
               </select>
             </label>
             <label>
-              How many events, issues, or batches do you run per month?
-              <textarea name="notes" rows="3" placeholder="Tell us about your monthly schedule and what you need..."></textarea>
+              Notes (e.g., how many invites or monthly batches you need)
+              <textarea name="notes" rows="3" placeholder="Share how you plan to use it for personal invites or monthly work..."></textarea>
             </label>
             <button type="submit" class="btn">Prepare Inquiry Summary</button>
             <div class="status-note" id="form-status"></div>
@@ -408,21 +452,61 @@
 
   <footer>
     <div class="container">
-      <p>Monthly Partnership Page • Ready for static hosting and customization.</p>
+      <p>DELUSIONAL &amp; ORGANIZED • Personal Auto-Unlock &amp; Monthly Partnership</p>
     </div>
   </footer>
 
   <script>
+    const UNLOCK_KEY = "delusional_personal_auto_unlocked";
     const planButtons = document.querySelectorAll("[data-plan]");
+    const autoUnlockTriggers = document.querySelectorAll("[data-auto-unlock], #auto-unlock-btn");
     const planSelect = document.getElementById("plan-select");
+    const useCaseSelect = document.getElementById("use-case-select");
+    const unlockBanner = document.getElementById("unlock-banner");
     const form = document.getElementById("partnership-form");
     const statusEl = document.getElementById("form-status");
+
+    function renderPersonalUnlockState() {
+      const isUnlocked = localStorage.getItem(UNLOCK_KEY) === "true";
+      if (unlockBanner) {
+        unlockBanner.classList.toggle("is-active", isUnlocked);
+      }
+      const topBtn = document.getElementById("auto-unlock-btn");
+      if (topBtn) {
+        topBtn.textContent = isUnlocked
+          ? "Personal Auto-Unlock Active ✓"
+          : "Enable Personal Auto-Unlock";
+      }
+    }
+
+    function activatePersonalUnlock() {
+      localStorage.setItem(UNLOCK_KEY, "true");
+      renderPersonalUnlockState();
+      if (planSelect) {
+        planSelect.value = "Personal (Auto-Unlocked)";
+      }
+      if (useCaseSelect) {
+        useCaseSelect.value = "Personal Invites / Many Guests";
+      }
+    }
+
+    autoUnlockTriggers.forEach((el) => {
+      el.addEventListener("click", () => {
+        activatePersonalUnlock();
+        if (el.id === "auto-unlock-btn") {
+          statusEl.textContent = "Personal Auto-Unlock is now enabled in this browser.";
+        }
+      });
+    });
 
     planButtons.forEach((btn) => {
       btn.addEventListener("click", () => {
         const chosen = btn.getAttribute("data-plan");
         if (planSelect && chosen) {
           planSelect.value = chosen;
+        }
+        if (chosen === "Personal (Auto-Unlocked)" && useCaseSelect) {
+          useCaseSelect.value = "Personal Invites / Many Guests";
         }
       });
     });
@@ -433,6 +517,8 @@
       const summary = `${data.get("orgName")} (${data.get("useCase")}) selected ${data.get("plan")}.`;
       statusEl.textContent = `Ready to send: ${summary} Connect this form to your email/form handler or copy these details to send directly.`;
     });
+
+    renderPersonalUnlockState();
   </script>
 </body>
 </html>
