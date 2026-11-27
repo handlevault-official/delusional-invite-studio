@@ -139,8 +139,19 @@
 
     .section-sub {
       color: var(--muted);
-      margin-bottom: 24px;
+      margin-bottom: 18px;
       max-width: 64ch;
+    }
+
+    .kofi-note {
+      background: var(--accent-soft);
+      border: 1px solid #cfe2dc;
+      color: var(--accent);
+      border-radius: 10px;
+      padding: 12px 16px;
+      font-size: 0.92rem;
+      margin-bottom: 24px;
+      max-width: 72ch;
     }
 
     .grid-3 {
@@ -323,6 +334,9 @@
           Personal includes up to 30 personal sends/month; batch tiers cover every 100 letters and
           can be renewed immediately once exhausted.
         </p>
+        <div class="kofi-note">
+          <strong>Note:</strong> Sa <strong>membership lang sa Ko-fi page</strong> sila magbabayad—doon naka-allocate ang bayad sa kani-kanilang tiers, at walang hiwalay na purchase requirement dito.
+        </div>
         <div class="grid-4">
           <article class="card">
             <div>
@@ -388,7 +402,7 @@
         <div class="inquiry-box">
           <h2 class="section-title">Personal or 100-Letter Batch Inquiry</h2>
           <p class="section-sub">
-            Select Personal (up to 30 sends/mo) or a 100-letter batch tier below.
+            Select Personal (up to 30 sends/mo) or a 100-letter batch tier below. Sa membership lang sa Ko-fi page sila magbabayad at doon ito naka-allocate sa kani-kanilang tiers—walang hiwalay na purchase dito.
           </p>
           <form class="form-grid" id="partnership-form">
             <label>
@@ -431,7 +445,7 @@
 
   <footer>
     <div class="container">
-      <p>DELUSIONAL &amp; ORGANIZED • Personal ($9/mo) &amp; 100-Letter Batch Partnership</p>
+      <p>DELUSIONAL &amp; ORGANIZED • Personal ($9/mo) &amp; 100-Letter Batch Partnership — Sa membership lang sa Ko-fi page sila magbabayad at doon naka-allocate sa kani-kanilang tiers (no separate purchase here).</p>
     </div>
   </footer>
 
@@ -460,7 +474,7 @@
       event.preventDefault();
       const data = new FormData(form);
       const summary = `${data.get("orgName")} (${data.get("useCase")}) selected ${data.get("plan")}.`;
-      statusEl.textContent = `Ready to send: ${summary} Connect this form to your email/form handler or copy these details to send directly.`;
+      statusEl.textContent = `Ready to send: ${summary} Sa membership lang sa Ko-fi page sila magbabayad (walang hiwalay na purchase dito) at doon naka-allocate sa kani-kanilang tiers.`;
     });
   </script>
 </body>
