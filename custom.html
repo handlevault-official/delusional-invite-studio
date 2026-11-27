@@ -381,13 +381,15 @@
       'font-retro-pixel': 'Retro Pixel'
     };
 
-    let themePhotoDataUrl = '';
+
+        let themePhotoDataUrl = '';
     let extraPhotos = [];
     let isPenPalReplyMode = false;
     let quotedPreviousLetter = null;
 
     const themePhotoInput = document.getElementById('themePhotoInput');
     const clearThemePhotoBtn = document.getElementById('clearThemePhotoBtn');
+    const themeSourceSelect = document.getElementById('themeSourceSelect');
     const applyToEnvelopeToggle = document.getElementById('applyToEnvelopeToggle');
     const overlayTone = document.getElementById('overlayTone');
     const overlayOpacity = document.getElementById('overlayOpacity');
@@ -422,7 +424,12 @@
         return 0;
       }
       const baseCustom = 5; // Higher custom studio price ($5–$8 range)
-      const envelopeThemeCost = (themePhotoDataUrl && applyToEnvelopeToggle.checked) ? 1 : 0;
+      const isPhotoAppliedToEnvelope = Boolean(
+        themePhotoDataUrl &&
+        applyToEnvelopeToggle.checked &&
+        (!themeSourceSelect || themeSourceSelect.value === 'photo')
+      );
+      const envelopeThemeCost = isPhotoAppliedToEnvelope ? 1 : 0;
       const photoCost = Math.min(2, extraPhotos.length) * 1;
       const emailCost = emailDeliveryToggle.checked ? 1 : 0;
       const total = Math.min(8, baseCustom + envelopeThemeCost + photoCost + emailCost);
@@ -438,6 +445,59 @@
       return total;
     }
 
+    function updatePreview() {
+      const cleanTag = (sealTag.value || 'CUST').toUpperCase().slice(0, 4);
+      const chosenFont = customFontSelect.value;
+
+      document.getElementById('previewFontBadge').textContent = fontLabels[chosenFont] || 'Custom Font';
+      document.getElementById('previewTo').textContent = toName.value || 'Someone Special';
+      document.getElementById('previewFrom').textContent = fromName.value || 'Creator';
+      document.getElementById('previewTitle').textContent = letterTitle.value || '';
+      document.getElementById('previewBody').textContent = letterBody.value || '';
+      document.getElementById('previewCornerIcon').textContent = sealIcon.value;
+
+      document.getElementById('previewSealIcon').textContent = sealIcon.value;
+      document.getElementById('previewSealTag').textContent = cleanTag;
+      document.getElementById('previewMiniSealTag').textContent = cleanTag;
+      document.getElementById('overlaySealIcon').textContent = sealIcon.value;
+      document.getElementById('overlaySealTag').textContent = cleanTag;
+      document.getElementById('sealedRecipientText').textContent = `For: ${toName.value || 'Someone Special'}`;
+
+      customLetterCard.className = `${chosenFont} relative overflow-hidden rounded-2xl p-6 sm:p-8 border border-stone-200 bg-cover bg-center transition-all duration-300`;
+
+      const useUploadedPhoto = themeSourceSelect && themeSourceSelect.value === 'photo' && themePhotoDataUrl;
+
+      if (useUploadedPhoto) {
+        customLetterCard.style.backgroundImage = `url(${themePhotoDataUrl})`;
+        customEnvelopeShell.style.backgroundImage = applyToEnvelopeToggle.checked
+          ? `url(${themePhotoDataUrl})`
+          : 'none';
+
+        const alpha = parseFloat(overlayOpacity.value || '0.78');
+        if (overlayTone.value === 'dark-glass') {
+          cardContentLayer.style.backgroundColor = `rgba(15, 23, 42, ${alpha})`;
+          cardContentLayer.className = 'relative z-10 rounded-xl p-4 sm:p-5 text-white backdrop-blur-[2px] transition-all duration-300';
+        } else {
+          cardContentLayer.style.backgroundColor = `rgba(255, 255, 255, ${alpha})`;
+          cardContentLayer.className = 'relative z-10 rounded-xl p-4 sm:p-5 text-stone-900 backdrop-blur-[2px] transition-all duration-300';
+        }
+      } else {
+        customLetterCard.style.backgroundImage = 'none';
+        customEnvelopeShell.style.backgroundImage = 'none';
+        cardContentLayer.style.backgroundColor = 'rgba(255, 255, 255, 0.9)';
+        cardContentLayer.className = 'relative z-10 rounded-xl p-4 sm:p-5 text-stone-900 transition-all duration-300';
+      }
+    }
+
+    [
+      themeSourceSelect, applyToEnvelopeToggle, overlayTone, overlayOpacity, customFontSelect,
+      sealIcon, sealTag, toName, fromName, letterTitle, letterBody
+    ].forEach(el => {
+      if (!el) return;
+      el.addEventListener('input', () => { updatePreview(); calculatePrice(); });
+      el.addEventListener('change', () => { updatePreview(); calculatePrice(); });
+    });
+        
     function updatePreview() {
       const cleanTag = (sealTag.value || 'CUST').toUpperCase().slice(0, 4);
       const chosenFont = customFontSelect.value;
