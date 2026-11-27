@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DELUSIONAL & ORGANIZED — Seasonal Letter Studio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: #faf7f5;
+      color: #1f1b24;
+    }
+
+    /* Seasonal Card Themes */
+    .season-christmas {
+      font-family: 'Playfair Display', serif;
+      background: linear-gradient(145deg, #fffaf5 0%, #fef2f2 55%, #f0fdf4 100%);
+      border: 2px solid #dc2626;
+      box-shadow: 0 16px 35px rgba(185, 28, 28, 0.14);
+    }
+    .season-halloween {
+      font-family: 'Fredoka', sans-serif;
+      background: linear-gradient(145deg, #1c1917 0%, #292524 65%, #431407 100%);
+      color: #fff7ed;
+      border: 2px solid #f97316;
+      box-shadow: 0 16px 35px rgba(249, 115, 22, 0.2);
+    }
+
+    /* Customized Seal Shapes */
+    .seal-wax {
+      border-radius: 9999px;
+      box-shadow: inset 0 2px 5px rgba(255,255,255,0.45), inset 0 -3px 6px rgba(0,0,0,0.25), 0 6px 14px rgba(0,0,0,0.18);
+      border: 2px dashed rgba(255,255,255,0.55);
+    }
+    .seal-sticker {
+      border-radius: 22px;
+      box-shadow: 0 6px 0 rgba(0,0,0,0.14);
+      border: 2px solid #ffffff;
+    }
+    .seal-pixel {
+      border-radius: 2px;
+      box-shadow: 4px 4px 0px #18181b;
+      border: 2px solid #18181b;
+    }
+
+    /* Envelope Seal Break & Letter Reveal Animations */
+    @keyframes popUnseal {
+      0% { transform: scale(1) rotate(0deg); opacity: 1; }
+      45% { transform: scale(1.18) rotate(-8deg); opacity: 1; }
+      100% { transform: scale(0.3) rotate(18deg); opacity: 0; }
+    }
+    @keyframes letterSlideUp {
+      0% { transform: translateY(28px) scale(0.97); opacity: 0; }
+      100% { transform: translateY(0) scale(1); opacity: 1; }
+    }
+    .unsealing {
+      animation: popUnseal 0.55s ease forwards;
+    }
+    .letter-reveal {
+      animation: letterSlideUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+  <!-- Top Navigation -->
+  <header class="sticky top-0 z-40 bg-white/85 backdrop-blur-md border-b border-stone-200">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-2">
+      <div class="flex items-center gap-2">
+        <span class="text-xl">🎄</span>
+        <div>
+          <h1 class="font-bold tracking-tight text-sm sm:text-base uppercase">DELUSIONAL & ORGANIZED</h1>
+          <p class="text-[11px] text-stone-500">Seasonal Letters (Christmas & Halloween)</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-2">
+        <a href="index.html" class="text-xs font-semibold px-3 py-2 rounded-full border border-stone-300 hover:bg-stone-100 transition">
+          ← All-Year Studio
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Season Status Banner -->
+  <section class="max-w-6xl mx-auto px-4 pt-6 pb-4">
+    <div id="seasonBanner" class="rounded-3xl p-5 bg-emerald-50 border border-emerald-200 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+      <div>
+        <span id="seasonStatusBadge" class="inline-block text-[11px] font-extrabold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-emerald-200 text-emerald-900 mb-1">
+          CHECKING SEASON...
+        </span>
+        <h2 id="seasonBannerTitle" class="text-xl sm:text-2xl font-extrabold text-stone-900">
+          Seasonal Letter Drop
+        </h2>
+        <p id="seasonBannerDesc" class="text-xs sm:text-sm text-stone-600 mt-0.5">
+          Seasonal editions activate automatically during their calendar window.
+        </p>
+      </div>
+
+      <label class="flex items-center gap-2 bg-white px-3.5 py-2 rounded-2xl border border-stone-200 cursor-pointer shrink-0">
+        <input id="testPreviewToggle" type="checkbox" class="rounded text-stone-900 w-4 h-4" />
+        <span class="text-xs font-bold text-stone-800">🔓 Preview Off-Season</span>
+      </label>
+    </div>
+  </section>
+
+  <!-- Main Seasonal Studio -->
+  <main class="max-w-6xl mx-auto px-4 pb-16 grid grid-cols-1 lg:grid-cols-12 gap-8 flex-1">
+
+    <!-- Left Controls -->
+    <div class="lg:col-span-5 space-y-5 bg-white p-5 sm:p-6 rounded-3xl border border-stone-200 shadow-sm h-fit">
+      <div class="flex items-center justify-between border-b border-stone-100 pb-3">
+        <h3 class="font-bold text-lg">1. Seasonal Customizer</h3>
+        <span id="priceBadge" class="px-3 py-1 rounded-full text-sm font-extrabold bg-emerald-100 text-emerald-800">
+          Est: $3.00
+        </span>
+      </div>
+
+      <!-- Seasonal Occasion Picker -->
+      <div>
+        <label class="block text-xs font-bold uppercase tracking-wider text-stone-500 mb-1.5">
+          Choose Season
+        </label>
+        <select id="seasonSelect" class="w-full rounded-xl border-2 border-stone-900 px-3 py-2.5 text-sm font-semibold bg-stone-50">
+          <option value="christmas">🎄 Christmas Edition (Nov 15 – Jan 6)</option>
+          <option value="halloween">🎃 Halloween Edition (Oct 1 – Nov 2)</option>
+        </select>
+        <p id="seasonLockNotice" class="hidden text-xs font-semibold text-rose-700 bg-rose-50 border border-rose-200 rounded-xl p-2.5 mt-2">
+          ⏳ This season is currently out of window. Toggle "Preview Off-Season" above to test and customize it now.
+        </p>
+      </div>
+
+      <!-- Receiver Vibe & Seal -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-stone-500 mb-1.5">
+            Receiver Vibe / Gender
+          </label>
+          <select id="receiverPersona" class="w-full rounded-xl border border-stone-300 px-3 py-2 text-xs font-medium bg-white">
+            <option value="👩 Female / Femme">👩 Female / Femme</option>
+            <option value="👨 Male / Masc">👨 Male / Masc</option>
+            <option value="🏳️‍🌈 Gay / Queer Fab">🏳️‍🌈 Gay / Queer Fab</option>
+            <option value="🧢 Tomboy / Soft Masc">🧢 Tomboy / Soft Masc</option>
+            <option value="✨ Any Gender / Neutral">✨ Any Gender / Neutral</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-stone-500 mb-1.5">
+            Custom Seal Tag (1–4)
+          </label>
+          <input id="sealTag" type="text" maxlength="4" value="XMAS" class="w-full rounded-xl border border-stone-300 px-3 py-2 text-xs font-extrabold uppercase text-center" />
+        </div>
+      </div>
+
+      <!-- To / From -->
+      <div class="grid grid-cols-2 gap-3">
+        <div>
+          <label class="block text-xs font-bold text-stone-600 mb-1">To (Receiver)</label>
+          <input id="toName" type="text" value="My Favorite Person" class="w-full rounded-xl border border-stone-300 px-3 py-2 text-sm" />
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-stone-600 mb-1">From (You)</label>
+          <input id="fromName" type="text" value="Santa's Little Helper" class="w-full rounded-xl border border-stone-300 px-3 py-2 text-sm" />
+        </div>
+      </div>
+
+      <!-- Headline & Message -->
+      <div>
+        <label class="block text-xs font-bold text-stone-600 mb-1">Seasonal Headline</label>
+        <input id="letterTitle" type="text" value="Warmest Christmas Wishes For You 🎄✨" class="w-full rounded-xl border border-stone-300 px-3 py-2 text-sm" />
+      </div>
+
+      <div>
+        <label class="block text-xs font-bold text-stone-600 mb-1">Your Message</label>
+        <textarea id="letterBody" rows="4" class="w-full rounded-xl border border-stone-300 px-3 py-2 text-sm">Sending cozy holiday cheer, warm lights, and best wishes for the new year ahead. Hope we get to catch up soon!</textarea>
+      </div>
+
+      <!-- Custom Photo Upload (+$1/photo, max 3) -->
+      <div class="p-3.5 rounded-2xl bg-stone-50 border border-stone-200">
+        <div class="flex items-center justify-between mb-1">
+          <label class="text-xs font-bold text-stone-800">📸 Add Seasonal Photos (+$1/photo, max 3)</label>
+          <button type="button" id="clearPhotosBtn" class="text-[11px] text-rose-600 font-semibold hidden">Clear</button>
+        </div>
+        <input id="photoUpload" type="file" accept="image/*" multiple class="block w-full text-xs text-stone-500 file:mr-3 file:py-1.5 file:px-3 file:rounded-full file:border-0 file:text-xs file:font-semibold file:bg-stone-900 file:text-white hover:file:bg-stone-700 cursor-pointer" />
+      </div>
+
+      <!-- Email Dispatch (+$1) -->
+      <div class="p-3.5 rounded-2xl bg-amber-50/70 border border-amber-200 space-y-2">
+        <label class="flex items-center gap-2 cursor-pointer">
+          <input id="emailDeliveryToggle" type="checkbox" checked class="rounded text-stone-900 w-4 h-4" />
+          <span class="text-xs font-bold text-stone-900">📨 Official Email Dispatch (+$1.00)</span>
+        </label>
+        <input id="receiverEmail" type="email" placeholder="receiver@email.com" class="w-full rounded-xl border border-amber-300 bg-white px-3 py-2 text-xs" />
+      </div>
+
+      <!-- Price Summary ($2–$8) -->
+      <div class="p-4 rounded-2xl bg-stone-900 text-white space-y-1.5">
+        <div class="flex justify-between text-xs text-stone-300">
+          <span>Base Seasonal Letter ($2) + Season Edition (+$1)</span>
+          <span>$3.00</span>
+        </div>
+        <div class="flex justify-between text-xs text-stone-300">
+          <span>Custom Photos (<span id="photoCountText">0</span>/3)</span>
+          <span id="photoAddonText">+$0.00</span>
+        </div>
+        <div class="flex justify-between text-xs text-stone-300">
+          <span>Email Dispatch</span>
+          <span id="emailAddonText">+$1.00</span>
+        </div>
+        <div class="border-t border-stone-700 pt-2 flex justify-between items-center font-bold text-base">
+          <span>Total Ko-fi Estimate ($2–$8)</span>
+          <span id="totalPriceText" class="text-emerald-400 text-lg">$4.00</span>
+        </div>
+      </div>
+
+      <button type="button" id="openCheckoutBtn" class="w-full py-3.5 rounded-2xl bg-rose-600 hover:bg-rose-500 text-white font-bold text-sm shadow-lg transition">
+        Proceed to Ko-fi & Generate Link →
+      </button>
+    </div>
+
+    <!-- Right Interactive Envelope & Preview -->
+    <div class="lg:col-span-7 space-y-4">
+      <div class="flex items-center justify-between">
+        <h3 class="font-bold text-lg">2. Seasonal Envelope & Live Preview</h3>
+        <button type="button" id="replayEnvelopeBtn" class="text-xs font-bold px-3.5 py-1.5 rounded-full bg-white border border-stone-300 hover:bg-stone-100 transition">
+          🔁 Seal & Replay Animation
+        </button>
+      </div>
+
+      <div id="envelopeBox" class="rounded-3xl p-4 sm:p-6 bg-gradient-to-br from-rose-100 via-amber-50 to-emerald-100 border border-stone-200 shadow-inner min-h-[400px]">
+        <!-- Sealed Overlay -->
+        <div id="sealedOverlay" class="hidden flex-col items-center justify-center text-center py-14 px-4 rounded-2xl bg-white/90 border border-stone-200">
+          <p class="text-xs font-bold uppercase tracking-widest text-stone-500 mb-2">Seasonal Envelope Sealed</p>
+          <p id="sealedRecipientText" class="text-lg font-extrabold text-stone-900 mb-5">For: My Favorite Person</p>
+          <button type="button" id="breakSealBtn" class="seal-wax px-6 py-4 bg-red-600 text-white flex flex-col items-center gap-1 cursor-pointer">
+            <span id="overlaySealIcon" class="text-3xl leading-none">🎄</span>
+            <span id="overlaySealTag" class="text-xs font-extrabold tracking-widest uppercase">XMAS</span>
+          </button>
+          <p class="text-xs text-stone-500 mt-4 animate-pulse">Tap the seal to break & open ✨</p>
+        </div>
+
+        <!-- Opened Content -->
+        <div id="openedEnvelopeContent">
+          <div id="envelopeHeader" class="mb-4 p-4 rounded-2xl bg-red-100 border border-red-200 text-red-950 flex items-center justify-between gap-3">
+            <div>
+              <span id="previewSeasonLabel" class="text-[11px] font-extrabold uppercase tracking-wider block">🎄 CHRISTMAS EDITION</span>
+              <span id="previewPersonaBadge" class="text-xs font-semibold opacity-80">👩 Female / Femme</span>
+            </div>
+            <div id="customSealBadge" class="seal-wax px-3.5 py-2 bg-red-600 text-white flex items-center gap-1.5">
+              <span id="previewSealIcon" class="text-base leading-none">🎄</span>
+              <span id="previewSealTag" class="text-[11px] font-extrabold tracking-wider uppercase leading-none">XMAS</span>
+            </div>
+          </div>
+
+          <div id="letterPreviewCard" class="season-christmas rounded-2xl p-6 sm:p-8 transition-all duration-300">
+            <div class="flex items-center justify-between gap-2 mb-4 pb-3 border-b border-current/15">
+              <div>
+                <p class="text-xs opacity-70">To:</p>
+                <p id="previewTo" class="font-bold text-base">My Favorite Person</p>
+              </div>
+              <span id="previewPersonaPill" class="px-3 py-1 rounded-full text-xs font-semibold bg-black/10">
+                👩 Female / Femme
+              </span>
+            </div>
+
+            <h4 id="previewTitle" class="text-xl sm:text-2xl font-bold mb-4">
+              Warmest Christmas Wishes For You 🎄✨
+            </h4>
+
+            <p id="previewBody" class="text-sm sm:text-base whitespace-pre-line leading-relaxed mb-6">
+              Sending cozy holiday cheer, warm lights, and best wishes for the new year ahead. Hope we get to catch up soon!
+            </p>
+
+            <div id="previewPhotosGrid" class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-6 hidden"></div>
+
+            <div class="pt-4 border-t border-current/15 flex items-center justify-between">
+              <div>
+                <p class="text-xs opacity-70">With seasonal cheer,</p>
+                <p id="previewFrom" class="font-bold text-sm">Santa's Little Helper</p>
+              </div>
+              <span id="previewCornerIcon" class="text-xl">🎄</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Ko-fi Checkout Modal -->
+  <div id="checkoutModal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-md w-full p-6 space-y-4 shadow-2xl">
+      <div class="flex items-center justify-between">
+        <h3 class="font-extrabold text-lg">Seasonal Ko-fi Send</h3>
+        <button type="button" id="closeModalBtn" class="text-stone-400 hover:text-stone-700 font-bold text-lg">✕</button>
+      </div>
+      <p class="text-xs text-stone-600">
+        Pay <strong id="modalPrice">$4.00</strong> on Ko-fi, enter your supporter name/ref below, and copy your shareable seasonal envelope link.
+      </p>
+      <a href="https://ko-fi.com/" target="_blank" rel="noopener noreferrer"
+         class="block w-full text-center py-3 rounded-xl bg-[#29abe0] hover:bg-[#1e96c8] text-white font-bold text-sm transition">
+        ☕ Pay <span id="modalKofiBtnPrice">$4.00</span> on Ko-fi
+      </a>
+      <div class="space-y-2 pt-2 border-t border-stone-100">
+        <input id="kofiRefInput" type="text" placeholder="Ko-fi Supporter Name / Ref #" class="w-full rounded-xl border border-stone-300 px-3 py-2 text-xs" />
+        <button type="button" id="confirmOrderBtn" class="w-full py-3 rounded-xl bg-stone-900 text-white font-bold text-xs">
+          Generate Shareable Seasonal Link
+        </button>
+      </div>
+      <div id="shareResultBox" class="hidden p-3 rounded-xl bg-emerald-50 border border-emerald-200 space-y-2">
+        <input id="generatedShareUrl" type="text" readonly class="w-full text-[11px] bg-white border border-emerald-300 rounded-lg px-2 py-1.5" />
+        <button type="button" id="copyLinkBtn" class="w-full py-2 rounded-lg bg-emerald-600 text-white text-xs font-bold">
+          Copy Link
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const seasonalPresets = {
+      christmas: {
+        label: "🎄 CHRISTMAS EDITION",
+        icon: "🎄",
+        tag: "XMAS",
+        sealShape: "wax",
+        cardClass: "season-christmas",
+        headerClass: "mb-4 p-4 rounded-2xl bg-red-100 border border-red-200 text-red-950 flex items-center justify-between gap-3",
+        sealClass: "seal-wax px-3.5 py-2 bg-red-600 text-white flex items-center gap-1.5",
+        title: "Warmest Christmas Wishes For You 🎄✨",
+        body: "Sending cozy holiday cheer, warm lights, and best wishes for the new year ahead. Hope we get to catch up soon!",
+        from: "Santa's Little Helper",
+        isActiveNow(date) {
+          const m = date.getMonth() + 1;
+          const d = date.getDate();
+          return (m === 11 && d >= 15) || m === 12 || (m === 1 && d <= 6);
+        }
+      },
+      halloween: {
+        label: "🎃 HALLOWEEN EDITION",
+        icon: "🎃",
+        tag: "SPOOK",
+        sealShape: "sticker",
+        cardClass: "season-halloween",
+        headerClass: "mb-4 p-4 rounded-2xl bg-stone-900 border border-orange-500 text-orange-100 flex items-center justify-between gap-3",
+        sealClass: "seal-sticker px-3.5 py-2 bg-orange-600 text-white flex items-center gap-1.5",
+        title: "Trick or Treat? Spooky Invite Inside 🎃🕸️",
+        body: "Something mysterious just arrived in your inbox... Open if you dare, grab some treats, and join the spooky night!",
+        from: "Midnight Phantom",
+        isActiveNow(date) {
+          const m = date.getMonth() + 1;
+          const d = date.getDate();
+          return m === 10 || (m === 11 && d <= 2);
+        }
+      }
+    };
+
+    const now = new Date();
+    let uploadedPhotos = [];
+
+    const seasonSelect = document.getElementById('seasonSelect');
+    const testPreviewToggle = document.getElementById('testPreviewToggle');
+    const seasonLockNotice = document.getElementById('seasonLockNotice');
+    const seasonStatusBadge = document.getElementById('seasonStatusBadge');
+    const seasonBannerTitle = document.getElementById('seasonBannerTitle');
+    const seasonBannerDesc = document.getElementById('seasonBannerDesc');
+    const openCheckoutBtn = document.getElementById('openCheckoutBtn');
+
+    const receiverPersona = document.getElementById('receiverPersona');
+    const sealTag = document.getElementById('sealTag');
+    const toName = document.getElementById('toName');
+    const fromName = document.getElementById('fromName');
+    const letterTitle = document.getElementById('letterTitle');
+    const letterBody = document.getElementById('letterBody');
+    const photoUpload = document.getElementById('photoUpload');
+    const clearPhotosBtn = document.getElementById('clearPhotosBtn');
+    const emailDeliveryToggle = document.getElementById('emailDeliveryToggle');
+
+    const sealedOverlay = document.getElementById('sealedOverlay');
+    const openedEnvelopeContent = document.getElementById('openedEnvelopeContent');
+    const breakSealBtn = document.getElementById('breakSealBtn');
+
+    function isCurrentSeasonActive() {
+      const preset = seasonalPresets[seasonSelect.value];
+      return preset ? preset.isActiveNow(now) : false;
+    }
+
+    function updateSeasonStatusBanner() {
+      const active = isCurrentSeasonActive();
+      const previewAllowed = testPreviewToggle.checked;
+      const canUse = active || previewAllowed;
+
+      const activeSeasons = Object.entries(seasonalPresets)
+        .filter(([, cfg]) => cfg.isActiveNow(now))
+        .map(([, cfg]) => cfg.label);
+
+      if (activeSeasons.length > 0) {
+        seasonStatusBadge.textContent = "LIVE SEASON ACTIVE";
+        seasonBannerTitle.textContent = `Active Now: ${activeSeasons.join(" & ")}`;
+        seasonBannerDesc.textContent = "Seasonal templates and seals are unlocked for current holiday senders.";
+      } else {
+        seasonStatusBadge.textContent = "OFF-SEASON STANDBY";
+        seasonBannerTitle.textContent = "No Holiday Drop Active Today";
+        seasonBannerDesc.textContent = "Seasonal editions unlock automatically on their dates, or enable Preview Off-Season to test.";
+      }
+
+      seasonLockNotice.classList.toggle('hidden', canUse);
+      openCheckoutBtn.disabled = !canUse;
+      openCheckoutBtn.classList.toggle('opacity-50', !canUse);
+      openCheckoutBtn.classList.toggle('cursor-not-allowed', !canUse);
+    }
+
+    function calculatePrice() {
+      const baseAndSeason = 3; // $2 base + $1 seasonal edition
+      const photoCost = uploadedPhotos.length * 1;
+      const emailCost = emailDeliveryToggle.checked ? 1 : 0;
+      const total = Math.min(8, Math.max(2, baseAndSeason + photoCost + emailCost));
+
+      document.getElementById('photoCountText').textContent = uploadedPhotos.length;
+      document.getElementById('photoAddonText').textContent = `+$${photoCost.toFixed(2)}`;
+      document.getElementById('emailAddonText').textContent = `+$${emailCost.toFixed(2)}`;
+      document.getElementById('totalPriceText').textContent = `$${total.toFixed(2)}`;
+      document.getElementById('priceBadge').textContent = `Est: $${total.toFixed(2)}`;
+      document.getElementById('modalPrice').textContent = `$${total.toFixed(2)}`;
+      document.getElementById('modalKofiBtnPrice').textContent = `$${total.toFixed(2)}`;
+      return total;
+    }
+
+    function updatePreview() {
+      const preset = seasonalPresets[seasonSelect.value] || seasonalPresets.christmas;
+      const cleanTag = (sealTag.value || preset.tag).toUpperCase().slice(0, 4);
+
+      document.getElementById('previewSeasonLabel').textContent = preset.label;
+      document.getElementById('previewPersonaBadge').textContent = receiverPersona.value;
+      document.getElementById('previewPersonaPill').textContent = receiverPersona.value;
+      document.getElementById('previewTo').textContent = toName.value || 'Someone Special';
+      document.getElementById('previewFrom').textContent = fromName.value || preset.from;
+      document.getElementById('previewTitle').textContent = letterTitle.value || preset.title;
+      document.getElementById('previewBody').textContent = letterBody.value || preset.body;
+      document.getElementById('previewCornerIcon').textContent = preset.icon;
+
+      document.getElementById('previewSealIcon').textContent = preset.icon;
+      document.getElementById('previewSealTag').textContent = cleanTag;
+      document.getElementById('overlaySealIcon').textContent = preset.icon;
+      document.getElementById('overlaySealTag').textContent = cleanTag;
+      document.getElementById('sealedRecipientText').textContent = `For: ${toName.value || 'Someone Special'}`;
+
+      document.getElementById('envelopeHeader').className = preset.headerClass;
+      document.getElementById('customSealBadge').className = preset.sealClass;
+      document.getElementById('letterPreviewCard').className = `${preset.cardClass} rounded-2xl p-6 sm:p-8 transition-all duration-300`;
+    }
+
+    seasonSelect.addEventListener('change', () => {
+      const preset = seasonalPresets[seasonSelect.value];
+      if (!preset) return;
+      sealTag.value = preset.tag;
+      letterTitle.value = preset.title;
+      letterBody.value = preset.body;
+      fromName.value = preset.from;
+      updateSeasonStatusBanner();
+      updatePreview();
+    });
+
+    testPreviewToggle.addEventListener('change', updateSeasonStatusBanner);
+
+    [receiverPersona, sealTag, toName, fromName, letterTitle, letterBody].forEach(el => {
+      el.addEventListener('input', updatePreview);
+      el.addEventListener('change', updatePreview);
+    });
+
+    emailDeliveryToggle.addEventListener('change', calculatePrice);
+
+    photoUpload.addEventListener('change', (e) => {
+      const files = Array.from(e.target.files).slice(0, 3);
+      uploadedPhotos = [];
+      const grid = document.getElementById('previewPhotosGrid');
+      grid.innerHTML = '';
+
+      if (files.length === 0) {
+        grid.classList.add('hidden');
+        clearPhotosBtn.classList.add('hidden');
+        calculatePrice();
+        return;
+      }
+
+      clearPhotosBtn.classList.remove('hidden');
+      grid.classList.remove('hidden');
+
+      files.forEach((file, idx) => {
+        const reader = new FileReader();
+        reader.onload = (ev) => {
+          uploadedPhotos.push(ev.target.result);
+          const card = document.createElement('div');
+          card.className = 'bg-white p-2 pb-3 rounded-xl shadow-md border border-stone-200 text-stone-900';
+          card.innerHTML = `<img src="${ev.target.result}" alt="Memory ${idx + 1}" class="w-full h-28 object-cover rounded-lg mb-1" /><p class="text-[10px] text-center font-semibold">Memory #${idx + 1}</p>`;
+          grid.appendChild(card);
+          calculatePrice();
+        };
+        reader.readAsDataURL(file);
+      });
+    });
+
+    clearPhotosBtn.addEventListener('click', () => {
+      photoUpload.value = '';
+      uploadedPhotos = [];
+      const grid = document.getElementById('previewPhotosGrid');
+      grid.innerHTML = '';
+      grid.classList.add('hidden');
+      clearPhotosBtn.classList.add('hidden');
+      calculatePrice();
+    });
+
+    function showSealedEnvelope() {
+      breakSealBtn.classList.remove('unsealing');
+      openedEnvelopeContent.classList.add('hidden');
+      openedEnvelopeContent.classList.remove('letter-reveal');
+      sealedOverlay.classList.remove('hidden');
+      sealedOverlay.classList.add('flex');
+    }
+
+    breakSealBtn.addEventListener('click', () => {
+      breakSealBtn.classList.add('unsealing');
+      setTimeout(() => {
+        sealedOverlay.classList.add('hidden');
+        sealedOverlay.classList.remove('flex');
+        openedEnvelopeContent.classList.remove('hidden');
+        void openedEnvelopeContent.offsetWidth;
+        openedEnvelopeContent.classList.add('letter-reveal');
+      }, 480);
+    });
+
+    document.getElementById('replayEnvelopeBtn').addEventListener('click', showSealedEnvelope);
+
+    const checkoutModal = document.getElementById('checkoutModal');
+    openCheckoutBtn.addEventListener('click', () => {
+      calculatePrice();
+      checkoutModal.classList.remove('hidden');
+      checkoutModal.classList.add('flex');
+    });
+
+    document.getElementById('closeModalBtn').addEventListener('click', () => {
+      checkoutModal.classList.add('hidden');
+      checkoutModal.classList.remove('flex');
+    });
+
+    document.getElementById('confirmOrderBtn').addEventListener('click', () => {
+      const ref = document.getElementById('kofiRefInput').value.trim();
+      if (!ref) {
+        alert('Please enter your Ko-fi supporter name or reference.');
+        return;
+      }
+      const payload = {
+        season: seasonSelect.value,
+        to: toName.value,
+        from: fromName.value,
+        title: letterTitle.value,
+        body: letterBody.value,
+        persona: receiverPersona.value,
+        sealTag: sealTag.value
+      };
+      const encoded = btoa(encodeURIComponent(JSON.stringify(payload)));
+      const url = `${window.location.origin}${window.location.pathname}?seasonLetter=${encoded}`;
+      document.getElementById('generatedShareUrl').value = url;
+      document.getElementById('shareResultBox').classList.remove('hidden');
+    });
+
+    document.getElementById('copyLinkBtn').addEventListener('click', () => {
+      const input = document.getElementById('generatedShareUrl');
+      input.select();
+      navigator.clipboard.writeText(input.value);
+      alert('Copied seasonal envelope link!');
+    });
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get('preview') === '1') {
+        testPreviewToggle.checked = true;
+      }
+
+      // Auto-select active season on load if available
+      if (seasonalPresets.christmas.isActiveNow(now)) {
+        seasonSelect.value = 'christmas';
+      } else if (seasonalPresets.halloween.isActiveNow(now)) {
+        seasonSelect.value = 'halloween';
+      }
+
+      const shared = params.get('seasonLetter');
+      if (shared) {
+        try {
+          const decoded = JSON.parse(decodeURIComponent(atob(shared)));
+          if (decoded.season && seasonalPresets[decoded.season]) seasonSelect.value = decoded.season;
+          if (decoded.to) toName.value = decoded.to;
+          if (decoded.from) fromName.value = decoded.from;
+          if (decoded.title) letterTitle.value = decoded.title;
+          if (decoded.body) letterBody.value = decoded.body;
+          if (decoded.persona) receiverPersona.value = decoded.persona;
+          if (decoded.sealTag) sealTag.value = decoded.sealTag;
+          testPreviewToggle.checked = true;
+          updateSeasonStatusBanner();
+          updatePreview();
+          showSealedEnvelope();
+          calculatePrice();
+          return;
+        } catch (err) {
+          console.error('Invalid seasonal link');
+        }
+      }
+
+      const initPreset = seasonalPresets[seasonSelect.value];
+      sealTag.value = initPreset.tag;
+      letterTitle.value = initPreset.title;
+      letterBody.value = initPreset.body;
+      fromName.value = initPreset.from;
+
+      updateSeasonStatusBanner();
+      updatePreview();
+      calculatePrice();
+    });
+  </script>
+</body>
+</html>
